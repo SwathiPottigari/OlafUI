@@ -1,9 +1,12 @@
-import React from "react";
+import React from 'react';
+import NavBar from "../../NavBar/NavBar";
 import "./Home.css";
 
 const Home = props => (
-
+  
     <div className="home">
+
+        <NavBar />
 
         <div className="landing">
             <div className="home-wrap">
