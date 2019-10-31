@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {
   withScriptjs,
   withGoogleMap,
@@ -40,7 +41,7 @@ class Map extends Component {
   }
 
   render() {
-    return <div style={{ width: "100vw", height: "100vh" }}>
+    return <div className="col-md-6"style={{ width: "100vw", height: "100vh" }}>
       
       {this.state.location?(<MapWithAMarker
         location={this.state.location}
