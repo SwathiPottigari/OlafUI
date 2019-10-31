@@ -8,8 +8,7 @@ export default class UserForm extends Component {
         lastName: '',
         phoneNumber: '',
         email: '',
-        password: '',
-        user: "customer"
+        password: ''
     };
 
     handleInputChange = event => {
@@ -47,11 +46,11 @@ export default class UserForm extends Component {
                     <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         Format: 206-339-4592</small>
-                    <input name="password" minlength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
+                    <input name="password" type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters</small>
 
-                    <button onClick={this.handleFormSubmit} class="btn btn-info my-4 btn-block" type="submit">Create Account</button>
+                    <button onClick={this.handleFormSubmit} minlength="8" required class="btn btn-info my-4 btn-block" type="submit">Create Account</button>
 
                 </form>
                 
