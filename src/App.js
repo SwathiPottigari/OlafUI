@@ -6,10 +6,10 @@ import Chef from "./components/pages/Chef";
 import User from "./components/pages/User";
 import NoMatch from "./components/pages/NoMatch";
 
-
 function App() {
   return (
     <div className="App">
+    
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -19,6 +19,9 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
       </Router>
+
+      <Home />
+
     </div>
   );
 }
