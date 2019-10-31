@@ -5,7 +5,7 @@ import "./Home.css";
 const Home = props => (
   
     <div className="home">
-
+        
         <NavBar />
 
         <div className="landing">
