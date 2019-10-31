@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
-import Chef from "./components/pages/Chef";
-import User from "./components/pages/User";
+import Chef from "./components/pages/Chef/Chef";
+import User from "./components/pages/User/User";
 import NoMatch from "./components/pages/NoMatch";
 
 function App() {
