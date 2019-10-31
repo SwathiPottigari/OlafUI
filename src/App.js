@@ -13,13 +13,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
           <Route exact path="/chef" component={Chef} />
           <Route exact path="/user" component={User} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
-
     </div>
   );
 }

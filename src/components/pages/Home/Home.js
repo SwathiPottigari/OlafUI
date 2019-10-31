@@ -18,8 +18,8 @@ const Home = props => (
         <div className="caption text-center">
             <h1>Community Through Cuisine</h1>
             <h3>Sign Up Today</h3>
-            <a className="btn btn-outline-light btn-lg" href="">Chef</a>
-            <a className="btn btn-outline-light btn-lg" href="">User</a>
+            <a className="btn btn-outline-light btn-lg" href="#">Chef</a>
+            <a className="btn btn-outline-light btn-lg" href="#">User</a>
         </div>
 
         <div className="about">

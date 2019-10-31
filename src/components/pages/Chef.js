@@ -12,7 +12,7 @@ export default class Chef extends Component {
         return (
             <div>
                 <NavBar />
-                <h1>Huh? Here is the Chef page</h1>
+                <h1>Here is the Chef page</h1>
                 <Container fluid>
                     <Row>
                         <Col size="md-12">
