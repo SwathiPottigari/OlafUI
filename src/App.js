@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./components/pages/Home";
+import Home from "./components/pages/Home/Home";
 import Chef from "./components/pages/Chef";
 import User from "./components/pages/User";
 import NoMatch from "./components/pages/NoMatch";
@@ -19,8 +19,6 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
       </Router>
-
-      <Home />
 
     </div>
   );
