@@ -6,7 +6,7 @@ export default class UserLogIn extends Component {
         isShown: false,
         email: '',
         password: '',
-        user: "chef"
+        user: "customer"
     };
 
     handleInputChange = event => {
