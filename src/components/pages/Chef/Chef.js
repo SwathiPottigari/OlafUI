@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Input, TextArea, FormBtn } from "../../ChefCreateItem/ChefCreateItem";
+import API from "../../utils/API";
 import NavBar from "../../NavBar/NavBar";
 import ItemCard from '../../ItemCard/ItemCard';
 import Container from '../../Container/Container';
@@ -11,7 +12,7 @@ import "./Chef.css"
 export default class Chef extends Component {
 
     state = {
-        recipes: [],
+        items: [],
         dish: "",
         quantity: "",
         servingSize: "",
@@ -21,13 +22,13 @@ export default class Chef extends Component {
     };
 
     // componentDidMount() {
-    //     this.loadRecipes();
+    //     this.menuItems();
     // }
 
-    // loadRecipes = () => {
-    //     API.getRecipes()
+    // menuItems = () => {
+    //     API.menuItems()
     //         .then(res =>
-    //             this.setState({ recipes: res.data,
+    //             this.setState({ items: res.data,
     //                 dish: "",
     //                 quantity: "",
     //                 servingSize: "",
@@ -39,9 +40,9 @@ export default class Chef extends Component {
     //         .catch(err => console.log(err));
     // };
 
-    // deleteDish = id => {
-    //     API.deleteDish(id)
-    //         .then(res => this.loadRecipes())
+    // removeDish = id => {
+    //     API.removeDish(id)
+    //         .then(res => this.menuItems())
     //         .catch(err => console.log(err));
     // };
 
@@ -54,13 +55,19 @@ export default class Chef extends Component {
 
     // handleFormSubmit = event => {
     //     event.preventDefault();
-    //     if (this.state.title && this.state.author) {
+    //     if (this.state.dish 
+    //         && this.state.price 
+    //         && this.state.quantity
+    //         && this.state.ingredients) {
     //         API.saveDish({
-    //             title: this.state.title,
-    //             author: this.state.author,
-    //             synopsis: this.state.synopsis
+    //             dish: this.state.dish,
+    //             quantity: this.state.quantity,
+    //             servingSize: this.state.servingSize,
+    //             price: this.state.price,
+    //             ingredients: this.state.ingredients,
+    //             cuisine: this.state.cuisine
     //         })
-    //             .then(res => this.loadRecipes())
+    //             .then(res => this.menuItems())
     //             .catch(err => console.log(err));
     //     }
     // };
@@ -83,7 +90,7 @@ export default class Chef extends Component {
                                     value={this.state.cuisine}
                                     onChange={this.handleInputChange}
                                     name="cuisine"
-                                    placeholder="Cuisine (required)"
+                                    placeholder="Cuisine (optional)"
                                 />
                                 <Input
                                     value={this.state.price}
@@ -110,7 +117,10 @@ export default class Chef extends Component {
                                     placeholder="Ingredients (required)"
                                 />
                                 <FormBtn
-                                    disabled={!(this.state.author && this.state.title)}
+                                    disabled={!(this.state.dish 
+                                        && this.state.price 
+                                        && this.state.quantity
+                                        && this.state.ingredients)}
                                     onClick={this.handleFormSubmit}
                                 >
                                     Submit Dish
