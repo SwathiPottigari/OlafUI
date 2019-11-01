@@ -33,22 +33,17 @@ export default class ChefLogIn extends Component {
                 withCredentials: true
             }
         ).then(res => {
-            // console.log(res.data,res.status);
             this.setState({
                 email: "",
                 password: "",
                 loggedInUser: res.data.user,
                 redirect: true
             });
-            // <Chef/>;
         })
     };
 
     renderRedirect = () => {
         if (this.state.redirect) {
-           const obj= this.refs.modalChefLogInForm;
-           console.log(obj);
-        //    obj.dialog('close');
             return <Redirect to='/chef' />
         }
     }
@@ -56,12 +51,12 @@ export default class ChefLogIn extends Component {
     render() {
         return (
             <div>
-                {!this.state.redirect&&<div className="modal fade" id="modalChefLogInForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true" ref="modalChefLogInForm">
+                <div className="modal fade" id="modalChefLogInForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                                <h4 className="modal-title w-100 font-weight-bold">Write to us</h4>
+                                <h4 className="modal-title w-100 font-weight-bold">Chef LogIn</h4>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -69,19 +64,17 @@ export default class ChefLogIn extends Component {
                             <div className="modal-body mx-3">
                                 <div className="md-form mb-5">
                                     <i className="fas fa-user prefix grey-text"></i>
+                                    <label data-error="wrong" data-success="right" htmlFor="form34">Your E-mail Address</label>
                                     <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="E-mail" />
-                                    <label data-error="wrong" data-success="right" htmlFor="form34">Your name</label>
-                                </div>
-
-                                <div className="md-form mb-5">
-                                    <i className="fas fa-envelope prefix grey-text"></i>
-                                    <input type="password" name="password" required value={this.state.phoneNumber} onChange={this.handleInputChange} className="form-control" placeholder="Mobile Number" />
-                                    <label data-error="wrong" data-success="right" htmlFor="form29">Your email</label>
+                                    <br />
+                                    <i className="fas fa-lock"></i>
+                                    <label data-error="wrong" data-success="right" htmlFor="form34">Your Login Password</label>
+                                    <input type="password" required name="password" value={this.state.password} onChange={this.handleInputChange} className="form-control" placeholder="Password" />
                                 </div>
 
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
-                                <button onClick={this.handleFormSubmit}  data-dismiss="modal" className="btn btn-info my-4 btn-block" type="submit">Log In</button>
+                                <button onClick={this.handleFormSubmit} data-dismiss="modal" className="btn btn-info my-4 btn-block" type="submit">Log In</button>
                             </div>
                         </div>
                     </div>

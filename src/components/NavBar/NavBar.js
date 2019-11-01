@@ -51,10 +51,10 @@ export default class NavBar extends Component {
                             <a className="nav-link" href="/user">User Dashboard</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
+                            <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
+                            <a className="nav-link" href="#" onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
                         </li>
                     </ul>
                 </div>

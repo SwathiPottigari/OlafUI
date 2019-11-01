@@ -28,7 +28,7 @@ export default class UserLogIn extends Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header text-center">
-                            <h4 className="modal-title w-100 font-weight-bold">Write to us</h4>
+                            <h4 className="modal-title w-100 font-weight-bold">User Login</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -36,14 +36,12 @@ export default class UserLogIn extends Component {
                         <div className="modal-body mx-3">
                             <div className="md-form mb-5">
                                 <i className="fas fa-user prefix grey-text"></i>
+                                <label data-error="wrong" data-success="right" htmlFor="form34">Your E-mail Address</label>
                                 <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="E-mail" />
-                                <label data-error="wrong" data-success="right" htmlFor="form34">Your name</label>
-                            </div>
-
-                            <div className="md-form mb-5">
-                                <i className="fas fa-envelope prefix grey-text"></i>
-                                <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} className="form-control" placeholder="Mobile Number" />
-                                <label data-error="wrong" data-success="right" htmlFor="form29">Your email</label>
+                                <br/>
+                                <i className="fas fa-lock"></i>
+                                <label data-error="wrong" data-success="right" htmlFor="form34">Your Login Password</label>
+                                <input type="password" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="Password" />
                             </div>
 
                         </div>

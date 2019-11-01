@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FormChefDetails from './FormChefDetails';
-import FormPersonalDetails from './FormPersonalDetails';
-import Confirm from './Confirm';
-import Success from './Success';
+import FormChefDetails from '../../FormChefDetails/FormChefDetails';
+import FormPersonalDetails from '../../FormPersonalDetails/FormPersonalDetails';
+import Confirm from '../../Confirm/Confirm';
+import "./ChefForm.css";
 
 export class UserForm extends Component {
   state = {
@@ -78,8 +78,6 @@ export class UserForm extends Component {
             values={values}
           />
         );
-      case 4:
-        return <Success />;
     }
   }
 }
