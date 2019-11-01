@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./ChefLogIn.css";
 import axios from "axios";
 import Chef from "../pages/Chef/Chef";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 export default class ChefLogIn extends Component {
     state = {
@@ -78,10 +78,11 @@ export default class ChefLogIn extends Component {
                             </div>
                         </div>
                     </div>
-                </div>}
+                </div>
                 {this.renderRedirect()}
             </div>
 
         )
     }
 }
+
