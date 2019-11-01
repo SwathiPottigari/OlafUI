@@ -5,20 +5,7 @@ import ChefLogIn from "../../ChefLogIn/ChefLogIn";
 import UserLogIn from "../../UserLogIn/UserLogIn";
 
 class Home extends Component {
-    state = {
-        isChef: false,
-        isUser: false
-    }
-
-    getUserLoginForm = (e) => {
-        console.log("this is user working!")
-        this.setState({isUser: true})
-    }
-
-    getChefLoginForm = (e) => {
-        console.log("this is chef working!")
-        this.setState({isChef: true})
-    }
+    
 
     render() {
         return (
@@ -38,9 +25,9 @@ class Home extends Component {
                 <div className="caption text-center">
                     <h1>Community Through Cuisine</h1>
                     <h3>Sign Up Today</h3>
-                    <button onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm" className="btn btn-outline-light btn-lg">Chef</button>
+                    <button onClick={this.getChefLoginForm} className="btn btn-outline-light btn-lg">Chef</button>
                     
-                    <button onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm" className="btn btn-outline-light btn-lg">User</button>
+                    <button onClick={this.getUserLoginForm} className="btn btn-outline-light btn-lg">User</button>
                 </div>
 
                 <div className="about">
