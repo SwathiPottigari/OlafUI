@@ -5,7 +5,10 @@ import ChefLogIn from "../../ChefLogIn/ChefLogIn";
 import UserLogIn from "../../UserLogIn/UserLogIn";
 
 class Home extends Component {
-    
+    state = {
+        isChef: false,
+        isUser: false
+    }
 
     render() {
         return (
