@@ -5,6 +5,7 @@ import ItemCard from "../../ItemCard/ItemCard"
 import Container from '../../Container/Container';
 import Row from '../../Row/Row';
 import Col from '../../Col/Col';
+import Jumbotron from '../../Jumbotron/Jumbotron';
 import "./User.css"
 
 export default class User extends Component {
@@ -14,8 +15,11 @@ export default class User extends Component {
                 <NavBar />
                 <Container fluid>
                     <Row>
-                        <Map />
+                        
+                            <Map />
+                        
                         <Col size="md-6">
+                            <Jumbotron><h3>Available Items</h3></Jumbotron>
                             <ItemCard />
                         </Col>
                     </Row>

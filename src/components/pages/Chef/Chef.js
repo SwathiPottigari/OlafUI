@@ -7,6 +7,7 @@ import Container from '../../Container/Container';
 import Row from '../../Row/Row';
 import Col from '../../Col/Col';
 import "./Chef.css"
+import Jumbotron from '../../Jumbotron/Jumbotron';
 
 
 export default class Chef extends Component {
@@ -79,6 +80,7 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
+                            <Jumbotron><h3>Create Menu Item</h3></Jumbotron>
                             <form>
                                 <Input
                                     value={this.state.dish}
@@ -117,8 +119,8 @@ export default class Chef extends Component {
                                     placeholder="Ingredients (required)"
                                 />
                                 <FormBtn
-                                    disabled={!(this.state.dish 
-                                        && this.state.price 
+                                    disabled={!(this.state.dish
+                                        && this.state.price
                                         && this.state.quantity
                                         && this.state.ingredients)}
                                     onClick={this.handleFormSubmit}
@@ -128,6 +130,7 @@ export default class Chef extends Component {
                             </form>
                         </Col>
                         <Col size="md-6">
+                            <Jumbotron><h3>Current Menu</h3></Jumbotron>
                             <ItemCard />
                         </Col>
                     </Row>

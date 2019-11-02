@@ -26,8 +26,8 @@ class Home extends Component {
                 </div>
 
                 <div className="caption text-center">
-                    <h1>Community Through Cuisine</h1>
-                    <h3>Sign Up Today</h3>
+                    <h1>Community Cuisine</h1>
+                    <h3>Sign Up for Olaf</h3>
                     <a href="/signup/chef" className="btn btn-outline-light btn-lg">Chef</a>
                     
                     <a href="/signup/user" className="btn btn-outline-light btn-lg">User</a>

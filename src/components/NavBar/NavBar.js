@@ -23,44 +23,44 @@ export default class NavBar extends Component {
 
     getUserLoginForm = (e) => {
         console.log("this is user working!")
-        this.setState({isUser: true})
+        this.setState({ isUser: true })
     }
 
     getChefLoginForm = (e) => {
         console.log("this is chef working!")
-        this.setState({isChef: true})
+        this.setState({ isChef: true })
     }
 
     render() {
         return (
             <div>
-            <nav id="navbar" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-                <a className="navbar-brand" href="/"><strong>OlafGo</strong></a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarResponsive">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/chef">Chef Dashboard</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/user">User Dashboard</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            {this.state.isChef && <ChefLogIn />}
-            {this.state.isUser && <UserLogIn />}
+                <nav id="navbar" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                    <a className="navbar-brand" href="/"><strong>OlafGo</strong></a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarResponsive">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/chef">Chef Dashboard</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/user">User Dashboard</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" ref={btn => { this.btn = btn; }} onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                {this.state.isChef && <ChefLogIn />}
+                {this.state.isUser && <UserLogIn />}
             </div>
         )
     }
