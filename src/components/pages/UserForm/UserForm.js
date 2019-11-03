@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import "./UserForm.css";
+import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 export default class UserForm extends Component {
     state = {
@@ -9,7 +11,10 @@ export default class UserForm extends Component {
         phoneNumber: '',
         email: '',
         password: '',
-        user: "customer"
+        user: "customer",
+        loggedInUser: '',
+        redirect: false,
+        url: "http://localhost:8080",
     };
 
     handleInputChange = event => {
@@ -21,9 +26,39 @@ export default class UserForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        alert(`Welcome to OlafGo ${this.state.firstName} ${this.state.lastName}!`);
-        this.setState({ firstName: "", lastName: "", phoneNumber: "", email: "", password: "" });
+
+        axios.post(`${this.state.url}/api/signup`,
+            {
+                email: this.state.email,
+                password: this.state.password,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                contact: this.state.phoneNumber,
+                user: this.state.user
+            },
+            {
+                withCredentials: true
+            }
+        ).then(res => {
+            this.setState({
+                firstName: "",
+                lastName: "",
+                phoneNumber: "",
+                email: "",
+                password: "",
+                loggedInUser: res.data.user,
+                redirect: true
+            });
+        })
+
+
     };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/user' />
+        }
+    }
 
     render() {
         return (
@@ -54,7 +89,7 @@ export default class UserForm extends Component {
                     <button onClick={this.handleFormSubmit} class="btn btn-info my-4 btn-block" type="submit">Create Account</button>
 
                 </form>
-                
+                {this.renderRedirect()}
             </div>
 
         )
