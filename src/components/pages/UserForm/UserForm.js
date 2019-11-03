@@ -86,7 +86,7 @@ export default class UserForm extends Component {
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters</small>
 
-                    <button onClick={this.handleFormSubmit} class="btn btn-info my-4 btn-block" type="submit">Create Account</button>
+                    <button onClick={this.handleFormSubmit} class="btn btn-primary" type="submit">Create Account</button>
 
                 </form>
                 {this.renderRedirect()}
