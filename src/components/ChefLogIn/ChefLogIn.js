@@ -29,7 +29,7 @@ export default class ChefLogIn extends Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header text-center">
-                            <h4 className="modal-title w-100 font-weight-bold"></h4>
+                            <h4 className="modal-title w-100 font-weight-bold">Chef Login</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
