@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimationContainer from "../../AnimationContainer/AnimationContainer"
 import "./UserForm.css";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
@@ -62,9 +63,13 @@ export default class UserForm extends Component {
 
     render() {
         return (
+            <React.Fragment>
+                    <h1 className="form-title text-center">Create an Account</h1>
+
+            <AnimationContainer />
             <div class="form-container">
 
-                <form class="text-center border border-light p-5" action="#!">
+                <form class="wizard-form text-center border border-light p-5" action="#!">
 
                     <p class="h4 mb-4">Sign Up</p>
 
@@ -91,6 +96,7 @@ export default class UserForm extends Component {
                 </form>
                 {this.renderRedirect()}
             </div>
+            </React.Fragment>
 
         )
     }

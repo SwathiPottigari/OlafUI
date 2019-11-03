@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import "./ChefForm.css"
+import { Redirect } from 'react-router-dom';
+import AnimationContainer from "../../AnimationContainer/AnimationContainer"
 
 class ChefForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       currentStep: 1,
+      url: "http://localhost:8080",
+      redirect: false,
       firstName: '',
       lastName: '',
       kitchenName: '',
@@ -32,14 +37,49 @@ class ChefForm extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault()
-    let { firstName, lastName, kitchenName, license, specialities, password, contact, email, address } = this.state
-    alert(`Welcome to OlafGo, ${firstName} ${lastName}!\n kitchen name: ${kitchenName}\n license: ${license}\n specialities: ${specialities}\n password: ${password}\n contact: ${contact}\n email: ${email}\n address: ${address}`)
-    window.location.href = "http://localhost:3000/chef";
-    this.setState({
-      firstName: '', lastName: '', kitchenName: '', license: '', specialties: '', password: '', contact: '', email: '', streetAddress: '', apartment: '', city: '', state: '', zipCode: '', currentStep: 1
-    })
+    event.preventDefault();
+        axios.post(`${this.state.url}/api/signup`,
+            {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                kitchenName: this.state.kitchenName,
+                license: this.state.license,
+                specialities: this.state.specialities,
+                password: this.state.password,
+                contact: this.state.contact,
+                email: this.state.email,
+                address: [this.state.streetAddress, this.state.apartment, this.state.city, this.state.state, this.state.zipCode],
+                user: "chef"
+            },
+            {
+                withCredentials: true
+            }
+        ).then(res => {
+            this.setState({
+                firstName: '',
+                lastName: '',
+                kitchenName: '',
+                license: '',
+                specialities: '',
+                password: '',
+                contact: '',
+                email: '',
+                streetAddress: '',
+                apartment: '',
+                city: '',
+                state: '',
+                zipCode: '',
+                loggedInChef: res.data.chef,
+                redirect: true
+            });
+        })
   }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+        return <Redirect to='/chef' />
+    }
+}
 
   _next = () => {
     let currentStep = this.state.currentStep
@@ -61,7 +101,7 @@ class ChefForm extends React.Component {
     return (
       <React.Fragment>
 
-        <h1 className="text-center">Create an Account</h1>
+        <h1 className=" form-title text-center">Create an Account</h1>
 
         <Step1
           currentStep={this.state.currentStep}
@@ -100,9 +140,12 @@ function Step1(props) {
     return null
   }
   return (
+    <React.Fragment>
+    <AnimationContainer />
+
     <div className="form-container">
 
-      <form className="text-center border border-light p-5" action="#!">
+      <form className="wizard-form text-center border border-light p-5" action="#!">
 
         <p className="h4 mb-4">Sign Up</p>
 
@@ -128,7 +171,7 @@ function Step1(props) {
 
           <input type="text" required name="specialities" value={props.specialities} onChange={props.handleChange} className="form-control" placeholder="Your dish specialities" />
           <br />
-          <input minlength="8" required type="password" className="form-control" placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
+          <input minLength="8" required type="password" className="form-control" placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
           <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted ml-2 float-left">
             At least 8 characters</small>
         </div>
@@ -141,6 +184,7 @@ function Step1(props) {
       </form>
 
     </div>
+    </React.Fragment>
   );
 }
 
@@ -149,9 +193,12 @@ function Step2(props) {
     return null
   }
   return (
+    <React.Fragment>
+    <AnimationContainer />
+
     <div className="form-container">
 
-      <form className="text-center border border-light p-5" action="#!">
+      <form className="wizard-form text-center border border-light p-5" action="#!">
 
         <p className="h4 mb-4">Sign Up</p>
 
@@ -169,8 +216,8 @@ function Step2(props) {
             <input name="city" type="text" className="form-control" placeholder="City" onChange={props.handleChange} value={props.city} />
           </div>
           <div className="col">
-            <select name="state" onChange={props.handleChange} value={props.state} class="form-control browser-default custom-select">
-              <option selected>State</option>
+            <select name="state" onChange={props.handleChange} value={props.state} className="form-control browser-default custom-select">
+              <option defaultValue>State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -241,6 +288,8 @@ function Step2(props) {
 
       </form>
     </div>
+
+    </React.Fragment>
 
   );
 }
