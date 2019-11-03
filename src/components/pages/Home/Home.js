@@ -43,9 +43,9 @@ class Home extends Component {
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Save Time</h3>
+                            <h3>Build Community</h3>
                             <div className="feature">
-                                <i className="far fa-clock fa-3x"></i>
+                                <i className="fas fa-people-carry fa-3x"></i>
                             </div>
                             <p className="feature-text">This will be a short paragraph telling the user how they can save time using our application.</p><br />
                         </div>

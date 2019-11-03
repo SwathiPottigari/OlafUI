@@ -1,0 +1,28 @@
+h5 {
+    padding: 0.8rem 0;
+}
+
+.login-btn {
+    background-color: #ED8F20;
+    border-color: #ED8F20;
+    text-transform: uppercase;
+    padding: .8rem 0;
+}
+
+.login-btn:hover {
+    background-color: #DD7017;
+    border-color: #DD7017;
+}
+
+.modal-header {
+    border: 0;
+}
+
+.modal-body {
+    padding-bottom: 0;
+}
+
+.modal-footer {
+    border: 0;
+    padding-top: 0;
+}
