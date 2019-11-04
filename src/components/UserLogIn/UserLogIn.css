@@ -1,0 +1,32 @@
+h4 {
+    padding-left: 1rem;
+}
+
+h5 {
+    padding: 0.8rem 0;
+}
+
+.login-btn {
+    background-color: #FFA92C;
+    border-color: #FFA92C;
+    text-transform: uppercase;
+    padding: .8rem 0;
+}
+
+.login-btn:hover {
+    background-color: #F7991E;
+    border-color: #F7991E;
+}
+
+.modal-header {
+    border: 0;
+}
+
+.modal-body {
+    padding-bottom: 0;
+}
+
+.modal-footer {
+    border: 0;
+    padding-top: 0;
+}
