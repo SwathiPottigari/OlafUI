@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/SwathiPottigari/OlafU/static/css/main.a8c93829.chunk.css",
+    "main.js": "/SwathiPottigari/OlafU/static/js/main.19645ff2.chunk.js",
+    "main.js.map": "/SwathiPottigari/OlafU/static/js/main.19645ff2.chunk.js.map",
+    "runtime-main.js": "/SwathiPottigari/OlafU/static/js/runtime-main.b9a07bee.js",
+    "runtime-main.js.map": "/SwathiPottigari/OlafU/static/js/runtime-main.b9a07bee.js.map",
+    "static/js/2.414bba15.chunk.js": "/SwathiPottigari/OlafU/static/js/2.414bba15.chunk.js",
+    "static/js/2.414bba15.chunk.js.map": "/SwathiPottigari/OlafU/static/js/2.414bba15.chunk.js.map",
+    "index.html": "/SwathiPottigari/OlafU/index.html",
+    "precache-manifest.0a05e77c0a3900465e01bc1d09b1a8fd.js": "/SwathiPottigari/OlafU/precache-manifest.0a05e77c0a3900465e01bc1d09b1a8fd.js",
+    "service-worker.js": "/SwathiPottigari/OlafU/service-worker.js",
+    "static/css/main.a8c93829.chunk.css.map": "/SwathiPottigari/OlafU/static/css/main.a8c93829.chunk.css.map",
+    "static/media/carrot.svg": "/SwathiPottigari/OlafU/static/media/carrot.95d3a774.svg",
+    "static/media/Home.css": "/SwathiPottigari/OlafU/static/media/placeholder-head.26787a6b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9a07bee.js",
+    "static/js/2.414bba15.chunk.js",
+    "static/css/main.a8c93829.chunk.css",
+    "static/js/main.19645ff2.chunk.js"
+  ]
+}
