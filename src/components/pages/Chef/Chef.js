@@ -10,6 +10,7 @@ import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
 import axios from 'axios';
 
+// import Cloudinary from '../../Cloudinary/Cloudinary';
 
 export default class Chef extends Component {
 
@@ -134,6 +135,8 @@ export default class Chef extends Component {
                                     name="ingredients"
                                     placeholder="Ingredients (required)"
                                 />
+                                <label>Upload an image</label>
+                                <input type="file" />
                                 <FormBtn
                                     disabled={!(this.state.dish
                                         && this.state.price
