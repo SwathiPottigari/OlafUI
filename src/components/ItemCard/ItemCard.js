@@ -20,6 +20,7 @@ export default class ItemCard extends Component {
                         <img src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt=""/>
                     </div>
                     <div className="list-content">
+                    <span className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
                         <h2>Chicken Curry</h2>
                         <span className="list-meta">
                             <span className="list-meta-item"> 2016</span>

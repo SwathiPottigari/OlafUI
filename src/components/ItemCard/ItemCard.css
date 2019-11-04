@@ -16,7 +16,12 @@ body {
       color: #7b7b7b !important;
   }
   
-  
+  .delete-item {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #e74c3c;
+  }
   
   .list {
       display: block;
