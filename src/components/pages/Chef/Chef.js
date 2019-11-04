@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Input, TextArea, FormBtn } from "../../ChefCreateItem/ChefCreateItem";
 import API from "../../utils/API";
 import NavBar from "../../NavBar/NavBar";
-import ItemCard from '../../ItemCard/ItemCard';
+import ChefItemCard from '../../ChefItemCard/ChefItemCard';
 import Container from '../../Container/Container';
 import Row from '../../Row/Row';
 import Col from '../../Col/Col';
@@ -37,6 +37,7 @@ export default class Chef extends Component {
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
             .then(function (results) {
                 variable.setState({ items: results.data });
+                console.log(results.data);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -150,7 +151,13 @@ export default class Chef extends Component {
                         </Col>
                         <Col size="md-6">
                             <Jumbotron><h3>Current Menu</h3></Jumbotron>
-                            {this.state.items.map(element=><ItemCard />)} 
+                            {this.state.items.map(element=><ChefItemCard           
+                            id={element.id}
+                            ingredients={element.ingredients}    
+                            price={element.price}
+                            servingSize={element.servingSize}
+                            dish={element.dish}
+                            />)} 
                         </Col>
                     </Row>
                 </Container>
