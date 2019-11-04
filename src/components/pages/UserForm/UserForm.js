@@ -15,7 +15,8 @@ export default class UserForm extends Component {
         user: "customer",
         loggedInUser: '',
         redirect: false,
-        url: "http://localhost:8080",
+        // url: "http://localhost:8080",
+        url: "http://olafapi.herokuapp.com/"
     };
 
     handleInputChange = event => {
@@ -75,10 +76,7 @@ export default class UserForm extends Component {
 
                     <div class="form-row mb-4">
                         <div class="col">
-                            <input 
-                                type="text" 
-                                required 
-                                name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                            <input type="text" required name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
                         </div>
                         <div class="col">
                             <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
