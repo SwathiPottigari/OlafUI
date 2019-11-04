@@ -40,42 +40,41 @@ class ChefForm extends React.Component {
     const { firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode } = this.state
     event.preventDefault()
     const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`
-    console.log(address)
-    axios.post(`${this.state.url}/api/signup`,
-      {
-        firstName: firstName,
-        lastName: lastName,
-        kitchenName: kitchenName,
-        license: license,
-        specialities: specialities,
-        password: password,
-        contact: contact,
-        email: email,
-        address: address,
-        user: "chef"
-      },
-      {
-        withCredentials: true
-      }
-    ).then(res => {
-      this.setState({
-        firstName: '',
-        lastName: '',
-        kitchenName: '',
-        license: '',
-        specialities: '',
-        password: '',
-        contact: '',
-        email: '',
-        streetAddress: '',
-        apartment: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        loggedInChef: res.data.chef,
-        redirect: true
-      });
-    })
+        axios.post(`${this.state.url}/api/signup`,
+            {
+                firstName: firstName,
+                lastName: lastName,
+                kitchenName: kitchenName,
+                license: license,
+                specialities: specialities,
+                password: password,
+                contact: contact,
+                email: email,
+                address: address,
+                user: "chef"
+            },
+            {
+                withCredentials: true
+            }
+        ).then(res => {
+            this.setState({
+                firstName: '',
+                lastName: '',
+                kitchenName: '',
+                license: '',
+                specialities: '',
+                password: '',
+                contact: '',
+                email: '',
+                streetAddress: '',
+                apartment: '',
+                city: '',
+                state: '',
+                zipCode: '',
+                loggedInChef: res.data.chef,
+                redirect: true
+            });
+        })
   }
 
   renderRedirect = () => {
@@ -140,7 +139,7 @@ class ChefForm extends React.Component {
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
         />
-
+     {this.renderRedirect()}
       </React.Fragment>
     );
   }

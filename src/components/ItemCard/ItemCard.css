@@ -20,7 +20,7 @@ body {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    color: #e74c3c;
+    color: #FFA92C;
   }
   
   .list {
@@ -31,6 +31,20 @@ body {
       transition: all .2s ease-in-out;
   }
   
+.card-header {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: RGBA(255, 169, 44, 0.5);
+    color: #fff;
+}
+
+.cuisine {
+    text-shadow: .1rem .1rem .5rem #000000;
+    text-transform: uppercase;
+}
+
   .list-header {
       display: block;
       float: left;
@@ -74,18 +88,18 @@ body {
   }
   
   .list-meta {
-      margin-bottom: 16px;
       font-size: 13px;
       line-height: 100%;
       color: #9A9A9A;
 
   }
   
-  .list-meta .list-meta-item {
-      display: inline-block;
-      margin-right: 18px;
-      color: #9A9A9A;
+  .list-meta-price {
+      font-size: 1rem;
+      margin: 0;
   }
+
+
   
   .list:after {
       display: block;
