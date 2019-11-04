@@ -8,23 +8,39 @@ import Row from '../../Row/Row';
 import Col from '../../Col/Col';
 import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
+import axios from 'axios';
 
 
 export default class Chef extends Component {
 
     state = {
-        items: [],
+        items:[],
         dish: "",
         quantity: "",
         servingSize: "",
         price: "",
         ingredients: "",
-        cuisine: ""
+        cuisine: "",
+        url: "http://localhost:8080",
+        loggedInUser: ''
     };
 
-    // componentDidMount() {
-    //     this.menuItems();
-    // }
+    componentDidMount() {
+        this.readSessions();
+    }
+
+    readSessions = () => {
+        axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {          
+            this.setState({ loggedInUser: res.data.user });
+            let variable=this;
+            axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
+            .then(function (results) {
+                variable.setState({ items: results.data });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        })
+    }
 
     // menuItems = () => {
     //     API.menuItems()
@@ -41,37 +57,37 @@ export default class Chef extends Component {
     //         .catch(err => console.log(err));
     // };
 
-    // removeDish = id => {
-    //     API.removeDish(id)
-    //         .then(res => this.menuItems())
-    //         .catch(err => console.log(err));
-    // };
+    removeDish = id => {
+        API.removeDish(id)
+            .then(res => this.menuItems())
+            .catch(err => console.log(err));
+    };
 
-    // handleInputChange = event => {
-    //     const { name, value } = event.target;
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     if (this.state.dish 
-    //         && this.state.price 
-    //         && this.state.quantity
-    //         && this.state.ingredients) {
-    //         API.saveDish({
-    //             dish: this.state.dish,
-    //             quantity: this.state.quantity,
-    //             servingSize: this.state.servingSize,
-    //             price: this.state.price,
-    //             ingredients: this.state.ingredients,
-    //             cuisine: this.state.cuisine
-    //         })
-    //             .then(res => this.menuItems())
-    //             .catch(err => console.log(err));
-    //     }
-    // };
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.dish
+            && this.state.price
+            && this.state.quantity
+            && this.state.ingredients) {
+            API.saveDish({
+                dish: this.state.dish,
+                quantity: this.state.quantity,
+                servingSize: this.state.servingSize,
+                price: this.state.price,
+                ingredients: this.state.ingredients,
+                cuisine: this.state.cuisine
+            })
+                .then(res => this.menuItems())
+                .catch(err => console.log(err));
+        }
+    };
 
     render() {
         return (
@@ -131,7 +147,7 @@ export default class Chef extends Component {
                         </Col>
                         <Col size="md-6">
                             <Jumbotron><h3>Current Menu</h3></Jumbotron>
-                            <ItemCard />
+                            {this.state.items.map(element=><ItemCard />)} 
                         </Col>
                     </Row>
                 </Container>
