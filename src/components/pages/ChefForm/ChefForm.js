@@ -129,7 +129,7 @@ class ChefForm extends React.Component {
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
         />
-
+     {this.renderRedirect()}
       </React.Fragment>
     );
   }
