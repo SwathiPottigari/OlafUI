@@ -25,7 +25,8 @@ class ChefForm extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-      user: "chef"
+      user: "chef",
+      loggedInUser: ''
     }
   }
 
@@ -38,9 +39,8 @@ class ChefForm extends React.Component {
 
   handleSubmit = event => {
     const {firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode}=this.state
-    event.preventDefault()
-    const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`
-    console.log(address)
+    event.preventDefault();
+    const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`;
         axios.post(`${this.state.url}/api/signup`,
             {
                 firstName: firstName,
@@ -132,7 +132,7 @@ class ChefForm extends React.Component {
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
         />
-
+    {this.renderRedirect()}
       </React.Fragment>
     );
   }
@@ -289,7 +289,7 @@ function Step2(props) {
         </div>
 
 
-      </form>
+      </form>      
     </div>
 
     </React.Fragment>
