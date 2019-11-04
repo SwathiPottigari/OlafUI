@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import React, { Component } from "react";
 import {
     withScriptjs,
@@ -7,12 +7,16 @@ import {
     Marker
 } from "react-google-maps";
 
-
-
 class MapWithAMarker extends Component {
 
     state = {
-        masterCurrentChef: null
+        masterCurrentChef: null,
+        masterCurrentMenu: null
+    }
+
+    componentDidMount() {
+        /* make request to get foof menu here "*/
+
     }
 
     setMasterCurrentChef = (value) => {
@@ -20,6 +24,20 @@ class MapWithAMarker extends Component {
             masterCurrentChef: value
         })
     }
+    setMasterCurrentMenu = (value) => {
+        this.setState({
+            masterCurrentMenu: value
+        })
+    }
+
+    getMenu = () => {
+        try {
+            return axios.get(`http://localhost:8080/api/menuList/:${this.state.masterCurrentChef.id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
 
     render() {
         return (
@@ -39,10 +57,18 @@ class MapWithAMarker extends Component {
                         }}
 
                         onClick={() => {
-                            
+
                             this.setMasterCurrentChef(chef.Chef)
                             console.log(this.state.masterCurrentChef)
                             this.props.setCurrentChef(this.state.masterCurrentChef)
+                            /*  send ajax query  here to grab food item with chef id as a request parameter*/
+                            this.getMenu().then(response => {
+                                console.log(response)
+                                this.setMasterCurrentMenu(response.data)
+                                console.log("state change", this.state.masterCurrentMenu)
+                                this.props.setCurrentMenu(this.state.masterCurrentMenu)
+                            })
+
                         }
                         }
 
