@@ -8,7 +8,7 @@ import Row from '../../Row/Row';
 import Col from '../../Col/Col';
 import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
-
+import Cloudinary from '../../Cloudinary/Cloudinary';
 
 export default class Chef extends Component {
 
@@ -118,6 +118,8 @@ export default class Chef extends Component {
                                     name="ingredients"
                                     placeholder="Ingredients (required)"
                                 />
+                                <label>Upload an image</label>
+                                <input type="file" />
                                 <FormBtn
                                     disabled={!(this.state.dish
                                         && this.state.price
