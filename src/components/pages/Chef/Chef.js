@@ -80,7 +80,7 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
-                            <Jumbotron><h3>Create Menu Item</h3></Jumbotron>
+                            <Jumbotron><h3>Menu Creator</h3></Jumbotron>
                             <form>
                                 <Input
                                     value={this.state.dish}

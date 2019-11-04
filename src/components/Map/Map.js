@@ -32,8 +32,8 @@ const MapWithAMarker = withScriptjs(withGoogleMap( props =>{
             setSelectedChef(chef);
           }} */
            icon={{
-            url:  require("./pepper.svg"),
-            scaledSize: new window.google.maps.Size(40, 60) 
+            url:  require("./carrot.svg"),
+            scaledSize: new window.google.maps.Size(35, 35) 
           }}
          
 
@@ -65,7 +65,7 @@ class Map extends Component {
     })
   }
   render() {
-    return <div className="col-md-6" style={{ width: "100vw", height: "100vh" }}>
+    return <div className="col-md-6" style={{ width: "100%", height: "500px" }}>
       
       {this.state.location?(<MapWithAMarker
         location={this.state.location}

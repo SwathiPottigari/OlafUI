@@ -4,16 +4,16 @@ import ChefLogIn from "../ChefLogIn/ChefLogIn";
 import UserLogIn from "../UserLogIn/UserLogIn";
 
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-    } else {
-        document.getElementById("navbar").style.top = "-60px";
-    }
-    prevScrollpos = currentScrollPos;
-}
+// var prevScrollpos = window.pageYOffset;
+// window.onscroll = function () {
+//     var currentScrollPos = window.pageYOffset;
+//     if (prevScrollpos > currentScrollPos) {
+//         document.getElementById("navbar").style.top = "0";
+//     } else {
+//         document.getElementById("navbar").style.top = "-100px";
+//     }
+//     prevScrollpos = currentScrollPos;
+// }
 
 export default class NavBar extends Component {
     state = {
@@ -35,7 +35,7 @@ export default class NavBar extends Component {
         return (
             <div>
                 <nav id="navbar" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-                    <a className="navbar-brand" href="/"><strong>OlafGo</strong></a>
+                    <a className="navbar-brand" href="/"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
                     </button>

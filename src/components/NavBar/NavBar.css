@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
 .navbar {
   font-weight: 700;
   font-size: .9rem;
@@ -5,10 +7,17 @@
   background: rgba(0, 0, 0, 0.6)!important;
   /* background: transparent!important; */
   transition: top 0.3s;
+  
+}
+
+.navbar-brand {
+  color: #FFA92C!important;
+  font-family: 'Pacifico', cursive;
+  /* font-size: 1.6rem; */
 }
   
 .navbar-brand:hover {
-  color: #ED8F20!important;
+  color: #ffffff!important;
 }
   
 .navbar-nav li {
@@ -23,5 +32,5 @@
   
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #ED8F20;
+  color: #FFA92C;
 }
