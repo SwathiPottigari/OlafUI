@@ -45,8 +45,8 @@ require('dotenv').config()
           }}
           
            icon={{
-            url:  require("./pepper.svg"),
-            scaledSize: new window.google.maps.Size(40, 60) 
+            url:  require("./carrot.svg"),
+            scaledSize: new window.google.maps.Size(35, 35) 
           }}
 
         />
@@ -99,7 +99,7 @@ class Map extends Component {
     
       <Row>
         <Col size="md-6">
-      <div style={{ width: "40vw", height: "100vh" }}>
+      <div style={{ width: "100%", height: "500px" }}>
       
       {this.state.location?(<MapWithAMarker
         location={this.state.location}

@@ -48,7 +48,7 @@ class MapWithAMarker extends Component {
 
 
                         icon={{
-                            url: require("./pepper.svg"),
+                            url: require("./carrot.svg"),
                             scaledSize: new window.google.maps.Size(40, 60)
                         }}
 

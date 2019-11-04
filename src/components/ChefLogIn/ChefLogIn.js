@@ -56,25 +56,26 @@ export default class ChefLogIn extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                                <h4 className="modal-title w-100 font-weight-bold">Chef LogIn</h4>
+                                <h4 className="modal-title w-100 font-weight-bold">Welcome back to Olaf!</h4>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
+                            <h5>Login to your Chef account</h5>
                                 <div className="md-form mb-5">
-                                    <i className="fas fa-user prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" htmlFor="form34">Your E-mail Address</label>
-                                    <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="E-mail" />
+                                    {/* <i className="fas fa-user prefix grey-text"></i> */}
+                                    <label data-error="wrong" data-success="right" htmlFor="form34">Email</label>
+                                    <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="" />
                                     <br />
-                                    <i className="fas fa-lock"></i>
-                                    <label data-error="wrong" data-success="right" htmlFor="form34">Your Login Password</label>
-                                    <input type="password" required name="password" value={this.state.password} onChange={this.handleInputChange} className="form-control" placeholder="Password" />
+                                    {/* <i className="fas fa-lock"></i> */}
+                                    <label data-error="wrong" data-success="right" htmlFor="form34">Password</label>
+                                    <input type="password" required name="password" value={this.state.password} onChange={this.handleInputChange} className="form-control" placeholder="" />
                                 </div>
 
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
-                                <button onClick={this.handleFormSubmit} data-dismiss="modal" className="btn btn-info my-4 btn-block" type="submit">Log In</button>
+                                <button onClick={this.handleFormSubmit} data-dismiss="modal" className="login-btn btn btn-info my-4 btn-block" type="submit">Log In</button>
                             </div>
                         </div>
                     </div>

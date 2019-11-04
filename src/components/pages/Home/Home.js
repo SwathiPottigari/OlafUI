@@ -26,10 +26,10 @@ class Home extends Component {
                 </div>
 
                 <div className="caption text-center">
-                    <h1>Community Through Cuisine</h1>
-                    <h3>Sign Up Today</h3>
+                    <h1>Community Cuisine</h1>
+                    <h3>Sign Up for Olaf</h3>
                     <a href="/signup/chef" className="btn btn-outline-light btn-lg">Chef</a>
-                    
+
                     <a href="/signup/user" className="btn btn-outline-light btn-lg">User</a>
                 </div>
 
@@ -43,19 +43,19 @@ class Home extends Component {
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Save Time</h3>
+                            <h3>Build Community</h3>
                             <div className="feature">
-                                <i className="far fa-clock fa-3x"></i>
+                                <i className="fas fa-people-carry fa-3x"></i>
                             </div>
-                            <p className="feature-text">This will be a short paragraph telling the user how they can save time using our application.</p><br />
+                            <p className="feature-text">Showcase your talents as an Olaf Chef by providing the community with the experience of your delicious, authentic cuisine.</p><br />
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Save Money</h3>
+                            <h3>Eat Healthy</h3>
                             <div className="feature">
-                                <i className="fas fa-dollar-sign fa-3x"></i>
+                                <i className="fas fa-heart fa-3x"></i>
                             </div>
-                            <p className="feature-text">This will be a short paragraph telling the user how they can save money using our application.</p><br />
+                            <p className="feature-text">Discover healthy, home cooked meals without costly expenses and preparation, gaining more time to spend doing what you love.</p><br />
                         </div>
 
                         <div className="col-md-4">
@@ -63,7 +63,7 @@ class Home extends Component {
                             <div className="feature">
                                 <i className="fas fa-globe-americas fa-3x"></i>
                             </div>
-                            <p className="feature-text">This will be a short paragraph telling the user how they can save the planet using our application.</p><br />
+                            <p className="feature-text">Many Olaf Chefs utilize locally sourced sustainable ingredients and don't produce the amount of waste, like big restaurant chains.</p><br />
                         </div>
 
                     </div>
@@ -83,10 +83,13 @@ class Home extends Component {
                                     <div className="heading-underline"></div>
                                 </div>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Recusandae at omnis fugit expedita quos maxime doloribus reprehenderit eius,
-                                exercitationem voluptatum nemo eligendi ipsa accusantium quia,
-                        aliquam alias quasi enim harum?</p><br />
+                                <p>We want to hear from you!<br />
+                                    If you have any questions, comments, concerns, or would like
+                                    additional information on how to become licensed as a Olaf Chef
+                                 feel free to contact us using the information provided below.<br />
+                                    Our team is ready and willing to help.</p>
+
+                                <br />
 
                                 <strong>Email: service@olaf.com</strong><br />
                                 <strong>Phone: (206) 555-5555</strong>
