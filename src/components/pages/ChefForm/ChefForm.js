@@ -37,18 +37,21 @@ class ChefForm extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
+    const {firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode}=this.state
+    event.preventDefault()
+    const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`
+    console.log(address)
         axios.post(`${this.state.url}/api/signup`,
             {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                kitchenName: this.state.kitchenName,
-                license: this.state.license,
-                specialities: this.state.specialities,
-                password: this.state.password,
-                contact: this.state.contact,
-                email: this.state.email,
-                address: [this.state.streetAddress, this.state.apartment, this.state.city, this.state.state, this.state.zipCode],
+                firstName: firstName,
+                lastName: lastName,
+                kitchenName: kitchenName,
+                license: license,
+                specialities: specialities,
+                password: password,
+                contact: contact,
+                email: email,
+                address: address,
                 user: "chef"
             },
             {
