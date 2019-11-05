@@ -27,7 +27,7 @@ class Home extends Component {
 
                 <div className="caption text-center">
                     <h1>Community Cuisine</h1>
-                    <h1>Olaf<i class="fas fa-carrot"></i></h2>
+                    <h2>Olaf<i class="fas fa-carrot"></i></h2>
                     <h3>Sign Up for Olaf</h3>
                     <a href="/signup/chef" className="btn btn-outline-light btn-lg">Chef</a>
 
@@ -36,7 +36,7 @@ class Home extends Component {
 
                 <div className="about">
 
-                    <div className="row dark text-center jumbotron philosophy">
+                    <div className="row dark text-center jumbotron about-info">
 
                         <div className="col-12">
                             <h3 className="heading">Better for People and the Planet</h3>
@@ -90,6 +90,7 @@ class Home extends Component {
                                  feel free to contact us using the information provided below.<br />
                                     Our team is ready and willing to help.<br />
                                     Happy Cooking!</p>
+                                <br />
                                 <br />
 
                                 <strong>Email: service@olaf.com</strong><br />

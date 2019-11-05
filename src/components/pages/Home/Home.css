@@ -114,6 +114,10 @@ body {
   text-shadow: .1rem .1rem .5rem #000000;
   padding-bottom: 1.6rem;
 }
+
+.caption h5 {
+  display: none;
+}
   
 .btn-lg {
   border-width: medium;
@@ -129,7 +133,7 @@ body {
   
 }
 
-.philosophy { 
+.about-info { 
   background: rgba(161,161,161,1);
   background: -moz-linear-gradient(left, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(161,161,161,1)), color-stop(25%, rgba(110,110,110,1)), color-stop(66%, rgba(189,189,189,1)), color-stop(90%, rgba(140,140,140,1)), color-stop(100%, rgba(140,140,140,1)));
@@ -146,7 +150,7 @@ body {
 }
 
 .contact-info {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 6rem 2rem 0 2rem;
 }
   
@@ -266,7 +270,7 @@ hr.socket {
   
   .caption h3 {
     font-size: 1.2rem;
-    padding-top: 1.2rem;
+    padding-top: 1.6rem;
     padding-bottom: 1.2rem;
     text-shadow: none;
   }
@@ -275,4 +279,14 @@ hr.socket {
     padding: .5rem 1rem;
     font-size: 1rem;
   }
+
+  .about-info {
+    background: #808080;
+  }
+
+  .fixed {
+    background-image: url("mobile-foot.jpg");
+    z-index: -1;
+  }
+
   }
