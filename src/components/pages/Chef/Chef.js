@@ -15,7 +15,7 @@ import axios from 'axios';
 export default class Chef extends Component {
 
     state = {
-        items:[],
+        items: [],
         dish: "",
         quantity: "",
         servingSize: "",
@@ -31,16 +31,16 @@ export default class Chef extends Component {
     }
 
     readSessions = () => {
-        axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {          
+        axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             this.setState({ loggedInUser: res.data.user });
-            let variable=this;
+            let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
-            .then(function (results) {
-                variable.setState({ items: results.data });
-                console.log(results.data);
-            }).catch(function (error) {
-                console.log(error);
-            });
+                .then(function (results) {
+                    variable.setState({ items: results.data });
+                    console.log(results.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
         })
     }
 
@@ -151,14 +151,14 @@ export default class Chef extends Component {
                         </Col>
                         <Col size="md-6">
                             <Jumbotron><h3>Current Menu</h3></Jumbotron>
+                            {this.state.items.map(element => <ChefItemCard
+                                id={element.id}
+                                ingredients={element.ingredients}
+                                price={element.price}
+                                servingSize={element.servingSize}
+                                dish={element.dish}
+                            />)}
                             <ChefItemCard />
-                            {this.state.items.map(element=><ChefItemCard           
-                            id={element.id}
-                            ingredients={element.ingredients}    
-                            price={element.price}
-                            servingSize={element.servingSize}
-                            dish={element.dish}
-                            />)} 
                         </Col>
                     </Row>
                 </Container>
