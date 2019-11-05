@@ -19,12 +19,13 @@ export default class Chef extends Component {
         items: [],
         dish: "",
         quantity: "",
-        servingSize: "",
+        servingUnit: "",
         price: "",
         ingredients: "",
         cuisine: "",
         url: "http://localhost:8080",
-        loggedInUser: ''
+        loggedInUser: '',
+        description:''
     };
 
     componentDidMount() {
@@ -64,11 +65,12 @@ export default class Chef extends Component {
         axios.post(this.state.url+"/api/createMenu",{
             dish: this.state.dish,
             quantity: this.state.quantity,
-            servingSize: this.state.servingSize,
+            servingUnit: this.state.servingUnit,
             price: this.state.price,
             ingredients: this.state.ingredients,
             cuisine: this.state.cuisine,
-            ChefId:this.state.loggedInUser.id
+            ChefId:this.state.loggedInUser.id,
+            description:this.state.description
         }).then(function(results){
             sessionVariable.readSessions();
         }).catch(function(error){
@@ -179,7 +181,7 @@ export default class Chef extends Component {
                                     placeholder="Price (required)"
                                 />
                                 <Input
-                                    value={this.state.servingSize}
+                                    value={this.state.servingUnit}
                                     onChange={this.handleInputChange}
                                     name="servingSize"
                                     placeholder="Serving Size (optional)"
@@ -216,11 +218,12 @@ export default class Chef extends Component {
                                 id={element.id}
                                 ingredients={element.ingredients}
                                 price={element.price}
-                                servingSize={element.servingSize}
+                                servingUnit={element.servingUnit}
                                 dish={element.dish}
                                 ChefId={element.ChefId}
                                 cuisine={element.cuisine}
                                 key={element.id}
+                                description={element.description}
                             />)}
                         </Col>
                     </Row>
