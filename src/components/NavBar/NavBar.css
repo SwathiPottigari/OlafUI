@@ -4,10 +4,14 @@
   font-weight: 700;
   font-size: .9rem;
   letter-spacing: .1rem;
-  background: rgba(0, 0, 0, 0.6)!important;
+  background: rgba(0, 0, 0, 0.4)!important;
   /* background: transparent!important; */
-  transition: top 0.3s;
-  
+  transition: top 0.8s;
+  top: 0;
+}
+
+.navbar--hidden {
+  top: -100px;
 }
 
 .navbar-brand {
@@ -34,3 +38,9 @@
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #FFA92C;
 }
+
+@media (max-width: 767px) {
+  .navbar-brand {
+    display: none;
+  }
+  }
