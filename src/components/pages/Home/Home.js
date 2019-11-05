@@ -35,7 +35,7 @@ class Home extends Component {
 
                 <div className="about">
 
-                    <div className="row dark text-center jumbotron">
+                    <div className="row dark text-center jumbotron philosophy">
 
                         <div className="col-12">
                             <h3 className="heading">Better for People and the Planet</h3>
@@ -43,27 +43,27 @@ class Home extends Component {
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Build Community</h3>
+                            <h3>Community</h3>
                             <div className="feature">
                                 <i className="fas fa-people-carry fa-3x"></i>
                             </div>
-                            <p className="feature-text">Showcase your talents as an Olaf Chef by providing the community with the experience of your delicious, authentic cuisine.</p><br />
+                            <p className="feature-text">Showcase your talents as an Olaf Chef by providing the community with the opportunity to experience of your authentic cuisine.</p><br />
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Eat Healthy</h3>
+                            <h3>Health</h3>
                             <div className="feature">
                                 <i className="fas fa-heart fa-3x"></i>
                             </div>
-                            <p className="feature-text">Discover healthy, home cooked meals without costly expenses and preparation, gaining more time to spend doing what you love.</p><br />
+                            <p className="feature-text">Discover healthy, home cooked meals, without the costly expenses or preparation, and gain more time to do what you love.</p><br />
                         </div>
 
                         <div className="col-md-4">
-                            <h3>Save the Planet</h3>
+                            <h3>Environment</h3>
                             <div className="feature">
                                 <i className="fas fa-globe-americas fa-3x"></i>
                             </div>
-                            <p className="feature-text">Many Olaf Chefs utilize locally sourced sustainable ingredients and don't produce the amount of waste, like big restaurant chains.</p><br />
+                            <p className="feature-text">Many Olaf Chefs utilize locally sourced, sustainable ingredients and don't produce unnecessary waste, unlike the big restaurant chains.</p><br />
                         </div>
 
                     </div>
@@ -87,8 +87,8 @@ class Home extends Component {
                                     If you have any questions, comments, concerns, or would like
                                     additional information on how to become licensed as a Olaf Chef
                                  feel free to contact us using the information provided below.<br />
-                                    Our team is ready and willing to help.</p>
-
+                                    Our team is ready and willing to help.<br />
+                                    Happy Cooking!</p>
                                 <br />
 
                                 <strong>Email: service@olaf.com</strong><br />
