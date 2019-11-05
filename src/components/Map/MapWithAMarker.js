@@ -11,7 +11,8 @@ class MapWithAMarker extends Component {
 
     state = {
         masterCurrentChef: null,
-        masterCurrentMenu: null
+        masterCurrentMenu: null,
+        url: "http://localhost:8080"
     }
 
     componentDidMount() {
@@ -32,7 +33,8 @@ class MapWithAMarker extends Component {
 
     getMenu = () => {
         try {
-            return axios.get(`http://localhost:8080/api/menuList/:${this.state.masterCurrentChef.id}`)
+            console.log(`http://localhost:8080/api/menuList/${this.state.masterCurrentChef.id}`)
+            return axios.get(this.state.url+`/api/menuList/${this.state.masterCurrentChef.id}`)
         } catch (error) {
             console.error(error)
         }
@@ -40,6 +42,7 @@ class MapWithAMarker extends Component {
 
 
     render() {
+        console.log("logging , ",this.props.onlineChef)
         return (
 
             <GoogleMap
@@ -58,7 +61,7 @@ class MapWithAMarker extends Component {
 
                         onClick={() => {
 
-                            this.setMasterCurrentChef(chef.Chef)
+                            this.setMasterCurrentChef(chef)
                             console.log(this.state.masterCurrentChef)
                             this.props.setCurrentChef(this.state.masterCurrentChef)
                             /*  send ajax query  here to grab food item with chef id as a request parameter*/
