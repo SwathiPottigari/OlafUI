@@ -9,7 +9,7 @@ import Col from '../../Col/Col';
 import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
 import axios from 'axios';
-import OnlineButton from "../../OnlineButton/OnlineButton";
+import ButtonJumbotron from "../../ButtonJumbotron/ButtonJumbotron";
 
 // import Cloudinary from '../../Cloudinary/Cloudinary';
 
@@ -210,9 +210,8 @@ export default class Chef extends Component {
                             </form>
                         </Col>
                         <Col size="md-6">
-                            <Jumbotron><h3>Current Menu</h3>
-                            <OnlineButton />
-                            </Jumbotron>
+                            <ButtonJumbotron><h3>Current Menu</h3></ButtonJumbotron>
+
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
                                 ingredients={element.ingredients}
