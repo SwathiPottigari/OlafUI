@@ -9,7 +9,7 @@ export default class ChefLogIn extends Component {
         isShown: false,
         email: '',
         password: '',
-        user: "chef",
+        user: "",
         url: "http://localhost:8080",
         loggedInUser: '',
         redirect: false
@@ -48,6 +48,11 @@ export default class ChefLogIn extends Component {
         }
     }
 
+    returnHome = () => {
+        return window.location.reload();
+
+    }
+
     render() {
         return (
             <div>
@@ -57,12 +62,12 @@ export default class ChefLogIn extends Component {
                         <div className="modal-content">
                             <div className="modal-header text-center">
                                 <h4 className="modal-title w-100 font-weight-bold">Welcome back to Olaf!</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <button onClick={this.returnHome} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
-                            <h5>Login to your Chef account</h5>
+                                <h5>Login to your Chef account</h5>
                                 <div className="md-form mb-5">
                                     {/* <i className="fas fa-user prefix grey-text"></i> */}
                                     <label data-error="wrong" data-success="right" htmlFor="form34">Email</label>
