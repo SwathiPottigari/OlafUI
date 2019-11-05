@@ -67,7 +67,7 @@ export default class ChefLogIn extends Component {
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
-                                <h5>Login to your Chef account</h5>
+                            <h5 className="text-center">Login to your Chef account</h5>
                                 <div className="md-form mb-5">
                                     {/* <i className="fas fa-user prefix grey-text"></i> */}
                                     <label data-error="wrong" data-success="right" htmlFor="form34">Email</label>

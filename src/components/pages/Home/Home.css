@@ -122,6 +122,18 @@ body {
 .jumbotron {
   margin-bottom: 0;
   border-radius: 0;
+  
+}
+
+.philosophy { 
+  background: rgba(161,161,161,1);
+  background: -moz-linear-gradient(left, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(161,161,161,1)), color-stop(25%, rgba(110,110,110,1)), color-stop(66%, rgba(189,189,189,1)), color-stop(90%, rgba(140,140,140,1)), color-stop(100%, rgba(140,140,140,1)));
+  background: -webkit-linear-gradient(left, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
+  background: -o-linear-gradient(left, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
+  background: -ms-linear-gradient(left, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
+  background: linear-gradient(to right, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1a1a1', endColorstr='#8c8c8c', GradientType=1 );
 }
 
 .dark {
