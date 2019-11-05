@@ -15,7 +15,7 @@ function OrderItemModal(props) {
                         </div>
                         <div className="modal-body mx-3">
                             <p className="order">You ordered {props.serving} serving(s) of {props.item}.</p>
-                            <p className="order">Your total comes to {props.total}!</p>
+                            <p className="order">Your total comes to ${props.total}</p>
                             <p className="order-details">To confirm your order, click submit below and the chef will be notified. You will recieve a notification text message shortly with address details to collect your food items.</p>
                         </div>
                         <div className="modal-footer d-flex justify-content-center">

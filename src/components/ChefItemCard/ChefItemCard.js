@@ -38,12 +38,6 @@ export default class ChefItemCard extends Component {
         })
       }
 
-      getTotal = () => {
-          console.log("this is getting the total")
-          const {price, servingAmount} = this.state;
-          return price * servingAmount
-      }
-
     render() {
         return (
             <React.Fragment>
@@ -93,7 +87,7 @@ export default class ChefItemCard extends Component {
                         </div>
                     </div>
                 </div>
-                <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.getTotal} />
+                <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} />
             </React.Fragment>
         )
     }
