@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./ItemCard.css";
+import "./ChefItemCard.css";
 
 export default class ChefItemCard extends Component {
     state = {
@@ -23,10 +23,10 @@ export default class ChefItemCard extends Component {
             <div className="col-xs-6">
                 <div className="list mb-2">
                     <div className="list-header">
-                    <h5 class="card-header white-text text-left">
+                    <h5 className="card-header white-text text-left">
                         <span className="cuisine"><strong>Indian</strong></span>
                     </h5>
-                        <img src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />
+                        <img className="item-image" src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />
                     </div>
                     <div className="list-content">
                         <span onClick={this.removeDish} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
@@ -56,3 +56,4 @@ export default class ChefItemCard extends Component {
         )
     }
 }
+
