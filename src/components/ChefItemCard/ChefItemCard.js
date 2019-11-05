@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./ItemCard.css";
+import "../ItemCard/ItemCard.css";
 
 export default class ChefItemCard extends Component {
     state = {

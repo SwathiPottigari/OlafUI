@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 h4 {
-    padding-left: 1rem;
+    margin-left: 1.9rem;
 }
 
 h5 {
     padding: 0.8rem 0;
+}
+
+.modal {
+    font-family: 'Lato', sans-serif;
+    color: #505962;
 }
 
 .login-btn {
@@ -11,6 +18,7 @@ h5 {
     border-color: #FFA92C;
     text-transform: uppercase;
     padding: .8rem 0;
+    margin: 0 3%;
 }
 
 .login-btn:hover {

@@ -151,6 +151,7 @@ export default class Chef extends Component {
                         </Col>
                         <Col size="md-6">
                             <Jumbotron><h3>Current Menu</h3></Jumbotron>
+                            <ChefItemCard />
                             {this.state.items.map(element=><ChefItemCard           
                             id={element.id}
                             ingredients={element.ingredients}    
