@@ -1,65 +1,16 @@
-
-
-
+import axios from 'axios';
 import React, { Component } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import Row from '../Row/Row';
 import Col from '../Col/Col';
 import {
-
   GoogleMap,
   Marker,
-
 } from "react-google-maps";
-/* import onlineChefData from "./chef.js"
- */
+
 import onlineChefData from "./chef.js";
 import MapWithAMarker from "./MapWithAMarker.js"
 require('dotenv').config()
-
-
-
-// conevt MapwithAMarke to statefull 
-//pass setMasterCurrentChef method inside mapwith amarker
-//pass setCurrentChef method inside Marker
-
-
-
-/* const MapWithAMarker = withScriptjs(withGoogleMap( props =>{
-
-  console.log(props.onlineChef)
-     return (
-         <GoogleMap
-         defaultZoom={12}
-         defaultCenter={props.location}
-       
-       >
-
-       {props.onlineChef.map(chef => (
-        <Marker
-          position={{
-            lat: parseFloat(chef.Chef.lat),
-            lng: parseFloat(chef.Chef.lng)
-          }}
-           
-         onClick={function(){
-          setCurrentChef(chef.Chef.kitchenName)
-          
-          }}
-          
-           icon={{
-            url:  require("./carrot.svg"),
-            scaledSize: new window.google.maps.Size(35, 35) 
-          }}
-
-        />
-
-      ))}
-       </GoogleMap>
-     )
- }
- )); */
-
 
 
 class Map extends Component {
@@ -71,24 +22,35 @@ class Map extends Component {
     currentMenu: null
   }
 
+  getOnlineChef = () => {
+    try {
+      return axios.get(`http://localhost:8080/api/onlineChefs`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
+
       let currentLoc = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       }
+      /* send axios call to get online chef data  /api/onlineChefs  */
       this.setState({
-        location: currentLoc,
-        onlineChef: onlineChefData
+        location: currentLoc
       })
+      this.getOnlineChef().then((response) => {
+        console.log(response.data)
+        this.setState({
+          onlineChef: response.data
+        })
+      })
+
     })
-
-
   }
-
-
 
   // create method here to change state of currentChef
   setCurrentChef = (value) => {
@@ -103,6 +65,12 @@ class Map extends Component {
     })
   }
 
+  setOnlineChef = (value) => {
+    this.setState({
+      onlineChef: value
+    })
+  }
+
   render() {
     console.log("I am master ", this.state.currentChef)
     console.log("I am master ", this.state.currentMenu)
@@ -111,7 +79,7 @@ class Map extends Component {
         <Col size="md-6">
           <div style={{ width: "100%", height: "500px" }}>
 
-            {this.state.location ? (<MapWithAMarker
+            {this.state.location &&this.state.onlineChef? (<MapWithAMarker
               location={this.state.location}
               onlineChef={this.state.onlineChef}
               currentMenu={this.state.currentMenu}
