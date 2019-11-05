@@ -4,17 +4,6 @@ import ChefLogIn from "../ChefLogIn/ChefLogIn";
 import UserLogIn from "../UserLogIn/UserLogIn";
 
 
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function () {
-//     var currentScrollPos = window.pageYOffset;
-//     if (prevScrollpos > currentScrollPos) {
-//         document.getElementById("navbar").style.top = "0";
-//     } else {
-//         document.getElementById("navbar").style.top = "-100px";
-//     }
-//     prevScrollpos = currentScrollPos;
-// }
-
 export default class NavBar extends Component {
     state = {
         isChef: false,
@@ -24,12 +13,10 @@ export default class NavBar extends Component {
     }
 
     getUserLoginForm = (e) => {
-        console.log("this is user working!")
         this.setState({ isUser: true, isHidden: true, logoutHidden: false })
     }
 
     getChefLoginForm = (e) => {
-        console.log("this is chef working!")
         this.setState({ isChef: true, isHidden: true, logoutHidden: false })
     }
 

@@ -65,7 +65,7 @@ export default class ChefItemCard extends Component {
                             </div>
 
                             <p>Ingredients: <span className="list-meta">the, list, of, ingredients, goes, here</span></p>
-                            <form className="formItems">
+                            {/* <form className="formItems">
                                 <div className="card-details-form">
                                     <label className="card-details">Servings</label>
                                     <select name="servingAmount" value={this.props.servingAmount} onChange={this.handleChange} className="card-details">
@@ -83,11 +83,11 @@ export default class ChefItemCard extends Component {
 
                                 </div>
                                 <button onClick={this.orderItem} data-toggle="modal" data-target="#orderItemModal" className="btn btn-primary float-right my-4" type="submit">Order Now</button>
-                            </form>
+                            </form> */}
                         </div>
                     </div>
                 </div>
-                <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} />
+                {/* <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} /> */}
             </React.Fragment>
         )
     }

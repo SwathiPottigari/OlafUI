@@ -18,12 +18,13 @@ export default class Chef extends Component {
         items: [],
         dish: "",
         quantity: "",
-        servingSize: "",
+        servingUnit: "",
         price: "",
         ingredients: "",
         cuisine: "",
         url: "http://localhost:8080",
-        loggedInUser: ''
+        loggedInUser: '',
+        description:''
     };
 
     componentDidMount() {
@@ -38,27 +39,11 @@ export default class Chef extends Component {
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
                     variable.setState({ items: results.data });
-                    console.log(results.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
         })
     }
-
-    // menuItems = () => {
-    //     API.menuItems()
-    //         .then(res =>
-    //             this.setState({ items: res.data,
-    //                 dish: "",
-    //                 quantity: "",
-    //                 servingSize: "",
-    //                 price: "",
-    //                 ingredients: "",
-    //                 cuisine: ""
-    //             })
-    //         )
-    //         .catch(err => console.log(err));
-    // };
 
     removeDish = id => {
         API.removeDish(id)
@@ -75,21 +60,22 @@ export default class Chef extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.dish
-            && this.state.price
-            && this.state.quantity
-            && this.state.ingredients) {
-            API.saveDish({
-                dish: this.state.dish,
-                quantity: this.state.quantity,
-                servingSize: this.state.servingSize,
-                price: this.state.price,
-                ingredients: this.state.ingredients,
-                cuisine: this.state.cuisine
-            })
-                .then(res => this.menuItems())
-                .catch(err => console.log(err));
-        }
+        let sessionVariable=this;
+        axios.post(this.state.url+"/api/createMenu",{
+            dish: this.state.dish,
+            quantity: this.state.quantity,
+            servingUnit: this.state.servingUnit,
+            price: this.state.price,
+            ingredients: this.state.ingredients,
+            cuisine: this.state.cuisine,
+            ChefId:this.state.loggedInUser.id,
+            description:this.state.description
+        }).then(function(results){
+            sessionVariable.readSessions();
+        }).catch(function(error){
+            console.log(error);
+        });
+        
     };
 
     render() {
@@ -120,7 +106,7 @@ export default class Chef extends Component {
                                     placeholder="Price (required)"
                                 />
                                 <Input
-                                    value={this.state.servingSize}
+                                    value={this.state.servingUnit}
                                     onChange={this.handleInputChange}
                                     name="servingSize"
                                     placeholder="Serving Size (optional)"
@@ -156,10 +142,13 @@ export default class Chef extends Component {
                                 id={element.id}
                                 ingredients={element.ingredients}
                                 price={element.price}
-                                servingSize={element.servingSize}
+                                servingUnit={element.servingUnit}
                                 dish={element.dish}
+                                ChefId={element.ChefId}
+                                cuisine={element.cuisine}
+                                key={element.id}
+                                description={element.description}
                             />)}
-                            <ChefItemCard />
                         </Col>
                     </Row>
                 </Container>
