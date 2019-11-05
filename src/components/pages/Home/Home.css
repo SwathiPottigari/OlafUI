@@ -114,10 +114,6 @@ body {
   text-shadow: .1rem .1rem .5rem #000000;
   padding-bottom: 1.6rem;
 }
-
-.caption h5 {
-  display: none;
-}
   
 .btn-lg {
   border-width: medium;
@@ -263,7 +259,7 @@ hr.socket {
     display: contents;
     font-family: 'Pacifico', cursive;
     text-transform: capitalize;
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     letter-spacing: .15rem;
     padding-bottom: .5rem;
   }
