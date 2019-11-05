@@ -63,7 +63,7 @@ class Home extends Component {
                             <div className="feature">
                                 <i className="fas fa-globe-americas fa-3x"></i>
                             </div>
-                            <p className="feature-text">Many Olaf Chefs utilize locally sourced, sustainable ingredients and don't produce unnecessary waste, unlike the big restaurant chains.</p><br />
+                            <p className="feature-text">Many Olaf Chefs utilize locally sourced, sustainable ingredients and don't produce unnecessary waste, unlike big restaurant chains.</p><br />
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@ class Home extends Component {
 
                     <div className="fixed-background">
 
-                        <div className="row dark justify-content-center">
+                        <div className="row dark justify-content-center contact-info">
 
                             <div className="col-md-5 text-center">
 
@@ -96,9 +96,9 @@ class Home extends Component {
 
                             </div>
 
-                            {/* <hr className="socket" />
-                    &copy; Copyright */}
-
+        
+                            <hr className="socket" />
+                            &copy; Copyright 2019 OlafGo
                         </div>
 
                         <div className="fixed-wrap">

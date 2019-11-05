@@ -130,13 +130,14 @@ class Map extends Component {
             />) : (
                 <h1>LOADING.......</h1>
               )}
+            <div className="credit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </Col>
         <Col size="md-6">
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item}/>)
+                <ItemCard currentChef={this.state.currentChef} currentMenu={item} />)
             })
           ) : ("no food to display")
           )
