@@ -50,7 +50,7 @@ export default class ItemCard extends Component {
 
                         <p>Ingredients: <span className="list-meta">{this.props.currentMenu.ingredients}</span></p>
                         <form>
-
+                        <button onClick={this.orderItem} data-toggle="modal" data-target="#orderItemModal" className="btn btn-primary float-right my-4" type="submit">Order Now</button>
                         </form>
                     </div>
                 </div>
