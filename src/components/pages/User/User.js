@@ -38,7 +38,6 @@ export default class User extends Component {
                 <NavBar  currentCustomer = {this.state.currentCustomer}/>
                 <Container fluid>
                    <Map currentCustomer = {this.state.currentCustomer}/>
-                {/* <ChefItemCard /> */}
                 </Container>
             </div>
         )

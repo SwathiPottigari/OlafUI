@@ -40,41 +40,41 @@ class ChefForm extends React.Component {
     const { firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode } = this.state
     event.preventDefault()
     const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`
-        axios.post(`${this.state.url}/api/signup`,
-            {
-                firstName: firstName,
-                lastName: lastName,
-                kitchenName: kitchenName,
-                license: license,
-                specialities: specialities,
-                password: password,
-                contact: contact,
-                email: email,
-                address: address,
-                user: "chef"
-            },
-            {
-                withCredentials: true
-            }
-        ).then(res => {
-            this.setState({
-                firstName: '',
-                lastName: '',
-                kitchenName: '',
-                license: '',
-                specialities: '',
-                password: '',
-                contact: '',
-                email: '',
-                streetAddress: '',
-                apartment: '',
-                city: '',
-                state: '',
-                zipCode: '',
-                loggedInChef: res.data.chef,
-                redirect: true
-            });
-        })
+    axios.post(`${this.state.url}/api/signup`,
+      {
+        firstName: firstName,
+        lastName: lastName,
+        kitchenName: kitchenName,
+        license: license,
+        specialities: specialities,
+        password: password,
+        contact: contact,
+        email: email,
+        address: address,
+        user: "chef"
+      },
+      {
+        withCredentials: true
+      }
+    ).then(res => {
+      this.setState({
+        firstName: '',
+        lastName: '',
+        kitchenName: '',
+        license: '',
+        specialities: '',
+        password: '',
+        contact: '',
+        email: '',
+        streetAddress: '',
+        apartment: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        loggedInChef: res.data.chef,
+        redirect: true
+      });
+    })
   }
 
   renderRedirect = () => {
@@ -118,9 +118,8 @@ class ChefForm extends React.Component {
           handleChange={this.handleChange}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
-          kitchenName={this.state.kitchenName}
-          license={this.state.license}
-          specialities={this.state.specialities}
+          contact={this.state.contact}
+          email={this.state.email}
           password={this.state.password}
           _next={this._next}
 
@@ -128,8 +127,9 @@ class ChefForm extends React.Component {
         <Step2
           currentStep={this.state.currentStep}
           handleChange={this.handleChange}
-          contact={this.state.contact}
-          email={this.state.email}
+          kitchenName={this.state.kitchenName}
+          license={this.state.license}
+          specialities={this.state.specialities}
           streetAddress={this.state.streetAddress}
           apartment={this.state.apartment}
           city={this.state.city}
@@ -139,7 +139,7 @@ class ChefForm extends React.Component {
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
         />
-     {this.renderRedirect()}
+        {this.renderRedirect()}
       </React.Fragment>
     );
   }
@@ -168,18 +168,13 @@ function Step1(props) {
             </div>
           </div>
 
-          <div className="form-row mb-4">
-            <div className="col">
-              <input type="text" required name="kitchenName" value={props.kitchenName} onChange={props.handleChange} placeholder="Give your kitchen a name" className="form-control" />
-            </div>
-            <div className="col">
-              <input type="text" required name="license" value={props.license} onChange={props.handleChange} placeholder="Food Handler's License Number" className="form-control" />
-            </div>
-          </div>
+          <input type="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={props.contact} onChange={props.handleChange} className="form-control" placeholder="Mobile Number" />
+          <small id="defaultRegisterFormPasswordHelpBlock" className="form-text float-left ml-2 mb-2 text-muted">
+            Format: 555-555-5555</small>
 
           <div className="form=row mb-4">
+            <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className="form-control" placeholder="E-mail" />
 
-            <input type="text" required name="specialities" value={props.specialities} onChange={props.handleChange} className="form-control" placeholder="Your dish specialities" />
             <br />
             <input minLength="8" required type="password" className="form-control" placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
             <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted ml-2 float-left">
@@ -212,10 +207,15 @@ function Step2(props) {
 
           <p className="h4 mb-4">Chef Sign Up, 2 of 2</p>
 
-          <input type="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={props.contact} onChange={props.handleChange} className="form-control" placeholder="Mobile Number" />
-          <small id="defaultRegisterFormPasswordHelpBlock" className="form-text float-left ml-2 mb-2 text-muted">
-            Format: 206-339-4592</small>
-          <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className="form-control" placeholder="E-mail" />
+          <div className="form-row mb-4">
+            <div className="col">
+              <input type="text" required name="kitchenName" value={props.kitchenName} onChange={props.handleChange} placeholder="Give your kitchen a name" className="form-control" />
+            </div>
+            <div className="col">
+              <input type="text" required name="license" value={props.license} onChange={props.handleChange} placeholder="Food Handler's License Number" className="form-control" />
+            </div>
+          </div>
+          <input type="text" required name="specialities" value={props.specialities} onChange={props.handleChange} className="form-control" placeholder="Your dish specialities" />
           <label className="form-text">Home Address</label>
           <input type="text" name="streetAddress" required defaultValue={props.streetAddress} onChange={props.handleChange} className="form-control" placeholder="Street Address" />
           <br />
