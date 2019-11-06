@@ -79,7 +79,7 @@ export default class Chef extends Component {
 
     };
 
-    
+
 
     render() {
         return (
@@ -96,85 +96,78 @@ export default class Chef extends Component {
                                     name="dish"
                                     placeholder="Dish Name (required)"
                                 />
-                                <Input
-                                    value={this.state.cuisine}
-                                    onChange={this.handleInputChange}
-                                    type="text"
-                                    list="cuisine"
-                                    placeholder="Cuisine Type (optional)"
-                                />
-                                <datalist
-                                    value={this.state.cuisine}
-                                    onChange={this.handleInputChange}
-                                    name="cuisine"
-                                    id="cuisine">
-                                    <option value="African"></option>
-                                    <option value="American"></option>
-                                    <option value="Arab"></option>
-                                    <option value="Asian"></option>
-                                    <option value="Baked Goods"></option>
-                                    <option value="Bangladeshi"></option>
-                                    <option value="Bengali"></option>
-                                    <option value="Beverage"></option>
-                                    <option value="Brazilian"></option>
-                                    <option value="Buddhist"></option>
-                                    <option value="Cajun"></option>
-                                    <option value="Cantonese"></option>
-                                    <option value="Caribbean"></option>
-                                    <option value="Central African"></option>
-                                    <option value="Chechen"></option>
-                                    <option value="Chinese"></option>
-                                    <option value="Chinese Islam"></option>
-                                    <option value="Danish"></option>
-                                    <option value="Dessert"></option>
-                                    <option value="European"></option>
-                                    <option value="East African"></option>
-                                    <option value="Eastern European"></option>
-                                    <option value="French"></option>
-                                    <option value="Filipino"></option>
-                                    <option value="German"></option>
-                                    <option value="Greek"></option>
-                                    <option value="Gujarati"></option>
-                                    <option value="Hong Kong"></option>
-                                    <option value="Hyderabad"></option>
-                                    <option value="Indian"></option>
-                                    <option value="Indonesian"></option>
-                                    <option value="Italian"></option>
-                                    <option value="Jamaican"></option>
-                                    <option value="Japanese"></option>
-                                    <option value="Jewish"></option>
-                                    <option value="Korean"></option>
-                                    <option value="Laotian"></option>
-                                    <option value="Lebanese"></option>
-                                    <option value="Malay"></option>
-                                    <option value="Mediterranean"></option>
-                                    <option value="Mexican"></option>
-                                    <option value="Mediterranean"></option>
-                                    <option value="Moroccan"></option>
-                                    <option value="Native American"></option>
-                                    <option value="Nepalese"></option>
-                                    <option value="Northern European"></option>
-                                    <option value="Polish"></option>
-                                    <option value="Pakistani"></option>
-                                    <option value="Persian"></option>
-                                    <option value="Peruvian"></option>
-                                    <option value="Portugese"></option>
-                                    <option value="Punjabi"></option>
-                                    <option value="Rajasthani"></option>
-                                    <option value="Russian"></option>
-                                    <option value="South Indian"></option>
-                                    <option value="Southern African"></option>
-                                    <option value="SouthEast Asian"></option>
-                                    <option value="Sri Lankan"></option>
-                                    <option value="Taiwanese"></option>
-                                    <option value="Thai"></option>
-                                    <option value="Turkish"></option>
-                                    <option value="Tamil"></option>
-                                    <option value="Vegan"></option>
-                                    <option value="Vegetarian"></option>
-                                    <option value="Vietnamese"></option>
-                                    <option value="West African"></option>
-                                </datalist>
+                                <div className="form-row mb-4">
+                                    <div className="col">
+                                        <select name="cuisine" type="text" className="form-control" placeholder="Cuisine" onChange={this.handleInputChange} value={this.state.cuisine}>
+                                            <option defaultValue>Select Option</option>
+                                            <option value="African">African</option>
+                                            <option value="American">American</option>
+                                            <option value="Arab">Arab</option>
+                                            <option value="Asian">Asian</option>
+                                            <option value="Baked Goods">Baked Goods</option>
+                                            <option value="Bangladeshi">Bangladeshi</option>
+                                            <option value="Bengali">Bengali</option>
+                                            <option value="Beverage">Beverage</option>
+                                            <option value="Brazilian">Brazilian</option>
+                                            <option value="Buddhist">Buddhist</option>
+                                            <option value="Cajun">Cajun</option>
+                                            <option value="Cantonese">Cantonese</option>
+                                            <option value="Caribbean">Caribbean</option>
+                                            <option value="Central African">Central African</option>
+                                            <option value="Chechen">Chechen</option>
+                                            <option value="Chinese">Chinese</option>
+                                            <option value="Chinese Islam">Chinese Islam</option>
+                                            <option value="Danish">Danish</option>
+                                            <option value="Dessert">Dessert</option>
+                                            <option value="European">European</option>
+                                            <option value="East African">East African</option>
+                                            <option value="Eastern European">Eastern European</option>
+                                            <option value="French">French</option>
+                                            <option value="Filipino">Filipino</option>
+                                            <option value="German">German</option>
+                                            <option value="Greek">Greek</option>
+                                            <option value="Gujarati">Gujarati</option>
+                                            <option value="Hong Kong">Hong Kong</option>
+                                            <option value="Hyderabad">Hyderabad</option>
+                                            <option value="Indian">Indian</option>
+                                            <option value="Indonesian">Indonesian</option>
+                                            <option value="Italian">Italian</option>
+                                            <option value="Jamaican">Jamaican</option>
+                                            <option value="Japanese">Japanese</option>
+                                            <option value="Jewish">Jewish</option>
+                                            <option value="Korean">Korean</option>
+                                            <option value="Laotian">Laotian</option>
+                                            <option value="Lebanese">Lebanese</option>
+                                            <option value="Malay">Malay</option>
+                                            <option value="Mediterranean">Mediterranean</option>
+                                            <option value="Mexican">Mexican</option>
+                                            <option value="Moroccan">Moroccan</option>
+                                            <option value="Native American">Native American</option>
+                                            <option value="Nepalese">Nepalese</option>
+                                            <option value="Northern European">Northern European</option>
+                                            <option value="Polish">Polish</option>
+                                            <option value="Pakistani">Pakistani</option>
+                                            <option value="Persian">Persian</option>
+                                            <option value="Peruvian">Peruvian</option>
+                                            <option value="Portugese">Portugese</option>
+                                            <option value="Punjabi">Punjabi</option>
+                                            <option value="Rajasthani">Rajasthani</option>
+                                            <option value="Russian">Russian</option>
+                                            <option value="South Indian">South Indian</option>
+                                            <option value="Southern African">Southern African</option>
+                                            <option value="SouthEast Asian">SouthEast Asian</option>
+                                            <option value="Sri Lankan">Sri Lankan</option>
+                                            <option value="Taiwanese">Taiwanese</option>
+                                            <option value="Thai">Thai</option>
+                                            <option value="Turkish">Turkish</option>
+                                            <option value="Tamil">Tamil</option>
+                                            <option value="Vegan">Vegan</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Vietnamese">Vietnamese</option>
+                                            <option value="West African">West African</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <Input
                                     value={this.state.price}
@@ -185,7 +178,7 @@ export default class Chef extends Component {
                                 <div className="form-row mb-4">
                                     <div className="col">
                                         <select name="quantity" type="text" className="form-control" placeholder="Quantity" onChange={this.handleInputChange} value={this.state.quantity}>
-                                            <option defaultValue>Amount</option>
+                                            <option defaultValue>Quantity</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -224,7 +217,7 @@ export default class Chef extends Component {
                                     placeholder="Ingredients (required)"
                                 />
                                 <TextArea
-                                    value={this.state.ingredients}
+                                    value={this.state.description}
                                     onChange={this.handleInputChange}
                                     name="description"
                                     placeholder="Dish Description (optional)"
@@ -254,6 +247,7 @@ export default class Chef extends Component {
                                 cuisine={element.cuisine}
                                 key={element.id}
                                 description={element.description}
+                                quantity={element.quantity}
                             />)}
                         </Col>
                     </Row>

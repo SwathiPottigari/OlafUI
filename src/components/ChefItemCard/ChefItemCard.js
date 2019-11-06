@@ -52,7 +52,7 @@ export default class ChefItemCard extends Component {
                                         <p>Price: <span className="list-meta-details">{this.props.price}</span></p>
                                     </div>
                                     <div className="col-xs-6 card-details">
-                                        <p>Servings Available: <span className="list-meta-details">{this.props.servingUnit}</span></p>
+                                        <p>Servings Available: <span className="list-meta-details">{this.props.quantity}</span></p>
                                     </div>
                                 </div>
                             </div>
