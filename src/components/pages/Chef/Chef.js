@@ -26,7 +26,7 @@ export default class Chef extends Component {
         loggedInUser: '',
         description: '',
         uploadImage: false,
-        imageMessage: 'Image successfully uploaded'
+        imageURL: ''
     };
 
     componentDidMount() {
@@ -88,7 +88,8 @@ export default class Chef extends Component {
             uploadPreset: 'olafgo'
         }, (error, result) => {if (result.event === "success") {
             this.setState({
-                uploadImage: true
+                uploadImage: true,
+                imageURL: result.info.url
             })
             console.log(result)
             //This is the URL to the saved image 
