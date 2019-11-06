@@ -69,7 +69,8 @@ export default class Chef extends Component {
             ingredients: this.state.ingredients,
             cuisine: this.state.cuisine,
             ChefId: this.state.loggedInUser.id,
-            description: this.state.description
+            description: this.state.description,
+            imageURL:this.state.imageURL
         }).then(function (results) {
             sessionVariable.readSessions();
         }).catch(function (error) {
@@ -269,6 +270,7 @@ export default class Chef extends Component {
                                 description={element.description}
                                 quantity={element.quantity}
                                 readSessions={this.readSessions()}
+                                imageURL={element.imageURL}
                                 // removeDish={this.removeDish}
                             />)}
                         </Col>
