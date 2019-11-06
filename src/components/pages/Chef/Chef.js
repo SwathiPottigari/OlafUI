@@ -10,8 +10,7 @@ import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
 import axios from 'axios';
 import ButtonJumbotron from "../../ButtonJumbotron/ButtonJumbotron";
-
-// import Cloudinary from '../../Cloudinary/Cloudinary';
+import cloudinary from 'cloudinary-react'
 
 export default class Chef extends Component {
 
@@ -25,7 +24,9 @@ export default class Chef extends Component {
         cuisine: "",
         url: "http://localhost:8080",
         loggedInUser: '',
-        description: ''
+        description: '',
+        uploadImage: false,
+        imageMessage: 'Image successfully uploaded'
     };
 
     componentDidMount() {
@@ -62,6 +63,7 @@ export default class Chef extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let sessionVariable = this;
+        this.setState ({uploadImage: false})
         axios.post(this.state.url + "/api/createMenu", {
             dish: this.state.dish,
             quantity: this.state.quantity,
@@ -79,6 +81,23 @@ export default class Chef extends Component {
 
     };
 
+    openWidget = event => {
+        event.preventDefault();
+        const myWidget = window.cloudinary.createUploadWidget({
+            cloudName: "dcokaa0ia",
+            uploadPreset: 'olafgo'
+        }, (error, result) => {if (result.event === "success") {
+            this.setState({
+                uploadImage: true
+            })
+            console.log(result)
+            //This is the URL to the saved image 
+            console.log(result.info.url)
+        }
+        });
+        myWidget.open();
+
+    }
 
 
     render() {
@@ -222,7 +241,7 @@ export default class Chef extends Component {
                                     name="description"
                                     placeholder="Dish Description (optional)"
                                 />
-                                <input type="file"/>
+                                <button onClick={this.openWidget} type="button" className="btn btn-primary">{this.state.uploadImage ? <span>Success<i class="fas fa-check-circle fa-lg ml-2"></i></span>:"Upload Image" }</button>
                                 <FormBtn
                                     disabled={!(this.state.dish
                                         && this.state.price
