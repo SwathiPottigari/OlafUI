@@ -37,7 +37,7 @@ export default class Chef extends Component {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             this.setState({ loggedInUser: res.data.user });
 
-            console.log("check",this.state.loggedInUser)
+            // console.log("check",this.state.loggedInUser)
 
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
@@ -256,7 +256,7 @@ export default class Chef extends Component {
                             </form>
                         </Col>
                         <Col size="md-6">
-                            <ButtonJumbotron><h3>Current Menu</h3></ButtonJumbotron>
+                            <ButtonJumbotron chefId={this.state.loggedInUser.id}><h3>Current Menu</h3></ButtonJumbotron>
 
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
