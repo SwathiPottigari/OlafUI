@@ -8,7 +8,8 @@ export default class ItemCard extends Component {
 
     state = {
         result: null,
-        customerQty:1
+        customerQty:1,
+        childOrderItems:{}
     };
 
     handleChange = event => {
@@ -23,8 +24,13 @@ export default class ItemCard extends Component {
         console.log("props in itemcard",this.props)
     }
 
+    setChildOrderItems=(val)=>{
+        this.setState({
+            childOrderItems:val
+        })
+    }
 
-    orderItem = () => {
+   /*  orderItem = () => {
         try {
           return axios.post(`http://localhost:8080/api/order`,{
               orderedQuantity:this.state.customerQty,
@@ -35,7 +41,17 @@ export default class ItemCard extends Component {
         } catch (error) {
           console.error(error)
         }
-      } 
+      }  */
+
+      orderItem = ()=>{
+          let objOrder = {}
+          objOrder.orderedQuantity = this.state.customerQty
+          objOrder.CustomerId = this.props.currentCustomer.id
+          objOrder.MenuId = this.props.currentMenu.id
+          objOrder.ChefId = this.props.currentChef.id
+        this.setChildOrderItems(objOrder)
+        this.props.setCurrentOrder(this.state.childOrderItems)
+      }
 
     render() {
         return (

@@ -8,7 +8,7 @@ import {
   Marker,
 } from "react-google-maps";
 
-import onlineChefData from "./chef.js";
+
 import MapWithAMarker from "./MapWithAMarker.js"
 require('dotenv').config()
 
@@ -19,7 +19,7 @@ class Map extends Component {
     onlineChef: null,
     currentChef: null,
     currentMenu: null,
-    
+    currentOrder:[]
   }
 
   getOnlineChef = () => {
@@ -71,10 +71,19 @@ class Map extends Component {
     })
   }
 
+  setCurrentOrder = (value)=>{
+    let tempArray=[];
+    tempArray.push(value);
+    this.setState({
+      currentOrder:tempArray
+    })
+  }
+
   render() {
     console.log("I am master ", this.state.currentChef)
     console.log("I am master ", this.state.currentMenu)
     console.log("I am current Customer ",this.props.currentCustomer)
+    console.log("I am current order from Map ", this.state.currentOrder)
     return (
       <Row>
         <Col size="md-6">
@@ -106,7 +115,7 @@ class Map extends Component {
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer}/>)
+                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer} setCurrentOrder={this.setCurrentOrder}/>)
             })
           ) : ("no food to display")
           )
