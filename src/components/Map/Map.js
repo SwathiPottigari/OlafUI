@@ -12,14 +12,14 @@ import onlineChefData from "./chef.js";
 import MapWithAMarker from "./MapWithAMarker.js"
 require('dotenv').config()
 
-
 class Map extends Component {
 
   state = {
     location: null,
     onlineChef: null,
     currentChef: null,
-    currentMenu: null
+    currentMenu: null,
+    
   }
 
   getOnlineChef = () => {
@@ -74,6 +74,7 @@ class Map extends Component {
   render() {
     console.log("I am master ", this.state.currentChef)
     console.log("I am master ", this.state.currentMenu)
+    console.log("I am current Customer ",this.props.currentCustomer)
     return (
       <Row>
         <Col size="md-6">
@@ -98,14 +99,14 @@ class Map extends Component {
             />) : (
                 <h1>LOADING.......</h1>
               )}
-            <div className="credit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </Col>
         <Col size="md-6">
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item} />)
+                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer}/>)
             })
           ) : ("no food to display")
           )

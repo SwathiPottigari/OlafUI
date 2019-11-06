@@ -12,13 +12,19 @@ export default class NavBar extends Component {
 
         this.state = {
             prevScrollpos: window.pageYOffset,
-            visible: true
+            visible: true,
+            isChef: false,
+            isUser: false,
+            isHidden: false,
+            logoutHidden: true
         };
     }
 
     // Adds an event listener when the component is mount.
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
+        console.log("navbar", this.props)
+      
     }
 
     // Remove the event listener when the component is unmount.
@@ -39,12 +45,12 @@ export default class NavBar extends Component {
         });
     };
 
-    state = {
-        isChef: false,
-        isUser: false,
-        isHidden: false,
-        logoutHidden: true
-    }
+    // state = {
+    //     isChef: false,
+    //     isUser: false,
+    //     isHidden: false,
+    //     logoutHidden: true
+    // }
 
     getUserLoginForm = (e) => {
         this.setState({ isUser: true, isHidden: true, logoutHidden: false })
@@ -54,6 +60,9 @@ export default class NavBar extends Component {
         this.setState({ isChef: true, isHidden: true, logoutHidden: false })
     }
 
+    setcurrentUser = ()=>{
+        this.setState({currentUser:this.props.currentCustomer})
+    }
     render() {
         return (
             <div>
@@ -87,6 +96,7 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/">Logout</a>
                             </li>
                         </ul>
+                       
                     </div>
                 </nav>
                 <ChefLogIn />
