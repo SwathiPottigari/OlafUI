@@ -229,7 +229,7 @@ export default class Chef extends Component {
                                     name="description"
                                     placeholder="Dish Description (optional)"
                                 />
-                                <input type="file" />
+                                <input type="file"/>
                                 <FormBtn
                                     disabled={!(this.state.dish
                                         && this.state.price
