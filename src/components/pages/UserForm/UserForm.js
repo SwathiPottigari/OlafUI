@@ -3,6 +3,7 @@ import AnimationContainer from "../../AnimationContainer/AnimationContainer"
 import "./UserForm.css";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
+import ErrorModal from "../../ErrorModal/ErrorModal";
 
 export default class UserForm extends Component {
     state = {
@@ -27,7 +28,14 @@ export default class UserForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        if (this.state.firstName === '') {
+            alert("Please enter you first name")
+          } else if (this.state.lastName === '') {
+            alert("Please enter you last name")
+          } else if (this.state.password.length < 8) {
+            alert("You password must be 8 or more characters")
+          } else {
+           
         axios.post(`${this.state.url}/api/signup`,
             {
                 email: this.state.email,
@@ -51,7 +59,7 @@ export default class UserForm extends Component {
                 redirect: true
             });
         })
-
+    }
 
     };
 
@@ -64,41 +72,42 @@ export default class UserForm extends Component {
     render() {
         return (
             <React.Fragment>
-                    <h1 className="form-title text-center">Create an Account</h1>
+                <h1 className="form-title text-center">Create an Account</h1>
 
-            <AnimationContainer />
-            <div class="form-container">
+                <AnimationContainer />
+                <div class="form-container">
 
-                <form class="wizard-form text-center border border-light p-5" action="#!">
+                    <form class="wizard-form text-center border border-light p-5" action="#!">
 
-                    <p class="h4 mb-4">Sign Up</p>
+                        <p class="h4 mb-4">Sign Up</p>
 
-                    <div class="form-row mb-4">
-                        <div class="col">
-                            <input 
-                                type="text" 
-                                required 
-                                name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                <input
+                                    type="text"
+                                    required
+                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
+                            </div>
                         </div>
-                        <div class="col">
-                            <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
+
+                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
+                        <br />
+                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
+                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-2 ml-2 float-left">
+                            Format: 206-339-4592</small>
+                        <input name="password" minLength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
+                        <div className="d-flex justify-content-start ml-2">
+                            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                                At least 8 characters</small>
                         </div>
-                    </div>
-
-                    <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
-                    <br />
-                    <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        Format: 206-339-4592</small>
-                    <input name="password" minLength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        At least 8 characters</small>
-
-                    <button onClick={this.handleFormSubmit} class="btn btn-primary" type="submit">Create Account</button>
-
-                </form>
-                {this.renderRedirect()}
-            </div>
+                        <button onClick={this.handleFormSubmit} class="btn btn-primary" type="submit">Create Account</button>
+                    </form>
+                    {this.renderRedirect()}
+                </div>
+                <ErrorModal />
             </React.Fragment>
 
         )
