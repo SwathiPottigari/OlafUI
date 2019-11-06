@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./ChefItemCard.css";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 export default class ChefItemCard extends Component {
     constructor(props) {
@@ -11,13 +12,10 @@ export default class ChefItemCard extends Component {
             price: "",
             item: "",
             isModalShown: false,
-            url: "http://localhost:8080"
+            url: "http://localhost:8080",
+            redirect: false
         }
-    } 
-
-    removeDish = id => {
-        axios.delete("/api/removeDish/:dishId").then().catch();
-        };
+    }
 
     orderItem = event => {
         event.preventDefault();
@@ -27,15 +25,39 @@ export default class ChefItemCard extends Component {
     handleChange = event => {
         const { name, value } = event.target
         this.setState({
-          [name]: value
+            [name]: value
         })
-      }
+    }
+
+    removeDish = (event) => {
+        console.log("-----id-----");
+        console.log(this.refs.DeleteButton);
+        let obj = this.refs.DeleteButton;
+        console.log(obj.id);
+        let setVariable = this;
+        axios.delete(this.state.url + "/api/removeDish/" + obj.id).then(function (results) {
+            let sessionVariable = this;
+            sessionVariable.setState({ redirect: true });
+            // return <Redirect to='/chef' /> ;
+            // this.props.readSessions();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+
+    // renderRedirect = () => {
+    //     console.log("entered");
+    //     if (this.state.redirect) {
+    //         return <Redirect to='/chef' />
+    //     }
+    // }
+
 
     render() {
         return (
             <React.Fragment>
 
-                <div  id={this.props.id} className="col-xs-6 list-container">
+                <div id={this.props.id} className="col-xs-6 list-container">
                     <div className="list mb-2">
                         <div className="list-header">
                             <h5 className="card-header white-text text-left">
@@ -44,7 +66,7 @@ export default class ChefItemCard extends Component {
                             <img className="item-image" src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />
                         </div>
                         <div className="list-content">
-                            <span onClick={this.removeDish} data-id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
+                            <span ref="DeleteButton" onClick={this.removeDish} id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
                             <h2>{this.props.dish}</h2>
                             <div className="container-fluid card-container">
                                 <div className="row">
@@ -52,7 +74,7 @@ export default class ChefItemCard extends Component {
                                         <p>Price: <span className="list-meta-details">{this.props.price}</span></p>
                                     </div>
                                     <div className="col-xs-6 card-details">
-                                        <p>Servings Available: <span className="list-meta-details">{this.props.servingUnit}</span></p>
+                                        <p>Servings Available: <span className="list-meta-details">{this.props.quantity}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -80,6 +102,7 @@ export default class ChefItemCard extends Component {
                         </div>
                     </div>
                 </div>
+                {/* {this.renderRedirect()} */}
                 {/* <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} /> */}
             </React.Fragment>
         )
