@@ -85,7 +85,7 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
-                            <Jumbotron><h3>Menu Creator</h3></Jumbotron>
+                            <Jumbotron><h3 className="dash-head">Create Dish</h3></Jumbotron>
                             <form>
                                 <Input
                                     value={this.state.dish}
@@ -227,7 +227,7 @@ export default class Chef extends Component {
                                         && this.state.ingredients)}
                                     onClick={this.handleFormSubmit}
                                 >
-                                    Submit Dish
+                                    Submit
                                 </FormBtn>
                             </form>
                         </Col>

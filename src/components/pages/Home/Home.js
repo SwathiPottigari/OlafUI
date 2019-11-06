@@ -48,7 +48,7 @@ class Home extends Component {
                             <div className="feature">
                                 <i className="fas fa-people-carry fa-3x"></i>
                             </div>
-                            <p className="feature-text">Showcase your talents as an Olaf Chef by providing the community with the opportunity to experience of your authentic cuisine.</p><br />
+                            <p className="feature-text">Showcase your talents as an Olaf Chef by providing the community the opportunity to experience the taste of your authentic cuisine.</p><br />
                         </div>
 
                         <div className="col-md-4">
@@ -56,7 +56,7 @@ class Home extends Component {
                             <div className="feature">
                                 <i className="fas fa-heart fa-3x"></i>
                             </div>
-                            <p className="feature-text">Discover healthy, home cooked meals, without the costly expenses or preparation, and gain more time to do what you love.</p><br />
+                            <p className="feature-text">Discover healthy, home cooked meals, without the costly expenses or preparation, while gaining more time to spend doing what you love.</p><br />
                         </div>
 
                         <div className="col-md-4">
@@ -64,7 +64,7 @@ class Home extends Component {
                             <div className="feature">
                                 <i className="fas fa-globe-americas fa-3x"></i>
                             </div>
-                            <p className="feature-text">Many Olaf Chefs utilize locally sourced, sustainable ingredients and don't produce unnecessary waste, unlike big restaurant chains.</p><br />
+                            <p className="feature-text">Utilizing locally sourced and sustainable ingredients, Olaf Chefs don't produce unnecessary waste, unlike the big restaurant chains.</p><br />
                         </div>
 
                     </div>
@@ -93,14 +93,14 @@ class Home extends Component {
                                 <br />
                                 <br />
 
-                                <strong>Email: service@olaf.com</strong><br />
+                                <strong>Email: service@olafgo.com</strong><br />
                                 <strong>Phone: (206) 555-5555</strong>
 
                             </div>
 
         
                             <hr className="socket" />
-                            &copy; Copyright 2019 OlafGo
+                            OlafGo &copy; Copyright 2019
                         </div>
 
                         <div className="fixed-wrap">

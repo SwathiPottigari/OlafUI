@@ -12,7 +12,11 @@ export default class NavBar extends Component {
 
         this.state = {
             prevScrollpos: window.pageYOffset,
-            visible: true
+            visible: true,
+            isChef: false,
+            isUser: false,
+            isHidden: false,
+            logoutHidden: true
         };
     }
 
@@ -39,12 +43,12 @@ export default class NavBar extends Component {
         });
     };
 
-    state = {
-        isChef: false,
-        isUser: false,
-        isHidden: false,
-        logoutHidden: true
-    }
+    // state = {
+    //     isChef: false,
+    //     isUser: false,
+    //     isHidden: false,
+    //     logoutHidden: true
+    // }
 
     getUserLoginForm = (e) => {
         this.setState({ isUser: true, isHidden: true, logoutHidden: false })

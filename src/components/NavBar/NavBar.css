@@ -39,8 +39,8 @@
   color: #FFA92C;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .navbar-brand {
     display: none;
   }
-  }
+  } */

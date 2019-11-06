@@ -71,7 +71,7 @@ export default class UserForm extends Component {
 
                 <form class="wizard-form text-center border border-light p-5" action="#!">
 
-                    <p class="h4 mb-4">Sign Up</p>
+                    <p class="h4 mb-4">User Sign Up</p>
 
                     <div class="form-row mb-4">
                         <div class="col">
@@ -94,7 +94,7 @@ export default class UserForm extends Component {
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters</small>
 
-                    <button onClick={this.handleFormSubmit} class="btn btn-primary" type="submit">Create Account</button>
+                    <button onClick={this.handleFormSubmit} class="btn btn-success" type="submit">Create Account</button>
 
                 </form>
                 {this.renderRedirect()}
