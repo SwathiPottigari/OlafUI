@@ -3,6 +3,7 @@ import AnimationContainer from "../../AnimationContainer/AnimationContainer"
 import "./UserForm.css";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
+import ErrorModal from "../../ErrorModal/ErrorModal";
 
 export default class UserForm extends Component {
     state = {
@@ -27,7 +28,14 @@ export default class UserForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        if (this.state.firstName === '') {
+            alert("Please enter you first name")
+          } else if (this.state.lastName === '') {
+            alert("Please enter you last name")
+          } else if (this.state.password.length < 8) {
+            alert("You password must be 8 or more characters")
+          } else {
+           
         axios.post(`${this.state.url}/api/signup`,
             {
                 email: this.state.email,
@@ -51,7 +59,7 @@ export default class UserForm extends Component {
                 redirect: true
             });
         })
-
+    }
 
     };
 
@@ -69,21 +77,21 @@ export default class UserForm extends Component {
                     <h1 className="form-title text-center">Create an Account</h1>
             <div class="form-container">
 
-                <form class="wizard-form text-center border border-light p-5" action="#!">
+                    <form class="wizard-form text-center border border-light p-5" action="#!">
 
                     <p class="h4 mb-4">User Sign Up</p>
 
-                    <div class="form-row mb-4">
-                        <div class="col">
-                            <input 
-                                type="text" 
-                                required 
-                                name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                <input
+                                    type="text"
+                                    required
+                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
+                            </div>
                         </div>
-                        <div class="col">
-                            <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
-                        </div>
-                    </div>
 
                     <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
                     <br />
