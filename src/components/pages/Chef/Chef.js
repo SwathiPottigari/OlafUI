@@ -29,7 +29,7 @@ export default class Chef extends Component {
         imageURL: ''
     };
 
-    componentDidMount() {
+    componentDidMount() {        
         this.readSessions();
     }
 
@@ -58,6 +58,7 @@ export default class Chef extends Component {
     };
 
     handleFormSubmit = event => {
+        console.log("Submit clicked");
         event.preventDefault();
         let sessionVariable = this;
         this.setState ({uploadImage: false})

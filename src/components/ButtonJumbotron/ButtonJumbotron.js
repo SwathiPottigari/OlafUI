@@ -24,11 +24,31 @@ class ButtonJumbotron extends Component {
         });
     };
 
+    componentDidMount() {
+        let setVariable=this;
+        axios.get(this.state.url+"/api/onlineChef/"+this.props.chefId).then(function(results){
+            console.log(results.data);
+            if(results.data.length===0){
+                setVariable.setState({
+                    isOnline: false
+                });
+            }
+            else{
+                setVariable.setState({
+                    isOnline: true
+                });
+            }
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
+
+
     goOnline = event => {
         event.preventDefault();
         let setVariable=this;
+        console.log(this.state.isOnline);
         if(!this.state.isOnline){
-
             axios.post(this.state.url+"/api/makeAvailable/"+this.props.chefId).then(function(result){
             }).catch(function(error){
                 console.log(error);
