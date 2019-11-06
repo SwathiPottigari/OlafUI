@@ -71,7 +71,6 @@ class MapWithAMarker extends Component {
                                 console.log("state change", this.state.masterCurrentMenu)
                                 this.props.setCurrentMenu(this.state.masterCurrentMenu)
                             })
-
                         }
                         }
 

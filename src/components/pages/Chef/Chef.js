@@ -61,7 +61,7 @@ export default class Chef extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        letsessionVariable = this;
+        let sessionVariable = this;
         axios.post(this.state.url + "/api/createMenu", {
             dish: this.state.dish,
             quantity: this.state.quantity,

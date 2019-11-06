@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import NavBar from "../../NavBar/NavBar";
 import Map from "../../Map/Map"
-import ChefItemCard from '../../ChefItemCard/ChefItemCard';
+/* import ChefItemCard from '../../ChefItemCard/ChefItemCard'; */
 import Container from '../../Container/Container';
 import "./User.css"
+
 
 export default class User extends Component {
     render() {
@@ -12,7 +13,7 @@ export default class User extends Component {
                 <NavBar />
                 <Container fluid>
                    <Map/>
-                <ChefItemCard />
+                {/* <ChefItemCard /> */}
                 </Container>
 
             </div>

@@ -1,16 +1,27 @@
 
 import React, { Component } from 'react';
 import "./ItemCard.css";
-
+import "../OrderItemModal/OrderItemModal.js"
+import axios from 'axios';
 export default class ItemCard extends Component {
 
     state = {
         result: null,
     };
 
+    
+
     componentDidMount() {
         console.log(this.props)
     }
+
+    /* orderItem = () => {
+        try {
+          return axios.post(`http://localhost:8080/api/order`)
+        } catch (error) {
+          console.error(error)
+        }
+      } */
 
     render() {
         return (
@@ -52,9 +63,12 @@ export default class ItemCard extends Component {
                         <form>
                         <button onClick={this.orderItem} data-toggle="modal" data-target="#orderItemModal" className="btn btn-primary float-right my-4" type="submit">Order Now</button>
                         </form>
+                    
                     </div>
                 </div>
+               {/*  <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} /> */}
             </div>
+            
         )
     }
 }
