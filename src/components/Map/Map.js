@@ -12,7 +12,6 @@ import onlineChefData from "./chef.js";
 import MapWithAMarker from "./MapWithAMarker.js"
 require('dotenv').config()
 
-
 class Map extends Component {
 
   state = {
