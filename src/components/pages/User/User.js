@@ -5,6 +5,7 @@ import Map from "../../Map/Map"
 import Container from '../../Container/Container';
 import "./User.css";
 import axios from 'axios';
+import ItemCard from "../../ItemCard/ItemCard";
 
 
 export default class User extends Component {
