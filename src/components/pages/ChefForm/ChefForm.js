@@ -157,7 +157,7 @@ function Step1(props) {
 
         <form className="wizard-form text-center border border-light p-5" action="#!">
 
-          <p className="h4 mb-4">Sign Up</p>
+          <p className="h4 mb-4">Chef Sign Up, 1 of 2</p>
 
           <div className="form-row mb-4">
             <div className="col">
@@ -187,7 +187,7 @@ function Step1(props) {
           </div>
 
           <button
-            className="btn btn-primary float-right"
+            className="btn btn-success float-right"
             type="button" onClick={props._next}>
             Next
       </button>
@@ -210,7 +210,7 @@ function Step2(props) {
 
         <form className="wizard-form text-center border border-light p-5" action="#!">
 
-          <p className="h4 mb-4">Sign Up</p>
+          <p className="h4 mb-4">Chef Sign Up, 2 of 2</p>
 
           <input type="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={props.contact} onChange={props.handleChange} className="form-control" placeholder="Mobile Number" />
           <small id="defaultRegisterFormPasswordHelpBlock" className="form-text float-left ml-2 mb-2 text-muted">
@@ -292,7 +292,7 @@ function Step2(props) {
               type="button" onClick={props._prev}>
               Previous
         </button>
-            <button onClick={props.handleSubmit} className="btn btn-primary float-right" type="submit">Create Account</button>
+            <button onClick={props.handleSubmit} className="btn btn-success float-right" type="submit">Create Account</button>
           </div>
 
 
