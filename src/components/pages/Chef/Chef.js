@@ -36,7 +36,9 @@ export default class Chef extends Component {
     readSessions = () => {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             this.setState({ loggedInUser: res.data.user });
-            console.log(this.state.loggedInUser)
+
+            console.log("check",this.state.loggedInUser)
+
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
@@ -45,13 +47,8 @@ export default class Chef extends Component {
                     console.log(error);
                 });
         })
-    }
+    }  
 
-    removeDish = id => {
-        API.removeDish(id)
-            .then(res => this.menuItems())
-            .catch(err => console.log(err));
-    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -271,6 +268,8 @@ export default class Chef extends Component {
                                 key={element.id}
                                 description={element.description}
                                 quantity={element.quantity}
+                                readSessions={this.readSessions()}
+                                // removeDish={this.removeDish}
                             />)}
                         </Col>
                     </Row>
