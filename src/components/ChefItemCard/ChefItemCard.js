@@ -63,7 +63,7 @@ export default class ChefItemCard extends Component {
                             <h5 className="card-header white-text text-left">
                                 <span className="cuisine"><strong>{this.props.cuisine}</strong></span>
                             </h5>
-                            <img className="item-image" src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />
+                            <img className="item-image" src={this.props.imageURL} alt="" />
                         </div>
                         <div className="list-content">
                             <span ref="DeleteButton" onClick={this.removeDish} id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
