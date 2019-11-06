@@ -42,5 +42,7 @@ export default class User extends Component {
                 </Container>
             </div>
         )
+
     }
+    
 }

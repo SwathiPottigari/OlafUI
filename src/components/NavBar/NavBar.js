@@ -13,7 +13,7 @@ export default class NavBar extends Component {
         this.state = {
             prevScrollpos: window.pageYOffset,
             visible: true,
-            
+  
         };
     }
 

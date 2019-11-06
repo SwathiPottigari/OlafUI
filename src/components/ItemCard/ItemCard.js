@@ -8,7 +8,7 @@ export default class ItemCard extends Component {
 
     state = {
         result: null,
-        customerQty:null
+        customerQty:1
     };
 
     handleChange = event => {
@@ -77,7 +77,7 @@ export default class ItemCard extends Component {
                              <form className="formItems">
                                 <div className="card-details-form">
                                     <label className="card-details">Servings</label>
-                                    <select name="cutomerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
+                                    <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
                                         <option default>1</option>
                                         <option>2</option>
                                         <option>3</option>
