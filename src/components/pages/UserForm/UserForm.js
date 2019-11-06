@@ -72,14 +72,14 @@ export default class UserForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1 className="form-title text-center">Create an Account</h1>
 
-                <AnimationContainer />
-                <div class="form-container">
+            <AnimationContainer />
+                    <h1 className="form-title text-center">Create an Account</h1>
+            <div class="form-container">
 
                     <form class="wizard-form text-center border border-light p-5" action="#!">
 
-                        <p class="h4 mb-4">Sign Up</p>
+                    <p class="h4 mb-4">User Sign Up</p>
 
                         <div class="form-row mb-4">
                             <div class="col">
@@ -93,23 +93,21 @@ export default class UserForm extends Component {
                             </div>
                         </div>
 
-                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
-                        <br />
-                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
-                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-2 ml-2 float-left">
-                            Format: 206-339-4592</small>
-                        <input name="password" minLength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
-                        <div className="d-flex justify-content-start ml-2">
-                            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                                At least 8 characters</small>
-                        </div>
-                        <button onClick={this.handleFormSubmit} class="btn btn-primary" type="submit">Create Account</button>
-                    </form>
-                    {this.renderRedirect()}
-                </div>
-                <ErrorModal />
-            </React.Fragment>
+                    <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
+                    <br />
+                    <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        Format: 206-339-4592</small>
+                    <input name="password" minLength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters</small>
 
+                    <button onClick={this.handleFormSubmit} class="btn btn-success" type="submit">Create Account</button>
+
+                </form>
+                {this.renderRedirect()}
+            </div>
+            </React.Fragment>
         )
     }
 }

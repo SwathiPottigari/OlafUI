@@ -16,7 +16,9 @@
     margin: 8rem auto;
     background-color: #fff;
     border-radius: 10px;
+}
 
-
+#root > div > div.form-container > form {
+    margin-bottom: 0px;
 }
 

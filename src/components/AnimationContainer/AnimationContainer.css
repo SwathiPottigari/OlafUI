@@ -1,6 +1,6 @@
 #gradient {
 	width: 100wh;
-	height: 100vh;
+	height: 120vh;
 	color: #fff;
 	background: linear-gradient(-45deg, #ff9e2e, #d35400, #cd6133, #cc8e35, #b33939);
 	background-size: 1000% 400%;

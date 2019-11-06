@@ -25,8 +25,13 @@ class ButtonJumbotron extends Component {
             <div
                 style={{ height: 100, clear: "both", paddingTop: 40, textAlign: "center" }}
                 className="jumbotron">
+<<<<<<< HEAD
                 <button onChange={this.handleInputChange} onClick={this.goOnline} type="button" className={this.state.isOnline ? "btn btn-success" : "btn btn-danger"}style={{ float: "right", marginBottom: 10 }}>{this.state.isOnline ? this.state.message[1]: this.state.message[0]}</button>
                 <h3>Current Menu</h3>
+=======
+                    <h3 className="dash-head">Current Menu
+                <button onChange={this.handleInputChange} onClick={this.goOnline} type="button" className={this.state.isOnline ? "btn btn-success" : "btn btn-danger"}style={{ float: "right", marginBottom: 10 }}>{this.state.isOnline ? this.state.message[1]: this.state.message[0]}</button></h3>
+>>>>>>> 61fe5c862cefe32c17ea4885bfd1a0eb5d7fbacc
             </div>
 
         );
