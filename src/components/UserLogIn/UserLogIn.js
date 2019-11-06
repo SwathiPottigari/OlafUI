@@ -81,6 +81,9 @@ export default class UserLogIn extends Component {
                             <div className="modal-footer d-flex justify-content-center">
                                 <button onClick={this.handleFormSubmit} className="login-btn btn btn-info my-4 btn-block" data-dismiss="modal" type="submit">Log In</button>
                             </div>
+                            <div className="modal-footer d-flex justify-content-center">
+                                <p>Not a member? Create a <a href="/signup/user">USER</a> or <a href="/signup/chef">CHEF</a> account</p>
+                            </div>
                         </div>
                     </div>
                 </div>

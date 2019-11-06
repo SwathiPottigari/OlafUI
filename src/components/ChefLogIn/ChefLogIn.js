@@ -67,7 +67,7 @@ export default class ChefLogIn extends Component {
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
-                            <h5 className="text-center">Login to your Chef account</h5>
+                                <h5 className="text-center">Login to your Chef account</h5>
                                 <div className="md-form mb-5">
                                     {/* <i className="fas fa-user prefix grey-text"></i> */}
                                     <label data-error="wrong" data-success="right" htmlFor="form34">Email</label>
@@ -81,6 +81,9 @@ export default class ChefLogIn extends Component {
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
                                 <button onClick={this.handleFormSubmit} data-dismiss="modal" className="login-btn btn btn-info my-4 btn-block" type="submit">Log In</button>
+                            </div>
+                            <div className="modal-footer d-flex justify-content-center">
+                                <p>Not a member? Create a <a href="/signup/user">USER</a> or <a href="/signup/chef">CHEF</a> account</p>
                             </div>
                         </div>
                     </div>
