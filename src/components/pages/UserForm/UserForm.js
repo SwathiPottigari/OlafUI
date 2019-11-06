@@ -64,9 +64,9 @@ export default class UserForm extends Component {
     render() {
         return (
             <React.Fragment>
-                    <h1 className="form-title text-center">Create an Account</h1>
 
             <AnimationContainer />
+                    <h1 className="form-title text-center">Create an Account</h1>
             <div class="form-container">
 
                 <form class="wizard-form text-center border border-light p-5" action="#!">
@@ -100,7 +100,6 @@ export default class UserForm extends Component {
                 {this.renderRedirect()}
             </div>
             </React.Fragment>
-
         )
     }
 }

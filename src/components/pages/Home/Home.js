@@ -100,7 +100,7 @@ class Home extends Component {
 
         
                             <hr className="socket" />
-                            OlafGo &copy; Copyright 2019
+                            <div className="copyright">OlafGo &copy; Copyright 2019</div>
                         </div>
 
                         <div className="fixed-wrap">
