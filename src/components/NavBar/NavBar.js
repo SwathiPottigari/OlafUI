@@ -23,6 +23,8 @@ export default class NavBar extends Component {
     // Adds an event listener when the component is mount.
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
+        console.log("navbar", this.props)
+      
     }
 
     // Remove the event listener when the component is unmount.
@@ -58,6 +60,9 @@ export default class NavBar extends Component {
         this.setState({ isChef: true, isHidden: true, logoutHidden: false })
     }
 
+    setcurrentUser = ()=>{
+        this.setState({currentUser:this.props.currentCustomer})
+    }
     render() {
         return (
             <div>
@@ -91,6 +96,7 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/">Logout</a>
                             </li>
                         </ul>
+                       
                     </div>
                 </nav>
                 <ChefLogIn />
