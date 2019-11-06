@@ -10,8 +10,7 @@ import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
 import axios from 'axios';
 import ButtonJumbotron from "../../ButtonJumbotron/ButtonJumbotron";
-
-// import Cloudinary from '../../Cloudinary/Cloudinary';
+import cloudinary from 'cloudinary-react'
 
 export default class Chef extends Component {
 
@@ -25,7 +24,9 @@ export default class Chef extends Component {
         cuisine: "",
         url: "http://localhost:8080",
         loggedInUser: '',
-        description: ''
+        description: '',
+        uploadImage: false,
+        imageURL: ''
     };
 
     componentDidMount() {
@@ -59,6 +60,7 @@ export default class Chef extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let sessionVariable = this;
+        this.setState ({uploadImage: false})
         axios.post(this.state.url + "/api/createMenu", {
             dish: this.state.dish,
             quantity: this.state.quantity,
@@ -67,7 +69,8 @@ export default class Chef extends Component {
             ingredients: this.state.ingredients,
             cuisine: this.state.cuisine,
             ChefId: this.state.loggedInUser.id,
-            description: this.state.description
+            description: this.state.description,
+            imageURL:this.state.imageURL
         }).then(function (results) {
             sessionVariable.readSessions();
         }).catch(function (error) {
@@ -76,6 +79,24 @@ export default class Chef extends Component {
 
     };
 
+    openWidget = event => {
+        event.preventDefault();
+        const myWidget = window.cloudinary.createUploadWidget({
+            cloudName: "dcokaa0ia",
+            uploadPreset: 'olafgo'
+        }, (error, result) => {if (result.event === "success") {
+            this.setState({
+                uploadImage: true,
+                imageURL: result.info.url
+            })
+            console.log(result)
+            //This is the URL to the saved image 
+            console.log(result.info.url)
+        }
+        });
+        myWidget.open();
+
+    }
 
 
     render() {
@@ -85,18 +106,18 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
-                            <Jumbotron><h3>Menu Creator</h3></Jumbotron>
+                            <Jumbotron><h3 className="dash-head">Create Dish</h3></Jumbotron>
                             <form>
                                 <Input
                                     value={this.state.dish}
                                     onChange={this.handleInputChange}
                                     name="dish"
-                                    placeholder="Dish Name (required)"
+                                    placeholder="Dish name"
                                 />
                                 <div className="form-row mb-4">
                                     <div className="col">
                                         <select name="cuisine" type="text" className="form-control" placeholder="Cuisine" onChange={this.handleInputChange} value={this.state.cuisine}>
-                                            <option defaultValue>Select Option</option>
+                                            <option defaultValue>Cuisine Type</option>
                                             <option value="African">African</option>
                                             <option value="American">American</option>
                                             <option value="Arab">Arab</option>
@@ -167,10 +188,12 @@ export default class Chef extends Component {
                                 </div>
 
                                 <Input
+                                    type="number" min="0.00" max="1000.00" step="0.01"
                                     value={this.state.price}
                                     onChange={this.handleInputChange}
                                     name="price"
-                                    placeholder="Price (required)"
+                                    placeholder="Price"
+                                    required
                                 />
                                 <div className="form-row mb-4">
                                     <div className="col">
@@ -212,6 +235,7 @@ export default class Chef extends Component {
                                     onChange={this.handleInputChange}
                                     name="ingredients"
                                     placeholder="Ingredients (required)"
+                                    required
                                 />
                                 <TextArea
                                     value={this.state.description}
@@ -219,7 +243,7 @@ export default class Chef extends Component {
                                     name="description"
                                     placeholder="Dish Description (optional)"
                                 />
-                                <input type="file" />
+                                <button onClick={this.openWidget} type="button" className="btn btn-primary">{this.state.uploadImage ? <span>Success<i class="fas fa-check-circle fa-lg ml-2"></i></span>:"Upload Image" }</button>
                                 <FormBtn
                                     disabled={!(this.state.dish
                                         && this.state.price
@@ -227,7 +251,7 @@ export default class Chef extends Component {
                                         && this.state.ingredients)}
                                     onClick={this.handleFormSubmit}
                                 >
-                                    Submit Dish
+                                    Submit
                                 </FormBtn>
                             </form>
                         </Col>
@@ -246,6 +270,7 @@ export default class Chef extends Component {
                                 description={element.description}
                                 quantity={element.quantity}
                                 readSessions={this.readSessions()}
+                                imageURL={element.imageURL}
                                 // removeDish={this.removeDish}
                             />)}
                         </Col>
