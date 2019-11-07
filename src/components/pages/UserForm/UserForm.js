@@ -83,32 +83,32 @@ export default class UserForm extends Component {
                 <h1 className="form-title text-center">Create an Account</h1>
                 <div class="form-container">
 
-                    <form class="wizard-form text-center border border-light p-5" action="#!">
+                    <form className="wizard-form text-center border border-light p-5" action="#!">
 
                         <p class="h4 mb-4">User Sign Up</p>
 
-                        <div class="form-row mb-4">
-                            <div class="col">
+                        <div className="form-row mb-4">
+                            <div className="col">
                                 <input
                                     type="text"
                                     required
-                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" class="form-control" />
+                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" className="form-control" />
                             </div>
-                            <div class="col">
-                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" class="form-control" />
+                            <div className="col">
+                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" className="form-control" />
                             </div>
                         </div>
 
-                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} class="form-control" placeholder="E-mail" />
+                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} className="form-control" placeholder="Mobile Number" />
+                        <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
+                            Format: 555-555-5555</small>
+                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="E-mail" />
                         <br />
-                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} class="form-control" placeholder="Mobile Number" />
-                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                            Format: 206-339-4592</small>
-                        <input name="password" minLength="8" required type="password" class="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
-                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        <input name="password" minLength="8" required type="password" className="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
+                        <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
                             At least 8 characters</small>
 
-                        <button onClick={this.handleFormSubmit} class="btn btn-success" type="submit">Create Account</button>
+                        <button onClick={this.handleFormSubmit} className="btn btn-success float-right" type="submit">Create Account</button>
 
                     </form>
                     {this.renderRedirect()}

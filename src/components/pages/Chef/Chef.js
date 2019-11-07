@@ -9,7 +9,7 @@ import Col from '../../Col/Col';
 import "./Chef.css"
 import Jumbotron from '../../Jumbotron/Jumbotron';
 import axios from 'axios';
-import ButtonJumbotron from "../../ButtonJumbotron/ButtonJumbotron";
+import ToggleSwitch from "../../ToggleSwitch/ToggleSwitch";
 import cloudinary from 'cloudinary-react'
 
 export default class Chef extends Component {
@@ -267,7 +267,10 @@ export default class Chef extends Component {
                             </form>
                         </Col>
                         <Col size="md-6">
-                            <ButtonJumbotron chefId={this.state.loggedInUser.id}><h3>Current Menu</h3></ButtonJumbotron>
+                            <div>
+                                <Jumbotron><h3>Current Menu</h3></Jumbotron>
+                            </div>
+                            <ToggleSwitch chefId={this.state.loggedInUser.id}><h3>Current Menu</h3></ToggleSwitch>
 
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
