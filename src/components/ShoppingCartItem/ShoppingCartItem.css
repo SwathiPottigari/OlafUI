@@ -211,7 +211,7 @@ ul li:hover {
     margin-right: auto;
 }
 
-.credit-info {
+.total-info {
     background: linear-gradient(45deg, #ff9e2e, #d35400);
     height: 100%;
     width: 50%;
@@ -242,18 +242,6 @@ ul li:hover {
     font-size: 5rem;
 }
 
-.dropdown-btn {
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    border-radius: 5px;
-    text-align: center;
-    line-height: 1.5em;
-    cursor: pointer;
-    position: relative;
-    -webkit-transition: background .2s ease;
-    transition: background .2s ease;
-}
-
 .dropdown-btn:after {
     content: '\25BE';
     right: 8px;
@@ -266,29 +254,10 @@ ul li:hover {
     transition: background .2s ease;
 }
 
-.dropdown-select {
-    display: none;
-}
+.remove:hover {
+    cursor: context-menu;
+    color: #ff9e2e;
 
-.credit-card-image {
-    display: block;
-    max-height: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 35px;
-    margin-bottom: 15px;
-}
-
-.credit-info-content {
-    margin-top: 25px;
-    -webkit-flex-flow: column;
-    -ms-flex-flow: column;
-    flex-flow: column;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
 }
 
 @media (max-width: 600px) {

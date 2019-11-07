@@ -6,8 +6,7 @@ import axios from 'axios';
 export default class ItemCard extends Component {
 
     state = {
-        result: null,
-        customerQty: null
+        
     };
 
     handleChange = event => {
@@ -23,19 +22,7 @@ export default class ItemCard extends Component {
     }
 
 
-    orderItem = () => {
-        try {
-            return axios.post(`http://localhost:8080/api/order`, {
-                orderedQuantity: this.state.customerQty,
-                CustomerId: this.props.currentCustomer.id,
-                MenuId: this.props.currentMenu.id,
-                ChefId: this.props.currentChef.id
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
+    
     remove=()=>{
         let obj = this.refs.DeleteButton;
         this.props.removeDish(obj.id);
@@ -52,7 +39,7 @@ export default class ItemCard extends Component {
                             </td>
                             <td><br /><span className='thin'>Fried Rice</span>
                                 <br />Amount Ordered: 3<br /> 
-                                <span onClick={this.remove} className='thin small'><br /><a>Remove item <i className="fas ml-2 fa-trash"></i></a><br /></span>
+                                <span onClick={this.remove} className='thin small remove'><br /><a>Remove item <i className="fas ml-2 fa-trash"></i></a><br /></span>
                             </td>
                         </tr>
                         <tr><td><div className='price'>$5.00</div></td></tr>

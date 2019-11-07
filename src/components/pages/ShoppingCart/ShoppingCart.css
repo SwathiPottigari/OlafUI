@@ -103,13 +103,6 @@ ul li:hover {
     position: relative;
 }
 
-.price {
-    bottom: 0px;
-    position: absolute;
-    right: 0px;
-    color: #4488dd;
-}
-
 .order-table td:first-of-type {
     width: 25%;
 }
@@ -176,6 +169,7 @@ ul li:hover {
 
 .total-container {
     padding-top: 3rem;
+    text-align: center;
 
 }
 
@@ -207,7 +201,7 @@ ul li:hover {
     margin-right: auto;
 }
 
-.credit-info {
+.total-info {
     background: linear-gradient(45deg, #ff9e2e, #d35400);
     height: 100%;
     width: 50%;
@@ -275,7 +269,7 @@ ul li:hover {
     margin-bottom: 15px;
 }
 
-.credit-info-content {
+.total-info-content {
     margin-top: 25px;
     -webkit-flex-flow: column;
     -ms-flex-flow: column;
@@ -300,7 +294,7 @@ ul li:hover {
         padding-bottom: 100px;
         border-radius: 0px;
     }
-    .credit-info {
+    .total-info {
         width: 100%;
         height: auto;
         padding-bottom: 100px;

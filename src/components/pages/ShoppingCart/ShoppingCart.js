@@ -49,8 +49,8 @@ export default class User extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div class='credit-info'>
-                            <div class='credit-info-content'>
+                        <div class='total-info'>
+                            <div class='total-info-content'>
                             <h2 className="total-title">Olaf<i class="fas fa-carrot"></i></h2>
                             <div className="total-container">
                             <h3>ORDER TOTAL:</h3>   
