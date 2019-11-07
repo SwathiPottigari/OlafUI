@@ -48,12 +48,8 @@ export default class User extends Component {
             <div className="user-dash">
                 <NavBar  currentCustomer = {this.state.currentCustomer}/>
                 <Container fluid>
-<<<<<<< HEAD
-                   <Map currentCustomer = {this.state.currentCustomer}/>
-=======
                    <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
                 {/* <ChefItemCard /> */}
->>>>>>> 9d63914a794fa4811d7bec6410bee2dd5ccfa3c5
                 </Container>
             </div>
         )

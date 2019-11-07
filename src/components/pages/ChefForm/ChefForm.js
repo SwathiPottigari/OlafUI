@@ -169,17 +169,15 @@ function Step1(props) {
           </div>
 
           <input type="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={props.contact} onChange={props.handleChange} className="form-control" placeholder="Mobile Number" />
-          <small id="defaultRegisterFormPasswordHelpBlock" className="form-text float-left ml-2 mb-2 text-muted">
+          <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
             Format: 555-555-5555</small>
 
-          <div className="form=row mb-4">
-            <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className="form-control" placeholder="E-mail" />
+          <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className="form-control" placeholder="E-mail" />
+          <br />
+          <input minLength="8" required type="password" className="form-control" placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
+          <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
+            At least 8 characters</small>
 
-            <br />
-            <input minLength="8" required type="password" className="form-control" placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
-            <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted ml-2 float-left">
-              At least 8 characters</small>
-          </div>
 
           <button
             className="btn btn-success float-right"
