@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import "./NavBar.css"
-import ChefLogIn from "../ChefLogIn/ChefLogIn";
-import UserLogIn from "../UserLogIn/UserLogIn";
+import "../NavBar/NavBar.css"
 import classnames from "classnames";
 
 
@@ -24,7 +22,7 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         console.log("navbar", this.props)
-
+      
     }
 
     // Remove the event listener when the component is unmount.
@@ -45,24 +43,10 @@ export default class NavBar extends Component {
         });
     };
 
-    // state = {
-    //     isChef: false,
-    //     isUser: false,
-    //     isHidden: false,
-    //     logoutHidden: true
-    // }
-
-    getUserLoginForm = (e) => {
-        this.setState({ isUser: true })
+    setcurrentUser = ()=>{
+        this.setState({currentUser:this.props.currentCustomer})
     }
-
-    getChefLoginForm = (e) => {
-        this.setState({ isChef: true })
-    }
-
-    setcurrentUser = () => {
-        this.setState({ currentUser: this.props.currentCustomer })
-    }
+    
     render() {
         return (
             <div>
@@ -77,27 +61,12 @@ export default class NavBar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
-                            </li>
-                            <li className="nav-item active">
-                                <a className="nav-link" href="#about">About<span className="sr-only">(current)</span></a>
-                            </li>
-                            <li className="nav-item active">
-                                <a className="nav-link" href="#contact">Contact<span className="sr-only">(current)</span></a>
-                            </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
+                                <a className="nav-link" href="/">Logout</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" ref={btn => { this.btn = btn; }} onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
-                            </li>
-                        </ul>
-
+                        </ul>     
                     </div>
                 </nav>
-                <ChefLogIn />
-                <UserLogIn />
             </div>
         )
     }

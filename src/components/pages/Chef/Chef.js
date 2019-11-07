@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input, TextArea, FormBtn } from "../../ChefCreateItem/ChefCreateItem";
 import API from "../../utils/API";
-import NavBar from "../../NavBar/NavBar";
+import ChefNavBar from "../../ChefNavBar/ChefNavBar";
 import ChefItemCard from '../../ChefItemCard/ChefItemCard';
 import Container from '../../Container/Container';
 import Row from '../../Row/Row';
@@ -113,7 +113,7 @@ export default class Chef extends Component {
     render() {
         return (
             <div className="chef-dash">
-                <NavBar />
+                <ChefNavBar />
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
