@@ -92,7 +92,7 @@ class Map extends Component {
     return (
       <Row>
         <Col size="md-6">
-          <div style={{ width: "100%", height: "500px" }}>
+          <div style={{ width: "100%", height: "85vh" }}>
 
             {this.state.location &&this.state.onlineChef? (<MapWithAMarker
               location={this.state.location}
