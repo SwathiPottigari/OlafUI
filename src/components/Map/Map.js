@@ -19,7 +19,8 @@ class Map extends Component {
     onlineChef: null,
     currentChef: null,
     currentMenu: null,
-    currentOrder:[]
+    currentOrder:[],
+    temp:[]
   }
 
   getOnlineChef = () => {
@@ -71,12 +72,16 @@ class Map extends Component {
     })
   }
 
+  updateArray=(value)=>{
+    this.state.temp.push(value);
+  }
+  
   setCurrentOrder = (value)=>{
-    let tempArray=[];
-    tempArray.push(value);
+    this.updateArray(value);
     this.setState({
-      currentOrder:tempArray
+      currentOrder:this.state.temp
     })
+    this.props.setShoppingCart(this.state.currentOrder)
   }
 
   render() {

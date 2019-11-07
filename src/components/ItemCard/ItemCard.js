@@ -25,9 +25,9 @@ export default class ItemCard extends Component {
     }
 
     setChildOrderItems=(val)=>{
-        this.setState({
-            childOrderItems:val
-        })
+        this.state.childOrderItems=val
+        console.log("Value of obj-",this.state.childOrderItems)
+        
     }
 
    /*  orderItem = () => {
@@ -43,13 +43,16 @@ export default class ItemCard extends Component {
         }
       }  */
 
-      orderItem = ()=>{
+      orderItem = (event)=>{
+    event.preventDefault();
           let objOrder = {}
           objOrder.orderedQuantity = this.state.customerQty
           objOrder.CustomerId = this.props.currentCustomer.id
           objOrder.MenuId = this.props.currentMenu.id
           objOrder.ChefId = this.props.currentChef.id
+          console.log("object order is ",objOrder)
         this.setChildOrderItems(objOrder)
+        console.log(this.state.childOrderItems)
         this.props.setCurrentOrder(this.state.childOrderItems)
       }
 
@@ -107,7 +110,7 @@ export default class ItemCard extends Component {
                                     </select>
 
                                 </div>
-                                <button onClick={this.orderItem} data-toggle="modal" data-target="#orderItemModal" className="btn btn-primary float-right my-4" type="submit">Order Now</button>
+                                <button onClick={this.orderItem}  className="btn btn-primary float-right my-4" type="submit">Order Now</button>
                             </form>
                     
                     </div>
