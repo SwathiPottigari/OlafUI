@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from "../../NavBar/NavBar";
+import CartNavBar from "../../CartNavBar/CartNavBar";
 import Container from '../../Container/Container';
 import "./ShoppingCart.css";
 import axios from 'axios';
@@ -10,7 +10,8 @@ import OrderItemModal from '../../OrderItemModal/OrderItemModal';
 export default class User extends Component {
 
     state = {
-        
+        url: "http://localhost:8080",
+        loggedInUser:''
     }
 
     submitOrder = () => {
@@ -25,11 +26,29 @@ export default class User extends Component {
             console.error(error)
         }
     }
+   
+    componentDidMount(){
+        this.readSessions();
+    }
+
+    
+    readSessions = () => {
+        let setVariable=this;
+        axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
+            setVariable.setState({ loggedInUser: res.data.user });
+        }).catch(function(error){console.log(error)})
+    }
+
+    cartNavbar=()=>{
+        if(this.state.loggedInUser.id){
+        return  <CartNavBar userId={this.state.loggedInUser.id} user="customer"/>
+        }
+    }
 
     render() {
         return (
             <div className="user-dash">
-                <NavBar  currentCustomer = {this.state.currentCustomer}/>
+                {this.cartNavbar()}
                 <Container fluid>
                 <Row>
                 <div className='container'>

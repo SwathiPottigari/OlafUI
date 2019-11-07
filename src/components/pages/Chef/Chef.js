@@ -49,9 +49,7 @@ export default class Chef extends Component {
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
-                    variable.setState({ items: results.data });
-                    console.log("This is the items data");
-                    console.log(variable.state.items)
+                    variable.setState({ items: results.data });                    
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -60,8 +58,7 @@ export default class Chef extends Component {
 
 
     handleInputChange = event => {
-        const { name, value } = event.target;
-        console.log("this is changing")
+        const { name, value } = event.target;        
         this.setState({
             [name]: value
         });
@@ -81,8 +78,7 @@ export default class Chef extends Component {
             ChefId: this.state.loggedInUser.id,
             description: this.state.description,
             imageURL:this.state.imageURL
-        }).then(function (results) {
-            console.log(results)
+        }).then(function (results) {            
             sessionVariable.readSessions();
         }).catch(function (error) {
             console.log(error);
@@ -100,20 +96,30 @@ export default class Chef extends Component {
                 uploadImage: true,
                 imageURL: result.info.url
             })
-            console.log(result)
-            //This is the URL to the saved image 
-            console.log(result.info.url)
+
         }
         });
         myWidget.open();
 
     }
 
+    toggleSwitch=()=>{
+        if(this.state.loggedInUser.id){
+
+            return <ToggleSwitch chefId={this.state.loggedInUser.id}><h3>Current Menu</h3></ToggleSwitch>
+        }
+    }
+
+    chefNavbar=()=>{
+        if(this.state.loggedInUser.id){
+        return  <ChefNavBar userId={this.state.loggedInUser.id} user="chef"/>
+        }
+    }
 
     render() {
         return (
             <div className="chef-dash">
-                <ChefNavBar />
+               {this.chefNavbar()}
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
@@ -270,8 +276,7 @@ export default class Chef extends Component {
                             <div>
                                 <Jumbotron><h3>Current Menu</h3></Jumbotron>
                             </div>
-                            <ToggleSwitch chefId={this.state.loggedInUser.id}><h3>Current Menu</h3></ToggleSwitch>
-
+                            <div className="text-center toggle">{this.toggleSwitch()}</div>
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
                                 ingredients={element.ingredients}
@@ -283,7 +288,6 @@ export default class Chef extends Component {
                                 key={element.id}
                                 description={element.description}
                                 quantity={element.quantity}
-                                /* readSessions={this.readSessions()} */
                                 imageURL={element.imageURL}
                                 removeDish={this.removeDish}
                             />)}

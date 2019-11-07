@@ -10,7 +10,6 @@ export default class UserLogIn extends Component {
         password: '',
         user: "customer",
         url: "http://localhost:8080",
-        
         loggedInUser: '',
         redirect: false
     };
