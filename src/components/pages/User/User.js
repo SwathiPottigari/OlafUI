@@ -48,7 +48,7 @@ export default class User extends Component {
             <div className="user-dash">
                {this.userNavbar()}
                 <Container fluid>
-                   <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
+                   <Map currentCustomer = {this.state.loggedInUser}  setShoppingCart= {this.setUserCart} />
                 </Container>
             </div>
         )
