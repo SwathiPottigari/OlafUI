@@ -25,7 +25,8 @@ class ChefForm extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-      user: "chef"
+      user: "chef",
+      loggedInUser: ''
     }
   }
 
