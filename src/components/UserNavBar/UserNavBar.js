@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "../NavBar/NavBar.css"
 import classnames from "classnames";
+import axios from "axios";
 
 
 export default class NavBar extends Component {
@@ -14,7 +15,9 @@ export default class NavBar extends Component {
             isChef: false,
             isUser: false,
             isHidden: false,
-            logoutHidden: true
+            logoutHidden: true,
+            url: "http://localhost:8080",
+            userName: ""
         };
     }
 
@@ -22,7 +25,19 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         console.log("navbar", this.props)
-      
+        let setVariable = this;
+        axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
+            function(results){
+                console.log("user details")
+                console.log(results.data[0].firstName)
+                setVariable.setState({
+                    userName: results.data[0].firstName
+                })
+
+            }
+        ).catch(function(error){
+            console.log(error);
+        })
     }
 
     // Remove the event listener when the component is unmount.
@@ -45,6 +60,7 @@ export default class NavBar extends Component {
 
     setCurrentUser = ()=>{
         this.setState({currentUser:this.props.currentCustomer})
+        console.log({currentUser:this.props.currentCustomer})
     }
 
     render() {
@@ -65,7 +81,7 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"></i></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout</a>
+                                <a className="nav-link" href="/" >Logout {this.state.userName}</a>
                             </li>
                         </ul>
                     </div>

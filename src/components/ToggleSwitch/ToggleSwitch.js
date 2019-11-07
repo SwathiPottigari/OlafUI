@@ -63,13 +63,13 @@ export default class ToggleSwitch extends Component {
       <div className="on-off">
 
         <label>
-              <Switch
+
+              <p>              <Switch
                 onChange={this.handleChange}
                 onClick={this.goOnline}
                 checked={this.state.checked}
                 className="react-switch"
-              />
-              <p>Your menu is <span>{this.state.checked ? 'online' : 'offline'}</span>.</p>
+              /> Your menu is <span>{this.state.checked ? 'online' : 'offline'}</span>.</p>
         </label>
 
       </div>

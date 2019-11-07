@@ -12,7 +12,7 @@ export default class User extends Component {
 
     state = {
         url: "http://localhost:8080",
-        loggedInUser:null,
+        loggedInUser:'',
         currentCustomer:null,
         userCart:null
     }
@@ -30,27 +30,25 @@ export default class User extends Component {
 
 
     readSessions = () => {
+        let setVariable=this;
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
-            this.setState({ loggedInUser: res.data.user });
-            // console.log("check",this.state.loggedInUser)
-            let variable = this;
-            axios.get(this.state.url + '/api/customer/' + this.state.loggedInUser.id)
-                .then(function (results) {
-                    variable.setState({ currentCustomer: results.data[0] });
-                }).catch(function (error) {
-                    console.log(error);
-                });
-        })
+            setVariable.setState({ loggedInUser: res.data.user });
+        }).catch(function(error){console.log(error)})
+    }
+
+    userNavbar=()=>{
+        if(this.state.loggedInUser.id){
+        return  <UserNavBar userId={this.state.loggedInUser.id} user="customer"/>
+        }
     }
 
     render() {
         console.log("shopping cart ", this.state.userCart)
         return (
             <div className="user-dash">
-                <UserNavBar  currentCustomer = {this.state.currentCustomer}/>
+               {this.userNavbar()}
                 <Container fluid>
                    <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
-                {/* <ChefItemCard /> */}
                 </Container>
             </div>
         )
