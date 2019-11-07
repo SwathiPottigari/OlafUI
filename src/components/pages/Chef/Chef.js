@@ -45,7 +45,7 @@ export default class Chef extends Component {
 
     readSessions = () => {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
-            this.setState({ loggedInUser: res.data.user })
+            this.setState({ loggedInUser: res.data.user });
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
@@ -79,6 +79,7 @@ export default class Chef extends Component {
             description: this.state.description,
             imageURL:this.state.imageURL
         }).then(function (results) {
+            console.log(results)
             sessionVariable.readSessions();
         }).catch(function (error) {
             console.log(error);
@@ -276,6 +277,7 @@ export default class Chef extends Component {
                                 key={element.id}
                                 description={element.description}
                                 quantity={element.quantity}
+                                /* readSessions={this.readSessions()} */
                                 imageURL={element.imageURL}
                                 removeDish={this.removeDish}
                             />)}
