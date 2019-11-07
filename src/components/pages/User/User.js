@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from "../../NavBar/NavBar";
+import UserNavBar from "../../UserNavBar/UserNavBar";
 import Map from "../../Map/Map"
 /* import ChefItemCard from '../../ChefItemCard/ChefItemCard'; */
 import Container from '../../Container/Container';
@@ -47,7 +47,7 @@ export default class User extends Component {
         console.log("shopping cart ", this.state.userCart)
         return (
             <div className="user-dash">
-                <NavBar  currentCustomer = {this.state.currentCustomer}/>
+                <UserNavBar  currentCustomer = {this.state.currentCustomer}/>
                 <Container fluid>
                    <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
                 {/* <ChefItemCard /> */}
