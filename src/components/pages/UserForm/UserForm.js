@@ -16,7 +16,7 @@ export default class UserForm extends Component {
         user: "customer",
         loggedInUser: '',
         redirect: false,
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
     };
 
     handleInputChange = event => {

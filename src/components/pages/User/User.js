@@ -10,7 +10,7 @@ import axios from 'axios';
 export default class User extends Component {
 
     state = {
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser:null,
         currentCustomer:null,
         userCart:null
