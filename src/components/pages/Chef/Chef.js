@@ -29,16 +29,23 @@ export default class Chef extends Component {
         imageURL: ''
     };
 
-    componentDidMount() {
+    removeDish = (id) => {
+        let setVariable = this;
+        axios.delete(this.state.url + "/api/removeDish/" + id).then(function (results) {
+            setVariable.setState({ redirect: true });
+            setVariable.readSessions();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+
+    componentDidMount() {        
         this.readSessions();
     }
 
     readSessions = () => {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
-            this.setState({ loggedInUser: res.data.user });
-
-            // console.log("check",this.state.loggedInUser)
-
+            this.setState({ loggedInUser: res.data.user })
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
@@ -270,9 +277,8 @@ export default class Chef extends Component {
                                 key={element.id}
                                 description={element.description}
                                 quantity={element.quantity}
-                                readSessions={this.readSessions()}
                                 imageURL={element.imageURL}
-                                // removeDish={this.removeDish}
+                                removeDish={this.removeDish}
                             />)}
                         </Col>
                     </Row>
