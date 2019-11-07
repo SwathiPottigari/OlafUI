@@ -1,0 +1,10 @@
+.jumbotron {
+    background: linear-gradient(45deg,#FFA92C, #d35400);
+    opacity: 0.7;
+    margin: 1rem 0rem;
+    border-radius: 10px;
+}
+
+.jumbotron h3 {
+    color: #fff;
+}
