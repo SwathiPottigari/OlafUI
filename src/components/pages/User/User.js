@@ -11,7 +11,7 @@ import ItemCard from "../../ItemCard/ItemCard";
 export default class User extends Component {
 
     state = {
-        url: "https://olafapi.herokuapp.com",
+        url: "http://localhost:8080",
         loggedInUser:null,
         currentCustomer:null,
         userCart:null
