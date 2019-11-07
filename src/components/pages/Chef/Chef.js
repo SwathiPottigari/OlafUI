@@ -110,10 +110,16 @@ export default class Chef extends Component {
         }
     }
 
+    chefNavbar=()=>{
+        if(this.state.loggedInUser.id){
+        return  <ChefNavBar userId={this.state.loggedInUser.id} user="chef"/>
+        }
+    }
+
     render() {
         return (
             <div className="chef-dash">
-                <ChefNavBar />
+               {this.chefNavbar()}
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
@@ -270,7 +276,7 @@ export default class Chef extends Component {
                             <div>
                                 <Jumbotron><h3>Current Menu</h3></Jumbotron>
                             </div>
-                            {this.toggleSwitch()}
+                            <div className="text-center toggle">{this.toggleSwitch()}</div>
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
                                 ingredients={element.ingredients}
