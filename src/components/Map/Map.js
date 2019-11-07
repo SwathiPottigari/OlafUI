@@ -25,7 +25,7 @@ class Map extends Component {
 
   getOnlineChef = () => {
     try {
-      return axios.get(`http://localhost:8080/api/onlineChefs`)
+      return axios.get(`https://olafapi.herokuapp.com/api/onlineChefs`)
     } catch (error) {
       console.error(error)
     }

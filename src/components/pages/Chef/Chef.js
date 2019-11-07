@@ -22,7 +22,7 @@ export default class Chef extends Component {
         price: "",
         ingredients: "",
         cuisine: "",
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser: '',
         description: '',
         uploadImage: false,
@@ -50,6 +50,8 @@ export default class Chef extends Component {
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
                     variable.setState({ items: results.data });
+                    console.log("This is the items data");
+                    console.log(variable.state.items)
                 }).catch(function (error) {
                     console.log(error);
                 });
