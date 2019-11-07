@@ -32,12 +32,15 @@ export default class UserLogIn extends Component {
                 withCredentials: true
             }
         ).then(res => {
+            if (res.data.isSuccess === false) {
+                alert("Please sign up for an Olaf account.");
+            } else {
             this.setState({
                 email: "",
                 password: "",
                 loggedInUser: res.data.user,
                 redirect: true
-            });
+            })};
         })
     };
 
