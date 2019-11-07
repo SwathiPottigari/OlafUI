@@ -28,10 +28,16 @@ export default class UserForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        const emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var phoneNumberRegEx = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/;
         if (this.state.firstName === '') {
             alert("Please enter you first name")
         } else if (this.state.lastName === '') {
             alert("Please enter you last name")
+        } else if (emailRegEx.test(this.state.email) === false) {
+            alert("Please enter a valid email address")
+        } else if (phoneNumberRegEx.test(this.state.phoneNumber) === false) {
+            alert("Please enter a valid phone number in the correct format")
         } else if (this.state.password.length < 8) {
             alert("You password must be 8 or more characters")
         } else {
@@ -73,13 +79,13 @@ export default class UserForm extends Component {
         return (
             <React.Fragment>
 
-                <h1 className="form-title text-center">Create an Account</h1>
                 <AnimationContainer />
-                <div className="form-container">
+                <h1 className="form-title text-center">Create an Account</h1>
+                <div class="form-container">
 
                     <form className="wizard-form text-center border border-light p-5" action="#!">
 
-                        <p className="h4 mb-4">User Sign Up</p>
+                        <p class="h4 mb-4">User Sign Up</p>
 
                         <div className="form-row mb-4">
                             <div className="col">

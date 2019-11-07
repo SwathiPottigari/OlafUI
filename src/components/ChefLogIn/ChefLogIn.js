@@ -61,7 +61,7 @@ export default class ChefLogIn extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                                <h4 className="modal-title w-100 font-weight-bold">Welcome back to Olaf!</h4>
+                            <h4 className="modal-title w-100 font-weight-bold">Welcome back to <h2 className="modal-icon-title">Olaf<i class="fas fa-carrot"></i></h2></h4>
                                 <button onClick={this.returnHome} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -80,7 +80,7 @@ export default class ChefLogIn extends Component {
 
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
-                                <button onClick={this.handleFormSubmit} data-dismiss="modal" className="login-btn btn btn-info my-4 btn-block" type="submit">Log In</button>
+                                <button onClick={this.handleFormSubmit} data-dismiss="modal" className="btn draw-border" type="submit">Log In</button>
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
                                 <p>Not a member? Create a <a href="/signup/user">USER</a> or <a href="/signup/chef">CHEF</a> account</p>

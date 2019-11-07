@@ -14,16 +14,16 @@ h5 {
 }
 
 .login-btn {
-    background-color: #FFA92C;
-    border-color: #FFA92C;
+    background-color: #ff9e2e;
+    border-color: #ff9e2e;
     text-transform: uppercase;
     padding: .8rem 0;
     margin: 0 3%;
 }
 
 .login-btn:hover {
-    background-color: #F7991E;
-    border-color: #F7991E;
+    background-color: #cd6133;
+    border-color: #cd6133;
 }
 
 .modal-header {
@@ -38,3 +38,80 @@ h5 {
     border: 0;
     padding-top: 0;
 }
+
+.modal-header {
+    background: linear-gradient(45deg, #ff9e2e, #d35400);
+}
+
+.modal-header h4 {
+    color: #fff;
+}
+
+.draw-border{
+    box-shadow: inset 0 0 0 3px #ff9e2e;
+    color: #fff;
+    background-color: #ff9e2e;
+    transition: color .25s .08333333s;
+    position: relative;
+    width: 200px;
+    height: 45px;
+  }
+  
+  .draw-border::before,
+  .draw-border::after{
+    content: '';  
+  
+      box-sizing: border-box;	
+    width: 0;
+    height: 0;
+      border: 0 solid #ff9e2e;
+      
+      pointer-events: none;
+      transition-property: border-color, width, height;
+      transition-duration: .25s; 
+      
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .draw-border::before{
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    transition-delay: .35s, .25s, 0s;
+  }
+  
+  .draw-border::after{
+    border-top-width: 3px;
+    border-right-width: 3px;
+    transition-delay: .35s, 0s, .25s; 
+  }
+  
+  .draw-border:hover{
+    color: #fff;
+  }
+  
+  .draw-border:hover::before, 
+  .draw-border:hover::after{
+    width: 100%;
+    height: 100%;
+    border-color: #e67e22;
+      
+      transition-duration: 0s, .25s, .25s; 
+  }
+  
+  .draw-border:hover::before{
+      transition-delay: 0s, 0s, .25s; 
+  }
+  
+  .draw-border:hover::after{
+    transition-delay: 0s, .25s, 0s;
+ }
+
+ .modal-icon-title {
+    font-family: 'Pacifico', cursive;
+    letter-spacing: .15rem;
+    padding-bottom: .5rem;
+    font-size: 2.5rem;
+ }
+  
