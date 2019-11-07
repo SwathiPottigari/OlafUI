@@ -34,7 +34,7 @@ class Home extends Component {
                     <a href="/signup/user" className="btn btn-outline-light btn-lg">User</a>
                 </div>
 
-                <div className="about">
+                <div id="about" className="about">
 
                     <div className="row dark text-center jumbotron about-info">
 
@@ -71,7 +71,7 @@ class Home extends Component {
 
                 </div>
 
-                <div className="contact">
+                <div id="contact" className="contact">
 
                     <div className="fixed-background">
 
