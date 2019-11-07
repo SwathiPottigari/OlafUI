@@ -74,24 +74,30 @@ class ChefForm extends React.Component {
           withCredentials: true
         }
       ).then(res => {
-        this.setState({
-          firstName: '',
-          lastName: '',
-          kitchenName: '',
-          license: '',
-          specialities: '',
-          password: '',
-          contact: '',
-          email: '',
-          streetAddress: '',
-          apartment: '',
-          city: '',
-          state: '',
-          zipCode: '',
-          loggedInChef: res.data.chef,
-          redirect: true
-        });
-      })
+        if(res.data.isSuccess===false){
+          alert("You already have an account. Please login.");
+        }
+        else{
+          this.setState({
+            firstName: '',
+            lastName: '',
+            kitchenName: '',
+            license: '',
+            specialities: '',
+            password: '',
+            contact: '',
+            email: '',
+            streetAddress: '',
+            apartment: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            loggedInChef: res.data.chef,
+            redirect: true
+          });
+        }
+        
+      }).catch(function(error){console.log(error)})
     }
   }
 
@@ -320,5 +326,3 @@ function Step2(props) {
 
 
 export default ChefForm;
-
-
