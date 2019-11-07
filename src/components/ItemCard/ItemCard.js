@@ -30,18 +30,18 @@ export default class ItemCard extends Component {
 
     }
 
-    /*  orderItem = () => {
-         try {
-           return axios.post(`http://localhost:8080/api/order`,{
-               orderedQuantity:this.state.customerQty,
-               CustomerId:this.props.currentCustomer.id,
-               MenuId:this.props.currentMenu.id,
-               ChefId:this.props.currentChef.id
-           })
-         } catch (error) {
-           console.error(error)
-         }
-       }  */
+   /*  orderItem = () => {
+        try {
+          return axios.post(`http://localhost:8080/api/order`,{
+              orderedQuantity:this.state.customerQty,
+              CustomerId:this.props.currentCustomer.id,
+              MenuId:this.props.currentMenu.id,
+              ChefId:this.props.currentChef.id
+          })
+        } catch (error) {
+          console.error(error)
+        }
+      }  */
 
     orderItem = (event) => {
         event.preventDefault();
