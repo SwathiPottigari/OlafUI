@@ -39,43 +39,61 @@ class ChefForm extends React.Component {
   handleSubmit = event => {
     const { firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode } = this.state
     event.preventDefault()
-    const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`
-        axios.post(`${this.state.url}/api/signup`,
-            {
-                firstName: firstName,
-                lastName: lastName,
-                kitchenName: kitchenName,
-                license: license,
-                specialities: specialities,
-                password: password,
-                contact: contact,
-                email: email,
-                address: address,
-                user: "chef"
-            },
-            {
-                withCredentials: true
-            }
-        ).then(res => {
-            this.setState({
-                firstName: '',
-                lastName: '',
-                kitchenName: '',
-                license: '',
-                specialities: '',
-                password: '',
-                contact: '',
-                email: '',
-                streetAddress: '',
-                apartment: '',
-                city: '',
-                state: '',
-                zipCode: '',
-                loggedInChef: res.data.chef,
-                redirect: true
-            });
-        })
+    const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`;
+    const emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var phoneNumberRegEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    if (this.state.firstName === '') {
+      alert("Please enter you first name")
+    } else if (this.state.lastName === '') {
+      alert("Please enter you last name")
+    } else if (this.state.password.length < 8) {
+      alert("You password must be 8 or more characters")
+    } else if (emailRegEx.test(this.state.email) === false) {
+      alert("Please enter a valid email address")
+    } else if (phoneNumberRegEx.test(this.state.contact) === false) {
+      alert("Please enter a valid phone number in the correct format")
+    } else if (this.state.streetAddress === null || this.state.city === null || this.state.state === null || this.state.zipcode === null) {
+      alert("Please enter a valid address")
+    } else {
+
+      axios.post(`${this.state.url}/api/signup`,
+        {
+          firstName: firstName,
+          lastName: lastName,
+          kitchenName: kitchenName,
+          license: license,
+          specialities: specialities,
+          password: password,
+          contact: contact,
+          email: email,
+          address: address,
+          user: "chef"
+        },
+        {
+          withCredentials: true
+        }
+      ).then(res => {
+        this.setState({
+          firstName: '',
+          lastName: '',
+          kitchenName: '',
+          license: '',
+          specialities: '',
+          password: '',
+          contact: '',
+          email: '',
+          streetAddress: '',
+          apartment: '',
+          city: '',
+          state: '',
+          zipCode: '',
+          loggedInChef: res.data.chef,
+          redirect: true
+        });
+      })
+    }
   }
+
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -85,19 +103,12 @@ class ChefForm extends React.Component {
 
   _next = () => {
     let currentStep = this.state.currentStep
-    if (this.state.firstName === '') {
-      alert("Please enter you first name")
-    } else if (this.state.lastName === '') {
-      alert("Please enter you last name")
-    } else if (this.state.password.length < 8) {
-      alert("You password must be 8 or more characters")
-    } else {
-      currentStep = currentStep + 1
-      this.setState({
-        currentStep: currentStep
-      })
-    }
+    currentStep = currentStep + 1
+    this.setState({
+      currentStep: currentStep
+    })
   }
+
 
   _prev = () => {
     let currentStep = this.state.currentStep
@@ -139,7 +150,7 @@ class ChefForm extends React.Component {
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
         />
-     {this.renderRedirect()}
+        {this.renderRedirect()}
       </React.Fragment>
     );
   }

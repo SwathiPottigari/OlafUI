@@ -52,6 +52,7 @@ export default class Chef extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
+        console.log("this is changing")
         this.setState({
             [name]: value
         });
