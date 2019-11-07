@@ -41,7 +41,7 @@ class ChefForm extends React.Component {
     event.preventDefault()
     const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`;
     const emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var phoneNumberRegEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    var phoneNumberRegEx = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/;
     if (this.state.firstName === '') {
       alert("Please enter you first name")
     } else if (this.state.lastName === '') {
@@ -52,7 +52,7 @@ class ChefForm extends React.Component {
       alert("Please enter a valid email address")
     } else if (phoneNumberRegEx.test(this.state.contact) === false) {
       alert("Please enter a valid phone number in the correct format")
-    } else if (this.state.streetAddress === null || this.state.city === null || this.state.state === null || this.state.zipcode === null) {
+    } else if (this.state.streetAddress.length === 0 || this.state.city.length === 0 || this.state.state.length === 0 || this.state.zipCode.length === 0) {
       alert("Please enter a valid address")
     } else {
 
@@ -168,7 +168,8 @@ function Step1(props) {
 
         <form className="wizard-form text-center border border-light p-5" action="#!">
 
-          <p className="h4 mb-4">Chef Sign Up, 1 of 2</p>
+          <p className="h4 mb-4">Chef Sign Up</p>
+          <p className="step-number">Step 1 of 2</p>
 
           <div className="form-row mb-4">
             <div className="col">
@@ -221,7 +222,9 @@ function Step2(props) {
 
         <form className="wizard-form text-center border border-light p-5" action="#!">
 
-          <p className="h4 mb-4">Chef Sign Up, 2 of 2</p>
+          <p className="h4 mb-4">Chef Sign Up</p>
+          <p className="step-number">Step 2 of 2</p>
+
 
           <input type="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={props.contact} onChange={props.handleChange} className="form-control" placeholder="Mobile Number" />
           <small id="defaultRegisterFormPasswordHelpBlock" className="form-text float-left ml-2 mb-2 text-muted">
