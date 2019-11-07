@@ -65,9 +65,7 @@ export default class ItemCard extends Component {
                     </div>
                     <div className="list-content">
                         <h2>{this.props.currentChef.kitchenName}</h2>
-                        <span className="list-meta">
-                            <span className="list-meta-item"> 2016</span>
-                        </span>
+                        
 
                     <h5 class="card-header white-text text-left">
                         <span className="cuisine"><strong>{this.props.currentMenu.cuisine}</strong></span>

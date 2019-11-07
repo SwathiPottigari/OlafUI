@@ -86,6 +86,9 @@ export default class NavBar extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/user">User Dashboard</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"></i></a>
+                            </li>
                             <li className="nav-item" hidden={this.state.isHidden}>
                                 <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
                             </li>
