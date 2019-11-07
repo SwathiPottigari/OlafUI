@@ -8,7 +8,8 @@ export default class ItemCard extends Component {
 
     state = {
         result: null,
-        customerQty:null
+        customerQty:1,
+        childOrderItems:{}
     };
 
     handleChange = event => {
@@ -23,10 +24,15 @@ export default class ItemCard extends Component {
         console.log("props in itemcard",this.props)
     }
 
+    setChildOrderItems=(val)=>{
+        this.state.childOrderItems=val
+        console.log("Value of obj-",this.state.childOrderItems)
+        
+    }
 
-    orderItem = () => {
+   /*  orderItem = () => {
         try {
-          return axios.post(`http://localhost:8080/api/order`,{
+          return axios.post(`https://olafapi.herokuapp.com/api/order`,{
               orderedQuantity:this.state.customerQty,
               CustomerId:this.props.currentCustomer.id,
               MenuId:this.props.currentMenu.id,
@@ -35,7 +41,20 @@ export default class ItemCard extends Component {
         } catch (error) {
           console.error(error)
         }
-      } 
+      }  */
+
+      orderItem = (event)=>{
+    event.preventDefault();
+          let objOrder = {}
+          objOrder.orderedQuantity = this.state.customerQty
+          objOrder.CustomerId = this.props.currentCustomer.id
+          objOrder.MenuId = this.props.currentMenu.id
+          objOrder.ChefId = this.props.currentChef.id
+          console.log("object order is ",objOrder)
+        this.setChildOrderItems(objOrder)
+        console.log(this.state.childOrderItems)
+        this.props.setCurrentOrder(this.state.childOrderItems)
+      }
 
     render() {
         return (
@@ -75,7 +94,7 @@ export default class ItemCard extends Component {
                              <form className="formItems">
                                 <div className="card-details-form">
                                     <label className="card-details">Servings</label>
-                                    <select name="cutomerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
+                                    <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
                                         <option default>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -89,7 +108,7 @@ export default class ItemCard extends Component {
                                     </select>
 
                                 </div>
-                                <button onClick={this.orderItem} data-toggle="modal" data-target="#orderItemModal" className="btn btn-primary float-right my-4" type="submit">Order Now</button>
+                                <button onClick={this.orderItem}  className="btn btn-primary float-right my-4" type="submit">Order Now</button>
                             </form>
                     
                     </div>
