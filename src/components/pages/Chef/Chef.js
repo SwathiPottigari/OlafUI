@@ -29,6 +29,16 @@ export default class Chef extends Component {
         imageURL: ''
     };
 
+    removeDish = (id) => {
+        let setVariable = this;
+        axios.delete(this.state.url + "/api/removeDish/" + id).then(function (results) {
+            setVariable.setState({ redirect: true });
+            setVariable.readSessions();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+
     componentDidMount() {        
         this.readSessions();
     }
@@ -36,9 +46,6 @@ export default class Chef extends Component {
     readSessions = () => {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             this.setState({ loggedInUser: res.data.user });
-
-            // console.log("check",this.state.loggedInUser)
-
             let variable = this;
             axios.get(this.state.url + '/api/menuList/' + this.state.loggedInUser.id)
                 .then(function (results) {
@@ -58,7 +65,6 @@ export default class Chef extends Component {
     };
 
     handleFormSubmit = event => {
-        console.log("Submit clicked");
         event.preventDefault();
         let sessionVariable = this;
         this.setState ({uploadImage: false})
@@ -73,6 +79,7 @@ export default class Chef extends Component {
             description: this.state.description,
             imageURL:this.state.imageURL
         }).then(function (results) {
+            console.log(results)
             sessionVariable.readSessions();
         }).catch(function (error) {
             console.log(error);
@@ -270,8 +277,9 @@ export default class Chef extends Component {
                                 key={element.id}
                                 description={element.description}
                                 quantity={element.quantity}
+                                /* readSessions={this.readSessions()} */
                                 imageURL={element.imageURL}
-                                // removeDish={this.removeDish}
+                                removeDish={this.removeDish}
                             />)}
                         </Col>
                     </Row>

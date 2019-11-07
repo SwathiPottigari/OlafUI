@@ -12,12 +12,22 @@ export default class User extends Component {
     state = {
         url: "http://localhost:8080",
         loggedInUser:null,
-        currentCustomer:null
+        currentCustomer:null,
+        userCart:null
     }
+
+    setUserCart=(val)=>{
+        this.setState({
+            userCart:val
+        })
+    }
+
 
     componentDidMount(){
         this.readSessions();
     }
+
+
     readSessions = () => {
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             this.setState({ loggedInUser: res.data.user });
@@ -33,13 +43,21 @@ export default class User extends Component {
     }
 
     render() {
+        console.log("shopping cart ", this.state.userCart)
         return (
             <div className="user-dash">
                 <NavBar  currentCustomer = {this.state.currentCustomer}/>
                 <Container fluid>
+<<<<<<< HEAD
                    <Map currentCustomer = {this.state.currentCustomer}/>
+=======
+                   <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
+                {/* <ChefItemCard /> */}
+>>>>>>> 9d63914a794fa4811d7bec6410bee2dd5ccfa3c5
                 </Container>
             </div>
         )
+
     }
+    
 }
