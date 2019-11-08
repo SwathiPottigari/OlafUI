@@ -66,7 +66,7 @@ export default class ItemCard extends Component {
                         <h5 class="card-header white-text text-left">
                             <span className="cuisine"><strong>{this.props.currentMenu.cuisine}</strong></span>
                         </h5>
-                        <img className="itemCardImage" src={this.props.currentMenu.imageURL} alt={this.props.currentMenu.dish} />
+                        <img className="itemCardImage" src={this.props.currentMenu.imageURL ? this.props.currentMenu.imageURL: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.currentMenu.dish} />
                     </div>
                     <div className="list-content">
                         <h2 className="dish-name">{this.props.currentMenu.dish}</h2>

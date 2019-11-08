@@ -26,7 +26,7 @@ export default class Chef extends Component {
         loggedInUser: '',
         description: '',
         uploadImage: false,
-        imageURL: ''
+        imageURL: '',
     };
 
     removeDish = (id) => {
@@ -289,6 +289,7 @@ export default class Chef extends Component {
                                 description={element.description}
                                 quantity={element.quantity}
                                 imageURL={element.imageURL}
+                                uploadImage={element.uploadImage}
                                 removeDish={this.removeDish}
                             />)}
                         </Col>

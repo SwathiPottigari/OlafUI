@@ -42,6 +42,7 @@ a.text-black:focus, a.text-black:hover {
     border-radius: 2px;
     transition: all .2s ease-in-out;
     height: auto;
+    margin-top: 0px !important;
 }
 
 .card-header {
