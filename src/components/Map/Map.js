@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import Jumbotron from "../Jumbotron/Jumbotron";
 import Row from '../Row/Row';
-import Col from '../Col/Col';
-import "./Map.css";
+import './Map.css';
+import Select from '../../components/Select/Select';
 import {
   GoogleMap,
   Marker,
@@ -83,18 +83,19 @@ class Map extends Component {
     this.setState({
       currentOrder: this.state.temp
     })
-    this.props.setShoppingCart(this.state.currentOrder)
+    this.props.setShoppingCart(value)
   }
 
   render() {
     console.log("I am master ", this.state.currentChef)
     console.log("I am master ", this.state.currentMenu)
-    console.log("I am current Customer ", this.props.currentCustomer)
-    console.log("I am current order from Map ", this.state.currentOrder)
+    console.log("I am current Customer ",this.props.currentCustomer)
+    console.log("i am each order", this.state.temp)
+    console.log("I am current order from User ", this.state.currentOrder)
     return (
       <Row>
-        <Col size="md-6">
-          <div style={{ width: "100%", height: "85vh" }}>
+        <div className="col-xs-12 col-md-6 col-xl-6">
+          <div className="map-container">
 
             {this.state.location && this.state.onlineChef ? (<MapWithAMarker
               location={this.state.location}
@@ -120,25 +121,20 @@ class Map extends Component {
                   <h5 className="text-secondary">Searching for active Chefs...</h5>
                 </div>
               )}
-            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div className="source">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
-        </Col>
-        <Col size="md-6">
-          <Jumbotron><h3>Current Choices</h3></Jumbotron>
+        </div>
+        <div className="col-xs-12 col-md-6 col-xl-6">
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer={this.props.currentCustomer} setCurrentOrder={this.setCurrentOrder} />)
+                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer} key={item.id} setCurrentOrder={this.setCurrentOrder}/>)
             })
           ) : ("no food to display")
           )
-            : (
-              <div className="text-center loading">
-                <h5 className="text-secondary">Click a carrot to see whats cooking!</h5>
-              </div>
-            )
+            : (<Select />)
           }
-        </Col>
+        </div>
       </Row>
     )
   }
