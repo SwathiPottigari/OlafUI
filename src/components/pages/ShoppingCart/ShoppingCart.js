@@ -46,6 +46,7 @@ export default class User extends Component {
     }
 
     render() {
+        console.log("Store-",this.props.cartvalue);
         return (
             <div className="user-dash">
                 {this.cartNavbar()}

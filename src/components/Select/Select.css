@@ -1,0 +1,66 @@
+.welcome-page {
+    background: linear-gradient(45deg, #ff9e2e, #d35400);
+    height: 100%;
+    width: 100%;
+    color: #eee;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 14px;
+    font-size: .9rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.page-info-content {
+    margin-top: 25px;
+    -webkit-flex-flow: column;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.welcome-page-title {
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: .15rem;
+    padding-bottom: .5rem;
+    font-size: 5rem;
+}
+
+.welcome-page-container {
+    padding-top: 3rem;
+    text-align: center;
+
+}
+.subheading {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    .welcome-page {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100px;
+        border-radius: 0px;
+    }
+    .page-info-content {
+        width: 100%;
+        height: auto;
+    }
+    
+}

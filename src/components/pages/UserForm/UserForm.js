@@ -17,6 +17,12 @@ export default class UserForm extends Component {
         loggedInUser: '',
         redirect: false,
         url: "http://localhost:8080",
+        isFirstNameError: false,
+        isLastNameError: false,
+        isPhoneNumberError: false,
+        isEmailError: false,
+        isPasswordError: false,
+
     };
 
     handleInputChange = event => {
@@ -30,16 +36,17 @@ export default class UserForm extends Component {
         event.preventDefault();
         const emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var phoneNumberRegEx = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/;
+        this.setState({isFirstNameError: false, isLastNameError: false, isPhoneNumberError: false, isEmailError: false, isPasswordError: false}) 
         if (this.state.firstName === '') {
-            alert("Please enter you first name")
+            this.setState({isFirstNameError: true});
         } else if (this.state.lastName === '') {
-            alert("Please enter you last name")
-        } else if (emailRegEx.test(this.state.email) === false) {
-            alert("Please enter a valid email address")
+            this.setState({isLastNameError: true});
         } else if (phoneNumberRegEx.test(this.state.phoneNumber) === false) {
-            alert("Please enter a valid phone number in the correct format")
+            this.setState({isPhoneNumberError: true});
+        } else if (emailRegEx.test(this.state.email) === false) {
+            this.setState({isEmailError: true});
         } else if (this.state.password.length < 8) {
-            alert("You password must be 8 or more characters")
+            this.setState({isPasswordError: true});
         } else {
 
             axios.post(`${this.state.url}/api/signup`,
@@ -97,19 +104,19 @@ export default class UserForm extends Component {
                                 <input
                                     type="text"
                                     required
-                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" className="form-control" />
+                                    name="firstName" value={this.state.firstName} onChange={this.handleInputChange} placeholder="First name" className={this.state.isFirstNameError ? "form-control error": "form-control"} />
                             </div>
                             <div className="col">
-                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" className="form-control" />
+                                <input type="text" required name="lastName" value={this.state.lastName} onChange={this.handleInputChange} placeholder="Last name" className={this.state.isLastNameError ? "form-control error": "form-control"} />
                             </div>
                         </div>
 
-                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} className="form-control" placeholder="Mobile Number" />
+                        <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value={this.state.phoneNumber} onChange={this.handleInputChange} className={this.state.isPhoneNumberError ? "form-control error": "form-control"} placeholder="Mobile Number" />
                         <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
                             Format: 555-555-5555</small>
-                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" placeholder="E-mail" />
+                        <input type="email" required name="email" value={this.state.email} onChange={this.handleInputChange} className={this.state.isEmailError ? "form-control error": "form-control"} placeholder="E-mail" />
                         <br />
-                        <input name="password" minLength="8" required type="password" className="form-control" placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
+                        <input name="password" minLength="8" required type="password" className={this.state.isPasswordError ? "form-control error": "form-control"} placeholder="Password" onChange={this.handleInputChange} value={this.state.password} />
                         <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
                             At least 8 characters</small>
 
