@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 
 export default class NavBar extends Component {
@@ -17,19 +18,17 @@ export default class NavBar extends Component {
             isHidden: false,
             logoutHidden: true,
             url: "http://localhost:8080",
-            userName: ""
+            userName: "",
+            redirect:false
         };
     }
 
     // Adds an event listener when the component is mount.
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-        console.log("navbar", this.props.userId)
         let setVariable = this;
-        axios.get(this.state.url + "/api/user/" + this.props.userId + "/" + this.props.user).then(
-            function (results) {
-                console.log("user details")
-                console.log(results.data[0].firstName)
+        axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
+            function(results){
                 setVariable.setState({
                     userName: results.data[0].firstName
                 })
@@ -61,8 +60,25 @@ export default class NavBar extends Component {
         this.setState({ currentUser: this.props.currentCustomer })
     }
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
+    }
+
+    logout=()=>{
+        this.setState({
+            redirect: true
+        })
+        localStorage.clear();
+        axios.get(this.state.url+"/api/logout").then(function(results){
+            console.log("successfully logged out");
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
+    
     render() {
-        console.log(this.props.currentCustomer)
         return (
             <div>
                 <nav
@@ -77,7 +93,8 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Logout<div className="current-user">{this.state.userName}</div></a>
+                                <h4 onClick={this.logout}>Logout {this.state.userName}</h4>
+                                {this.renderRedirect()}
                             </li>
                         </ul>
                     </div>
