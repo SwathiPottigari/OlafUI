@@ -14,22 +14,23 @@ export default class User extends Component {
     state = {
         url: "http://localhost:8080",
         loggedInUser:'',
-        currentCustomer:null,
-        /* userCart:[] */
+        currentCustomer:{},
+        cartItems:[]
     }
 
-//     setUserCart=(val)=>{
-//         console.log("Before cseeting userCart",val);
-//         this.setState({
-//             userCart:val
-//         })
-//    console.log("Before sending to app");
-//    console.log(this.state.userCart);
-//         this.props.storeContent(this.state.userCart)
-//     }
 
     componentDidMount(){
         this.readSessions();
+        if (localStorage.getItem("Cart") === null) {
+            this.setState({
+                cartItems: []
+            })
+        } else {
+            this.setState({
+                cartItems: JSON.parse(localStorage.getItem("Cart"))
+            })
+
+        }
     }
 
 
@@ -37,12 +38,19 @@ export default class User extends Component {
         let setVariable=this;
         axios.get(`${this.state.url}/api/readsessions`, { withCredentials: true }).then(res => {
             setVariable.setState({ loggedInUser: res.data.user });
+            axios.get(this.state.url + "/api/user/" + this.state.loggedInUser.id +"/customer").then(
+                function(results){
+                    setVariable.setState({
+                        currentCustomer: results.data[0]
+                    })
+    
+                })
         }).catch(function(error){console.log(error)})
     }
 
     userNavbar=()=>{
         if(this.state.loggedInUser.id){
-        return  <UserNavBar userId={this.state.loggedInUser.id} user="customer"/>
+        return  <UserNavBar userId={this.state.loggedInUser.id} user="customer" items={this.state.cartItems.length}/>
         }
     }
 
@@ -52,7 +60,7 @@ export default class User extends Component {
             <div className="user-dash">
                {this.userNavbar()}
                 <Container fluid>
-                   <Map currentCustomer = {this.state.loggedInUser}  setShoppingCart= {this.props.storeContent} />
+                   <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.props.storeContent} />
                 </Container>
                 <AddItemModal />
             </div>
