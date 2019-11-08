@@ -16,9 +16,6 @@ export default class UserForm extends Component {
         user: "customer",
         loggedInUser: '',
         redirect: false,
-<<<<<<< HEAD
-        url: "http://localhost:8080",
-=======
         url: "https://olafapi.herokuapp.com",
         isFirstNameError: false,
         isLastNameError: false,
@@ -26,7 +23,6 @@ export default class UserForm extends Component {
         isEmailError: false,
         isPasswordError: false,
 
->>>>>>> 788e7f24a53d2ce793ecf2ef04353d93c9a5b8f6
     };
 
     handleInputChange = event => {
