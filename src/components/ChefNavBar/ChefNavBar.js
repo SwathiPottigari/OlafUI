@@ -27,15 +27,8 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         let setVariable = this;
-<<<<<<< HEAD
         axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
             function(results){
-=======
-        axios.get(this.state.url + "/api/user/" + this.props.userId + "/" + this.props.user).then(
-            function (results) {
-                console.log("user details")
-                console.log(results.data[0].firstName)
->>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
                 setVariable.setState({
                     userName: results.data[0].firstName
                 })
@@ -67,10 +60,9 @@ export default class NavBar extends Component {
         this.setState({ currentUser: this.props.currentCustomer })
     }
 
-<<<<<<< HEAD
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/user' />
+            return <Redirect to='/' />
         }
     }
 
@@ -86,8 +78,6 @@ export default class NavBar extends Component {
         });
     }
     
-=======
->>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
     render() {
         return (
             <div>
@@ -103,12 +93,8 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-<<<<<<< HEAD
                                 <h4 onClick={this.logout}>Logout {this.state.userName}</h4>
                                 {this.renderRedirect()}
-=======
-                                <a className="nav-link" href="/">Logout<div className="current-user">{this.state.userName}</div></a>
->>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
                             </li>
                         </ul>
                     </div>

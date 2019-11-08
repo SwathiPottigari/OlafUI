@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 
 export default class NavBar extends Component {
@@ -17,7 +18,8 @@ export default class NavBar extends Component {
             isHidden: false,
             logoutHidden: true,
             url: "http://localhost:8080",
-            userName: ""
+            userName: "",
+            redirect:false
         };
     }
 
@@ -61,6 +63,23 @@ export default class NavBar extends Component {
         console.log({currentUser:this.props.currentCustomer})
     }
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
+    }
+
+    logout=()=>{
+        this.setState({
+            redirect: true
+        })
+        localStorage.clear();
+        axios.get(this.state.url+"/api/logout").then(function(results){
+            console.log("successfully logged out");
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
     render() {
         return (
             <div>
@@ -79,7 +98,8 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"> {this.props.items}</i></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
+                            <h4 onClick={this.logout}>Logout {this.state.userName}</h4>
+                                {this.renderRedirect()}
                             </li>
                         </ul>
                     </div>
