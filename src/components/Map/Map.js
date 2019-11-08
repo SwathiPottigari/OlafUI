@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { Component } from "react";
 import ItemCard from "../ItemCard/ItemCard";
+import Jumbotron from "../Jumbotron/Jumbotron";
 import Row from '../Row/Row';
 import Col from '../Col/Col';
+import "./Map.css";
 import {
   GoogleMap,
   Marker,
@@ -19,8 +21,8 @@ class Map extends Component {
     onlineChef: null,
     currentChef: null,
     currentMenu: null,
-    currentOrder:[],
-    temp:[]
+    currentOrder: [],
+    temp: []
   }
 
   getOnlineChef = () => {
@@ -72,14 +74,14 @@ class Map extends Component {
     })
   }
 
-  updateArray=(value)=>{
+  updateArray = (value) => {
     this.state.temp.push(value);
   }
-  
-  setCurrentOrder = (value)=>{
+
+  setCurrentOrder = (value) => {
     this.updateArray(value);
     this.setState({
-      currentOrder:this.state.temp
+      currentOrder: this.state.temp
     })
     this.props.setShoppingCart(this.state.currentOrder)
   }
@@ -87,14 +89,14 @@ class Map extends Component {
   render() {
     console.log("I am master ", this.state.currentChef)
     console.log("I am master ", this.state.currentMenu)
-    console.log("I am current Customer ",this.props.currentCustomer)
+    console.log("I am current Customer ", this.props.currentCustomer)
     console.log("I am current order from Map ", this.state.currentOrder)
     return (
       <Row>
         <Col size="md-6">
           <div style={{ width: "100%", height: "85vh" }}>
 
-            {this.state.location &&this.state.onlineChef? (<MapWithAMarker
+            {this.state.location && this.state.onlineChef ? (<MapWithAMarker
               location={this.state.location}
               onlineChef={this.state.onlineChef}
               currentMenu={this.state.currentMenu}
@@ -111,20 +113,30 @@ class Map extends Component {
               containerElement={<div style={{ height: `100%` }} />}
               mapElement={<div style={{ height: `100%` }} />}
             />) : (
-                <h1>LOADING.......</h1>
+                <div className="text-center map-loading">
+                  <div className="spinner-border text-secondary" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                  <h5 className="text-secondary">Searching for active Chefs...</h5>
+                </div>
               )}
             <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </Col>
         <Col size="md-6">
+          <Jumbotron><h3>Current Choices</h3></Jumbotron>
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer} setCurrentOrder={this.setCurrentOrder}/>)
+                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer={this.props.currentCustomer} setCurrentOrder={this.setCurrentOrder} />)
             })
           ) : ("no food to display")
           )
-            : (<h1>select...</h1>)
+            : (
+              <div className="text-center loading">
+                <h5 className="text-secondary">Click a carrot to see whats cooking!</h5>
+              </div>
+            )
           }
         </Col>
       </Row>

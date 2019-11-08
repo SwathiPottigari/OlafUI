@@ -125,7 +125,6 @@ body {
 
 .jumbotron {
   margin-bottom: 0;
-  border-radius: 0;
 }
 
 .about-info { 
@@ -138,7 +137,7 @@ body {
   background: linear-gradient(to right, rgba(161,161,161,1) 0%, rgba(110,110,110,1) 25%, rgba(189,189,189,1) 66%, rgba(140,140,140,1) 90%, rgba(140,140,140,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1a1a1', endColorstr='#8c8c8c', GradientType=1 );
   padding: 6rem 2rem 5rem 2rem;
-  
+  border-radius: 0;
 }
 
 .dark {

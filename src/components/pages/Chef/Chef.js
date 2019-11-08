@@ -123,8 +123,8 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
-                            <Jumbotron><h3 className="dash-head">Create Dish</h3></Jumbotron>
-                            <form>
+                            <Jumbotron><h3>Create Dish</h3></Jumbotron>
+                            <form className="create-form">
                                 <Input
                                     value={this.state.dish}
                                     onChange={this.handleInputChange}
