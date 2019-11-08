@@ -7,12 +7,13 @@ import ShoppingCartItem from '../../ShoppingCartItem/ShoppingCartItem';
 import Row from '../../Row/Row';
 import OrderItemModal from '../../OrderItemModal/OrderItemModal';
 
-export default class User extends Component {
+export default class ShoppingCart extends Component {
 
     state = {
         url: "http://localhost:8080",
         loggedInUser: '',
-        cartItems: []
+        cartItems: [],
+        totalCost:null
     }
 
     submitOrder = () => {
@@ -25,6 +26,26 @@ export default class User extends Component {
         }
     }
 
+    
+
+    calcTotalCost = (val)=>{
+        console.log("val", val)
+        let newArray = val.map((item)=>{
+            return parseFloat(item.price) * parseInt(item.orderedQuantity)
+            
+        })
+        console.log(newArray)
+        const arrSum = (newArray)  => newArray.reduce((a,b) => a + b, 0)
+       
+        let cost = arrSum(newArray)
+        console.log("cost",cost)
+        // arrSum([20, 10, 5, 10]) -> 45 */
+        this.setState({
+            totalCost:cost
+        })
+
+    } 
+
     componentDidMount() {
         this.readSessions();
         if (localStorage.getItem("Cart") === null) {
@@ -34,8 +55,14 @@ export default class User extends Component {
         } else {
             this.setState({
                 cartItems: JSON.parse(localStorage.getItem("Cart"))
-            })
+            }
+            )
+        }
+    }
 
+    componentDidUpdate(prevProps,prevState) {
+        if (this.state.cartItems !== prevState.cartItems){
+            this.calcTotalCost(this.state.cartItems)
         }
     }
 
@@ -54,6 +81,8 @@ export default class User extends Component {
     }
 
     render() {
+        console.log("items in cart", this.state.cartItems)
+        console.log("total cost",this.state.totalCost)
         return (
             <div className="user-dash">
                 {this.cartNavbar()}
@@ -68,7 +97,7 @@ export default class User extends Component {
                                         {this.state.cartItems.map(element => <ShoppingCartItem price={element.price} img={element.img} dish={element.dish} orderedQuantity={element.orderedQuantity}/>)}
                                         <div class='total'>
                                             <p class="mr-4">TOTAL</p>
-                                            <p>$435.55</p>
+                                            <p>${this.state.totalCost}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +106,7 @@ export default class User extends Component {
                                         <h2 className="total-title">Olaf<i class="fas fa-carrot"></i></h2>
                                         <div className="total-container">
                                             <h3>ORDER TOTAL:</h3>
-                                            <h3>$5.99</h3>
+                                            <h3>${this.state.totalCost}</h3>
                                         </div>
                                         <button onClick={this.submitOrder} className='pay-btn' data-toggle="modal" data-target="#orderItemModal">Checkout</button>
 
