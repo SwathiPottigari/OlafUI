@@ -86,8 +86,7 @@ class Map extends Component {
     this.props.setShoppingCart(value)
   }
 
-  render() {
-    localStorage.setItem("Test","Hello");  
+  render() { 
     return (
       <Row>
         <div className="col-xs-12 col-md-6 col-xl-6">
