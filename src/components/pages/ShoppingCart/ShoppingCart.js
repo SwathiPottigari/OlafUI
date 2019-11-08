@@ -94,7 +94,7 @@ export default class ShoppingCart extends Component {
                                     <div className='order-info-content'>
                                         <h2>Order Summary</h2>
                                         <div class='line'></div>
-                                        {this.state.cartItems.map(element => <ShoppingCartItem cartItems={this.state.cartItems}/>)}
+                                        {this.state.cartItems.map(element => <ShoppingCartItem price={element.price} img={element.img} dish={element.dish} orderedQuantity={element.orderedQuantity}/>)}
                                         <div class='total'>
                                             <p class="mr-4">TOTAL</p>
                                             <p>${this.state.totalCost}</p>
