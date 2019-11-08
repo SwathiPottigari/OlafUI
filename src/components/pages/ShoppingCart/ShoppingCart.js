@@ -106,7 +106,7 @@ export default class ShoppingCart extends Component {
                                         <h2 className="total-title">Olaf<i class="fas fa-carrot"></i></h2>
                                         <div className="total-container">
                                             <h3>ORDER TOTAL:</h3>
-                                            <h3>$5.99</h3>
+                                            <h3>${this.state.totalCost}</h3>
                                         </div>
                                         <button onClick={this.submitOrder} className='pay-btn' data-toggle="modal" data-target="#orderItemModal">Checkout</button>
 
