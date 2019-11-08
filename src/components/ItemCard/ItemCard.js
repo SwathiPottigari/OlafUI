@@ -58,7 +58,7 @@ export default class ItemCard extends Component {
 
     render() {
         return (
-            <div className="col-xs-6">
+            <div className="col-xs-6" id={this.props.currentMenu.id}>
                 <div className="list mb-2">
                     <div className="list-header">
                         <img src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />

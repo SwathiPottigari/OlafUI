@@ -14,14 +14,18 @@ export default class User extends Component {
         url: "http://localhost:8080",
         loggedInUser:'',
         currentCustomer:null,
-        userCart:null
+        // userCart:[]
     }
 
-    setUserCart=(val)=>{
-        this.setState({
-            userCart:val
-        })
-    }
+//     setUserCart=(val)=>{
+//         console.log("Before cseeting userCart",val);
+//         this.setState({
+//             userCart:val
+//         })
+//    console.log("Before sending to app");
+//    console.log(this.state.userCart);
+//         this.props.storeContent(this.state.userCart)
+//     }
 
     componentDidMount(){
         this.readSessions();
@@ -42,12 +46,12 @@ export default class User extends Component {
     }
 
     render() {
-        console.log("shopping cart ", this.state.userCart)
+        // console.log("user cart ", this.state.userCart)
         return (
             <div className="user-dash">
                {this.userNavbar()}
                 <Container fluid>
-                   <Map currentCustomer = {this.state.currentCustomer}  setShoppingCart= {this.setUserCart} />
+                   <Map currentCustomer = {this.state.loggedInUser}  setShoppingCart= {this.props.storeContent} />
                 </Container>
             </div>
         )
