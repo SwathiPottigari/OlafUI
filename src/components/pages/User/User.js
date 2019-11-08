@@ -12,7 +12,7 @@ import AddItemModal from '../../AddItemModal/AddItemModal';
 export default class User extends Component {
 
     state = {
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser:'',
         currentCustomer:{},
         cartItems:[]
