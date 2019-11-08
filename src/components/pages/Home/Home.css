@@ -195,6 +195,10 @@ h3.heading {
   z-index: -1;
 }
 
+.contact {
+  text-shadow: .1rem .1rem .5rem #000000;
+}
+
 hr.socket {
   width: 100%;
   margin-top: 3rem;

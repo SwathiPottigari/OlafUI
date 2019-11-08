@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
@@ -93,7 +92,7 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <h4 onClick={this.logout}>Logout {this.state.userName}</h4>
+                                <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>
                                 {this.renderRedirect()}
                             </li>
                         </ul>
