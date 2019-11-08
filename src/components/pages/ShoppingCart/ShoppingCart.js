@@ -12,7 +12,8 @@ export default class ShoppingCart extends Component {
     state = {
         url: "http://localhost:8080",
         loggedInUser: '',
-        cartItems: []
+        cartItems: [],
+        totalCost:null
     }
 
     submitOrder = () => {
@@ -27,6 +28,15 @@ export default class ShoppingCart extends Component {
             console.error(error)
         }
     }
+
+    calcTotalCost = (val)=>{
+        let newarry = val.filter((item)=>{
+            /* item.price */
+        })
+
+       /*  const arrSum = newArray => newArray.reduce((a,b) => a + b, 0)
+        // arrSum([20, 10, 5, 10]) -> 45 */
+    } 
 
     componentDidMount() {
         this.readSessions();
@@ -57,6 +67,7 @@ export default class ShoppingCart extends Component {
     }
 
     render() {
+        console.log("items in cart", this.state.cartItems)
         return (
             <div className="user-dash">
                 {this.cartNavbar()}
