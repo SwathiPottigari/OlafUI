@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { Component } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import Row from '../Row/Row';
-import Col from '../Col/Col';
+import './Map.css';
+import Select from '../../components/Select/Select';
 import {
   GoogleMap,
   Marker,
@@ -91,8 +92,8 @@ class Map extends Component {
     console.log("I am current order from Map ", this.state.currentOrder)
     return (
       <Row>
-        <Col size="md-6">
-          <div style={{ width: "100%", height: "85vh" }}>
+        <div className="col-xs-12 col-md-6 col-xl-6">
+          <div className="map-container">
 
             {this.state.location &&this.state.onlineChef? (<MapWithAMarker
               location={this.state.location}
@@ -113,10 +114,10 @@ class Map extends Component {
             />) : (
                 <h1>LOADING.......</h1>
               )}
-            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div className="source">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
-        </Col>
-        <Col size="md-6">
+        </div>
+        <div className="col-xs-12 col-md-6 col-xl-6">
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
@@ -124,9 +125,9 @@ class Map extends Component {
             })
           ) : ("no food to display")
           )
-            : (<h1>select...</h1>)
+            : (<Select />)
           }
-        </Col>
+        </div>
       </Row>
     )
   }

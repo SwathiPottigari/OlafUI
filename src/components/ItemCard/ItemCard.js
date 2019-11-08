@@ -4,6 +4,7 @@ import "./ItemCard.css";
 import "../OrderItemModal/OrderItemModal.js"
 import axios from 'axios';
 
+
 export default class ItemCard extends Component {
 
     state = {
@@ -29,6 +30,7 @@ export default class ItemCard extends Component {
         console.log("Value of obj-", this.state.childOrderItems)
 
     }
+    
 
    /*  orderItem = () => {
         try {
@@ -77,7 +79,7 @@ export default class ItemCard extends Component {
                                 </div>
                                 <div className="list-meta-serving">
                                     <span className="list-meta">
-                                        <span className="list-meta-serving">Servings: {this.props.currentMenu.quantity}</span>
+                                        <span className="list-meta-serving">{this.props.currentMenu.servingUnit}: {this.props.currentMenu.quantity}</span>
                                     </span>
                                 </div>
                             </div>
@@ -86,7 +88,7 @@ export default class ItemCard extends Component {
                         <p className="ingredients">Ingredients: <span className="ingredients list-meta">{this.props.currentMenu.ingredients}</span></p>
                         <p className="ingredients">Description: <span className="ingredients list-meta">{this.props.currentMenu.description}</span></p>
                         <div className="card-details-form">
-                            <label className="card-details">Servings</label>
+                            <label className="card-details">{this.props.currentMenu.servingUnit}</label>
                             <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
                                 <option default>1</option>
                                 <option>2</option>
@@ -101,7 +103,7 @@ export default class ItemCard extends Component {
                             </select>
 
                         </div>
-                        <button onClick={this.orderItem} className="btn btn-primary order-button my-4" type="submit">Order Now</button>
+                        <button onClick={this.orderItem} data-toggle="modal" data-target="#AddItemModal" className="btn btn-primary order-button my-4" type="submit">Order Now</button>
 
                     </div>
                 </div>

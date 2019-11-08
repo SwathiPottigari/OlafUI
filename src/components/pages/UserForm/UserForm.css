@@ -22,3 +22,7 @@
     margin-bottom: 0px;
 }
 
+.error {
+    border: solid #d35400 2px;
+}
+

@@ -23,6 +23,18 @@ a.text-black:focus, a.text-black:hover {
     color: #FFA92C;
 }
 
+.card-details {
+    padding: 0.5rem 0px !important;
+    margin: 0px !important;
+    width: 50%;
+}
+
+.card-details-form {
+    padding: 0.5rem 0px !important;
+    margin: 0.5rem !important;
+    width: 50%;
+}
+
 .card-list {
     display: block;
     background-color: rgba(255, 255, 255, .8);
@@ -37,7 +49,7 @@ a.text-black:focus, a.text-black:hover {
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: RGBA(255, 169, 44, 0.5);
+    background: linear-gradient(45deg, RGBA(255, 169, 44), transparent);
     color: #fff;
 }
 
@@ -59,13 +71,17 @@ a.text-black:focus, a.text-black:hover {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 .itemCardImage:hover {
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    z-index: 0;
+    -o-transform: scale(1.2, 1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
 }
 
 .list-header .list-header-image:after {
@@ -84,10 +100,10 @@ a.text-black:focus, a.text-black:hover {
     transform: rotate(45deg);
     opacity: 0;
     filter: alpha(opacity=0);
-    transition: all .8s;
-    -moz-transition: all .8s;
-    -webkit-transition: all .8s;
-    -o-transition: all .8s;
+    transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -o-transition: all .2s;
 }
 
 .list-content {
@@ -138,9 +154,9 @@ a.text-black:focus, a.text-black:hover {
     content: '';
 }
 
-.card-list:hover {
+/* .card-list:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
-}
+} */
 
 .order-button {
     position: absolute;
@@ -154,6 +170,13 @@ a.text-black:focus, a.text-black:hover {
     overflow: auto;
     margin-bottom: 0.5rem;
 }
+
+.ingredients-chef {
+    height: 50px;
+    overflow: auto;
+    margin-bottom: 0.5rem;
+}
+
 
 .card-details-form {
     position: absolute;

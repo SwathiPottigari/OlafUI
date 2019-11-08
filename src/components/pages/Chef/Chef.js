@@ -241,8 +241,8 @@ export default class Chef extends Component {
                                     <div className="col">
                                         <select name="servingUnit" onChange={this.handleInputChange} value={this.state.servingUnit} className="form-control browser-default custom-select">
                                             <option defaultValue>Unit Type</option>
-                                            <option value="servings">Servings</option>
-                                            <option value="pieces">Pieces</option>
+                                            <option value="Servings">Servings</option>
+                                            <option value="Pieces">Pieces</option>
                                         </select>
 
                                     </div>
