@@ -87,10 +87,7 @@ class Map extends Component {
   }
 
   render() {
-    console.log("I am master ", this.state.currentChef)
-    console.log("I am master ", this.state.currentMenu)
-    console.log("I am current Customer ", this.props.currentCustomer)
-    console.log("I am current order from Map ", this.state.currentOrder)
+    localStorage.setItem("Test","Hello");  
     return (
       <Row>
         <Col size="md-6">
