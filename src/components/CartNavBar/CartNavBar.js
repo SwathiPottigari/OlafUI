@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../NavBar/NavBar.css"
+// import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
 
@@ -81,7 +81,7 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/user">Keep Shopping</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout {this.state.userName}</a>
+                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
                             </li>
                         </ul>
                     </div>

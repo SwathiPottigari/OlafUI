@@ -123,7 +123,7 @@ export default class Chef extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-6">
-                            <Jumbotron><h3>Create Dish</h3></Jumbotron>
+                            <Jumbotron><h3>Create Menu Item</h3></Jumbotron>
                             <form className="create-form">
                                 <Input
                                     value={this.state.dish}
@@ -274,9 +274,9 @@ export default class Chef extends Component {
                         </Col>
                         <Col size="md-6">
                             <div>
-                                <Jumbotron><h3>Current Menu</h3></Jumbotron>
+                                <Jumbotron><h3>Your Current Menu</h3></Jumbotron>
                             </div>
-                            <div className="text-center toggle">{this.toggleSwitch()}</div>
+                            <div className="text-left toggle">{this.toggleSwitch()}</div>
                             {this.state.items.map(element => <ChefItemCard
                                 id={element.id}
                                 ingredients={element.ingredients}
