@@ -41,9 +41,18 @@
 
 .current-user {
   color: #FFA92C;
+  font-family: 'Pacifico', cursive;
   float: right;
-  font-style: italic;
   text-transform: capitalize;
+  padding-left: 0.3rem;
+}
+
+h6 {
+  color: #ffffff;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
 }
 
 @media (max-width: 767px) {
