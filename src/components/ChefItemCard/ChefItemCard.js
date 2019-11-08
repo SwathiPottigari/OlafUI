@@ -50,12 +50,8 @@ export default class ChefItemCard extends Component {
                             
                             <img className="itemCardImage"   src={this.props.imageURL ? this.props.imageURL: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.dish} />
                         </div>
-<<<<<<< HEAD
-                        <div className="list-content">
-=======
                         
                         <div className="list-content">                           
->>>>>>> 79778e4d6d649ac382b952b08c4ceefc42610cab
                             <h1></h1>
                             <span ref="DeleteButton" onClick={this.remove} id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
                             <h2 className="dish-name">{this.props.dish}</h2>
