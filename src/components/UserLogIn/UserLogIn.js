@@ -9,7 +9,7 @@ export default class UserLogIn extends Component {
         email: '',
         password: '',
         user: "customer",
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser: '',
         redirect: false
     };
