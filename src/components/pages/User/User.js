@@ -6,6 +6,7 @@ import Container from '../../Container/Container';
 import "./User.css";
 import axios from 'axios';
 import ItemCard from "../../ItemCard/ItemCard";
+import AddItemModal from '../../AddItemModal/AddItemModal';
 
 
 export default class User extends Component {
@@ -53,6 +54,7 @@ export default class User extends Component {
                 <Container fluid>
                    <Map currentCustomer = {this.state.loggedInUser}  setShoppingCart= {this.props.storeContent} />
                 </Container>
+                <AddItemModal />
             </div>
         )
 

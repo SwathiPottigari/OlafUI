@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: 'Open Sans', sans-serif;
     padding-top: 10px;
     background-color: #f3f5f6;
@@ -35,11 +35,7 @@ a.text-black:focus, a.text-black:hover {
     padding: 0px;
 }
 
-.card-details {
-    padding: 0.5rem 0px !important;
-    margin: 0px !important;
-    width: 50%;
-}
+
 .card-details-form {
     padding: 0.5rem 0px !important;
     margin: 0.5rem !important;
@@ -165,4 +161,4 @@ a.text-black:focus, a.text-black:hover {
         padding: 15px;
         clear: both;
     }
-}
+} */
