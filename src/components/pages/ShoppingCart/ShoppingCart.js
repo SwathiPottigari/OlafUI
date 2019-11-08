@@ -29,13 +29,24 @@ export default class ShoppingCart extends Component {
         }
     }
 
+    
+
     calcTotalCost = (val)=>{
-        let newarry = val.filter((item)=>{
-            /* item.price */
+        console.log("val", val)
+        let newArray = val.map((item)=>{
+            return parseFloat(item.price) * parseInt(item.orderedQuantity)
+            
+        })
+        console.log(newArray)
+        const arrSum = (newArray)  => newArray.reduce((a,b) => a + b, 0)
+       
+        let cost = arrSum(newArray)
+        console.log("cost",cost)
+        // arrSum([20, 10, 5, 10]) -> 45 */
+        this.setState({
+            totalCost:cost
         })
 
-       /*  const arrSum = newArray => newArray.reduce((a,b) => a + b, 0)
-        // arrSum([20, 10, 5, 10]) -> 45 */
     } 
 
     componentDidMount() {
@@ -47,8 +58,14 @@ export default class ShoppingCart extends Component {
         } else {
             this.setState({
                 cartItems: JSON.parse(localStorage.getItem("Cart"))
-            })
+            }
+            )
+        }
+    }
 
+    componentDidUpdate(prevProps,prevState) {
+        if (this.state.cartItems !== prevState.cartItems){
+            this.calcTotalCost(this.state.cartItems)
         }
     }
 
@@ -68,6 +85,7 @@ export default class ShoppingCart extends Component {
 
     render() {
         console.log("items in cart", this.state.cartItems)
+        console.log("total cost",this.state.totalCost)
         return (
             <div className="user-dash">
                 {this.cartNavbar()}
@@ -82,7 +100,7 @@ export default class ShoppingCart extends Component {
                                         {this.state.cartItems.map(element => <ShoppingCartItem cartItems={this.state.cartItems}/>)}
                                         <div class='total'>
                                             <p class="mr-4">TOTAL</p>
-                                            <p>$435.55</p>
+                                            <p>${this.state.totalCost}</p>
                                         </div>
                                     </div>
                                 </div>
