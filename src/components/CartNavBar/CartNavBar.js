@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import "./NavBar.css"
-import ChefLogIn from "../ChefLogIn/ChefLogIn";
-import UserLogIn from "../UserLogIn/UserLogIn";
 import classnames from "classnames";
+import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 
 export default class NavBar extends Component {
@@ -16,7 +15,10 @@ export default class NavBar extends Component {
             isChef: false,
             isUser: false,
             isHidden: false,
-            logoutHidden: true
+            logoutHidden: true,
+            url: "https://olafapi.herokuapp.com",
+            userName: "",
+            redirect:false
         };
     }
 
@@ -24,7 +26,19 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         console.log("navbar", this.props)
+        let setVariable = this;
+        axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
+            function(results){
+                console.log("user details")
+                console.log(results.data[0].firstName)
+                setVariable.setState({
+                    userName: results.data[0].firstName
+                })
 
+            }
+        ).catch(function(error){
+            console.log(error);
+        })
     }
 
     // Remove the event listener when the component is unmount.
@@ -45,24 +59,28 @@ export default class NavBar extends Component {
         });
     };
 
-    // state = {
-    //     isChef: false,
-    //     isUser: false,
-    //     isHidden: false,
-    //     logoutHidden: true
-    // }
-
-    getUserLoginForm = (e) => {
-        this.setState({ isUser: true })
+    setCurrentUser = ()=>{
+        this.setState({currentUser:this.props.currentCustomer})
     }
 
-    getChefLoginForm = (e) => {
-        this.setState({ isChef: true })
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
     }
 
-    setcurrentUser = () => {
-        this.setState({ currentUser: this.props.currentCustomer })
+    logout=()=>{
+        this.setState({
+            redirect: true
+        })
+        localStorage.clear();
+        axios.get(this.state.url+"/api/logout").then(function(results){
+            console.log("successfully logged out");
+        }).catch(function(error){
+            console.log(error);
+        });
     }
+
     render() {
         return (
             <div>
@@ -71,33 +89,25 @@ export default class NavBar extends Component {
                         "navbar--hidden": !this.state.visible
                     })}
                 >
-                    <a className="navbar-brand" href="/"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
+                    <a className="navbar-brand" href="#"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/user">Keep Shopping</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#about">About<span className="sr-only"></span></a>
+                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#contact">Contact<span className="sr-only"></span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" ref={btn => { this.btn = btn; }} onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
+                                <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>
+                                {this.renderRedirect()}
                             </li>
                         </ul>
-
                     </div>
                 </nav>
-                <ChefLogIn />
-                <UserLogIn />
             </div>
         )
     }

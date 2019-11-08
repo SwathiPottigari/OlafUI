@@ -9,37 +9,33 @@ export default class ToggleSwitch extends Component {
     super();
     this.state = {
       checked: false,
-      isOnline: false,
       message: ["Offline", "Online"],
-      url: "http://localhost:8080",
+      url: "https://olafapi.herokuapp.com",
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(checked) {
     this.setState({ checked });
+    this.goOnline();
   }
 
-  // handleInputChange = event => {
-  //     const { name, value } = event.target;
-  //     this.setState({
-  //         [name]: value
-  //     });
-  // };
+  
 
   componentDidMount() {
     let setVariable = this;
+    
     axios.get(this.state.url + "/api/onlineChef/" + this.props.chefId).then(function (results) {
-      console.log(results.data);
+      
       if (results.data.length === 0) {
         setVariable.setState({
-          isOnline: false
+          checked: false
         });
       }
       else {
         setVariable.setState({
-          isOnline: true
-        });
+          checked: true
+        });        
       }
     }).catch(function (error) {
       console.log(error);
@@ -47,23 +43,18 @@ export default class ToggleSwitch extends Component {
   }
 
 
-  goOnline = event => {
-    event.preventDefault();
-    let setVariable = this;
-    console.log(this.state.isOnline);
-    if (!this.state.isOnline) {
+  goOnline = () => {   
+    if (this.state.checked) {
       axios.post(this.state.url + "/api/makeAvailable/" + this.props.chefId).then(function (result) {
       }).catch(function (error) {
         console.log(error);
       });
-      setVariable.setState({ isOnline: true })
     }
     else {
       axios.delete(this.state.url + "/api/makeUnavailable/" + this.props.chefId).then(function (result) {
       }).catch(function (error) {
         console.log(error);
       });
-      setVariable.setState({ isOnline: false })
     }
   }
 
@@ -72,13 +63,13 @@ export default class ToggleSwitch extends Component {
       <div className="on-off">
 
         <label>
-              <Switch
+
+              <p>              <Switch
                 onChange={this.handleChange}
                 onClick={this.goOnline}
                 checked={this.state.checked}
                 className="react-switch"
-              />
-              <p>Your menu is <span>{this.state.checked ? 'online' : 'offline'}</span>.</p>
+              /> Your kitchen is currently <span>{this.state.checked ? 'OPEN' : 'CLOSED'}</span></p>
         </label>
 
       </div>

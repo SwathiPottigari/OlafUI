@@ -34,7 +34,7 @@ class Home extends Component {
                     <a href="/signup/user" className="btn btn-outline-light btn-lg">User</a>
                 </div>
 
-                <div className="about">
+                <div id="about" className="about">
 
                     <div className="row dark text-center jumbotron about-info">
 
@@ -71,7 +71,7 @@ class Home extends Component {
 
                 </div>
 
-                <div className="contact">
+                <div id="contact" className="contact">
 
                     <div className="fixed-background">
 
@@ -83,22 +83,21 @@ class Home extends Component {
                                     <h3 className="heading">Contact Us</h3>
                                     <div className="heading-underline"></div>
                                 </div>
-
-                                <p>We want to hear from you!<br />
-                                    If you have any questions, comments, concerns, or would like
-                                    additional information on how to become licensed as a Olaf Chef
+                                
+                                    <p>We want to hear from you!<br />
+                                        If you have any questions, comments, concerns, or would like
+                                        additional information on how to become licensed as a Olaf Chef
                                  feel free to contact us using the information provided below.<br />
-                                    Our team is ready and willing to help.<br />
-                                    Happy Cooking!</p>
-                                <br />
-                                <br />
+                                        Our team is ready and willing to help.<br />
+                                        Happy Cooking!</p>
+                                    <br />
+                                    <br />
 
-                                <strong>Email: service@olafgo.com</strong><br />
-                                <strong>Phone: (206) 555-5555</strong>
+                                    <strong>Email: service@olafgo.com</strong><br />
+                                    <strong>Phone: (206) 555-5555</strong>
+                                </div>
 
-                            </div>
 
-        
                             <hr className="socket" />
                             <div className="copyright">OlafGo &copy; Copyright 2019</div>
                         </div>

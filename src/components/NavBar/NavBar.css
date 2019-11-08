@@ -4,7 +4,7 @@
   font-weight: 700;
   font-size: .9rem;
   letter-spacing: .1rem;
-  background: rgba(0, 0, 0, 0.4)!important;
+  background: rgba(0, 0, 0, 0.55)!important;
   /* background: transparent!important; */
   transition: top 0.8s;
   top: 0;
@@ -36,11 +36,27 @@
   
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #FFA92C;
+  color: #FFA92C!important;
 }
 
-/* @media (max-width: 767px) {
+.current-user {
+  color: #FFA92C;
+  font-family: 'Pacifico', cursive;
+  float: right;
+  text-transform: capitalize;
+  padding-left: 0.3rem;
+}
+
+h6 {
+  color: #ffffff;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+}
+
+@media (max-width: 767px) {
   .navbar-brand {
-    display: none;
+    color: #ffffff!important;
   }
-  } */
+}

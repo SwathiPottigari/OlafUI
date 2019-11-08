@@ -30,6 +30,7 @@ export default class ChefItemCard extends Component {
     }
 
     remove=()=>{
+        console.log("Delete card");
         let obj = this.refs.DeleteButton;
         this.props.removeDish(obj.id);
     }
@@ -39,29 +40,35 @@ export default class ChefItemCard extends Component {
             <React.Fragment>
 
                 <div id={this.props.id} className="col-xs-6 list-container">
-                    <div className="list mb-2">
+                    <div className="card-list mb-2">
+                    
                         <div className="list-header">
+                        
                             <h5 className="card-header white-text text-left">
                                 <span className="cuisine"><strong>{this.props.cuisine}</strong></span>
                             </h5>
-                            <img className="item-image" src={this.props.imageURL} alt="" />
+                            
+                            <img className="itemCardImage"   src={this.props.imageURL ? this.props.imageURL: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.dish} />
                         </div>
-                        <div className="list-content">
+                        
+                        <div className="list-content">                           
+                            <h1></h1>
                             <span ref="DeleteButton" onClick={this.remove} id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
-                            <h2>{this.props.dish}</h2>
-                            <div className="container-fluid card-container">
+                            <h2 className="dish-name">{this.props.dish}</h2>
+                            <div className="container-fluid cont">
                                 <div className="row">
-                                    <div className="col-xs-6 card-details">
-                                        <p>Price: <span className="list-meta-details">{this.props.price}</span></p>
+                                    <div className="col-xs-6 list-meta-price">
+                                        <p>Price: $<span className="list-meta-details">{this.props.price}</span></p>
                                     </div>
-                                    <div className="col-xs-6 card-details">
-                                        <p>Servings Available: <span className="list-meta-details">{this.props.quantity}</span></p>
+                                    <div className="col-xs-6 list-meta-serving">
+                                        <p>Servings: <span className="list-meta-details">{this.props.quantity}</span></p>
                                     </div>
                                 </div>
                             </div>
 
-                            <p>Ingredients: <span className="list-meta">{this.props.ingredients}</span></p>
-                            
+                            <p className="ingredients-chef">Ingredients: <span className="list-meta">{this.props.ingredients}</span></p>
+                            <p className="ingredients-chef">Description: <span className="list-meta">{this.props.description}</span></p>
+
                         </div>
                     </div>
                 </div>

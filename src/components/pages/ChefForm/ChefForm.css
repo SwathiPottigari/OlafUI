@@ -19,3 +19,7 @@
     right: 1rem;
     color: #444;
 }
+.error {
+    border: solid #d35400 2px;
+
+}

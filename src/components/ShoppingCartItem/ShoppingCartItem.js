@@ -32,17 +32,17 @@ export default class ItemCard extends Component {
         return (
 
             <React.Fragment>
-
+                
                 <table className='order-table'>
                     <tbody>
-                        <tr><td><img src='https://www.thespruceeats.com/thmb/uFOA5DvOiyTQ2D3bcXY3WBMC90Y=/2048x1365/filters:fill(auto,1)/leftovers-night-fried-rice-recipe-909250-10_preview-5aff43748e1b6e00360c65b0.jpeg' className='full-width'></img>
+                        <tr><td><img src={this.props.img ? this.props.img: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.dish} className='full-width'></img>
                             </td>
-                            <td><br /><span className='thin'>Fried Rice</span>
-                                <br />Amount Ordered: 3<br /> 
+                            <td><br /><span className='thin'>{this.props.dish}</span>
+                                <br />Amount Ordered: {this.props.orderedQuantity}<br /> 
                                 <span onClick={this.remove} className='thin small remove'><br /><a>Remove item <i className="fas ml-2 fa-trash"></i></a><br /></span>
                             </td>
                         </tr>
-                        <tr><td><div className='price'>$5.00</div></td></tr>
+                        <tr><td><div className='price'>${this.props.price}</div></td></tr>
                     </tbody>
 
                 </table>
@@ -50,32 +50,6 @@ export default class ItemCard extends Component {
 
 
 
-
-                {/* <div className="col-xs-12 cart-item-card col-xl-12">
-                    <div className="list-item">
-                        <div className="shopping-list-header">
-                            <h5 className="shopping-card-header white-text text-left">
-                                <span className="cuisine"><strong>Chinese</strong></span>
-                            </h5>
-                            <img className="shopping-item-image" src="https://www.thespruceeats.com/thmb/uFOA5DvOiyTQ2D3bcXY3WBMC90Y=/2048x1365/filters:fill(auto,1)/leftovers-night-fried-rice-recipe-909250-10_preview-5aff43748e1b6e00360c65b0.jpeg" alt="" />
-                        </div>
-                        <div className="list-content">
-                            <h2>Fried Rice</h2>
-                            <div className="container-fluid card-container">
-                                <div className="row">
-                                    <div className="col-xs-6 price">
-                                        <p className="price-font">Price: <span className="list-meta-details price-font">$5.99</span></p>
-                                    </div>
-                                    <div className="col-xs-6 card-details">
-                                        <p>Servings Ordered: <span className="list-meta-details">6</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                {/* {this.renderRedirect()} */}
-                {/* <OrderItemModal serving={this.state.servingAmount} item={this.state.item} total={this.state.price * this.state.servingAmount} /> */}
             </React.Fragment>
 
 

@@ -4,31 +4,33 @@ import "./ItemCard.css";
 import "../OrderItemModal/OrderItemModal.js"
 import axios from 'axios';
 
+
 export default class ItemCard extends Component {
 
     state = {
         result: null,
-        customerQty:1,
-        childOrderItems:{}
+        customerQty: 1,
+        childOrderItems: {}
     };
 
     handleChange = event => {
         const { name, value } = event.target
         this.setState({
-          [name]: value
+            [name]: value
         })
     }
 
     componentDidMount() {
-        console.log("state of cutomer qty",this.state.customerQty)
-        console.log("props in itemcard",this.props)
+        console.log("state of cutomer qty", this.state.customerQty)
+        console.log("props in itemcard", this.props)
     }
 
-    setChildOrderItems=(val)=>{
-        this.state.childOrderItems=val
-        console.log("Value of obj-",this.state.childOrderItems)
-        
+    setChildOrderItems = (val) => {
+        this.state.childOrderItems = val
+        console.log("Value of obj-", this.state.childOrderItems)
+
     }
+    
 
    /*  orderItem = () => {
         try {
@@ -43,83 +45,71 @@ export default class ItemCard extends Component {
         }
       }  */
 
-      orderItem = (event)=>{
-    event.preventDefault();
-          let objOrder = {}
-          objOrder.orderedQuantity = this.state.customerQty
-          objOrder.CustomerId = this.props.currentCustomer.id
-          objOrder.MenuId = this.props.currentMenu.id
-          objOrder.ChefId = this.props.currentChef.id
-          console.log("object order is ",objOrder)
+    orderItem = (event) => {
+        event.preventDefault();
+        let objOrder = {}
+        objOrder.orderedQuantity = this.state.customerQty
+        objOrder.CustomerId = this.props.currentCustomer.id
+        objOrder.MenuId = this.props.currentMenu.id
+        objOrder.ChefId = this.props.currentChef.id
+        objOrder.img=this.props.currentMenu.imageURL
+        objOrder.dish=this.props.currentMenu.dish
+        objOrder.price=this.props.currentMenu.price
         this.setChildOrderItems(objOrder)
-        console.log(this.state.childOrderItems)
         this.props.setCurrentOrder(this.state.childOrderItems)
-      }
+    }
 
     render() {
         return (
             <div className="col-xs-6">
-                <div className="list mb-2">
+                <div className="card-list mb-2">
                     <div className="list-header">
-                        <img src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" />
+                        <h5 class="card-header white-text text-left">
+                            <span className="cuisine"><strong>{this.props.currentMenu.cuisine}</strong></span>
+                        </h5>
+                        <img className="itemCardImage" src={this.props.currentMenu.imageURL ? this.props.currentMenu.imageURL: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.currentMenu.dish} />
                     </div>
                     <div className="list-content">
-                        <h2>{this.props.currentChef.kitchenName}</h2>
-                        
-
-                    <h5 class="card-header white-text text-left">
-                        <span className="cuisine"><strong>{this.props.currentMenu.cuisine}</strong></span>
-                    </h5>
-                       {/*  <img src="https://www.paintthekitchenred.com/wp-content/uploads/2016/12/Instant-Pot-Chicken-Curry-Landscape.jpg" alt="" /> */}
-                    </div>
-                    <div className="list-content">
-                        <span onClick={this.removeDish} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
-                        <h2>{this.props.currentMenu.dish}</h2>
-                        <div className="container-fluid">
+                        <h2 className="dish-name">{this.props.currentMenu.dish}</h2>
+                        <div className="container-fluid cont">
                             <div className="row">
-                                <div className="col-xs-6">
+                                <div className="list-meta-price">
                                     <span className="list-meta">
-                                        <span className="list-meta-price">Price: {this.props.currentMenu.price}</span>
+                                        <span className="list-meta-price">Price: ${this.props.currentMenu.price}</span>
                                     </span>
                                 </div>
-                                <div className="col-xs-6">
+                                <div className="list-meta-serving">
                                     <span className="list-meta">
-                                        <span className="list-meta-serving">Servings: {this.props.currentMenu.quantity}</span>
+                                        <span className="list-meta-serving">{this.props.currentMenu.servingUnit}: {this.props.currentMenu.quantity}</span>
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <p>Ingredients: <span className="list-meta">{this.props.currentMenu.ingredients}</span></p>
-                             <form className="formItems">
-                                <div className="card-details-form">
-                                    <label className="card-details">Servings</label>
-                                    <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
-                                        <option default>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>
+                        <p className="ingredients">Ingredients: <span className="ingredients list-meta">{this.props.currentMenu.ingredients}</span></p>
+                        <p className="ingredients">Description: <span className="ingredients list-meta">{this.props.currentMenu.description}</span></p>
+                        <div className="card-details-form">
+                            <label className="card-details">{this.props.currentMenu.servingUnit}</label>
+                            <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
+                                <option default>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
 
-                                </div>
-                                <button onClick={this.orderItem}  className="btn btn-primary float-right my-4" type="submit">Order Now</button>
-                            </form>
-                    
+                        </div>
+                        <button onClick={this.orderItem} data-toggle="modal" data-target="#AddItemModal" className="btn btn-primary order-button my-4" type="submit">Order Now</button>
+
                     </div>
                 </div>
-              {/*  <OrderItemModal 
-               serving={this.state.servingAmount} 
-               item={this.state.item} 
-               total={this.state.price * this.state.servingAmount} 
-               /> */}
             </div>
-            
+
         )
     }
 }

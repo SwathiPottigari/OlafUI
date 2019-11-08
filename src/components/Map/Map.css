@@ -1,0 +1,27 @@
+.map-container {
+    position: fixed;
+    top: 4.2rem;
+    width: 48%;
+    height: 85vh;
+}
+
+.source, .source a {
+    color: #9A9A9A;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.map-loading {
+    background-color: transparent;
+    border-radius: 2px;
+    padding-top: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .map-container {
+        width: 100%;
+        position: static;
+        display: block;
+    }
+}
