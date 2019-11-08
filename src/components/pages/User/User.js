@@ -15,7 +15,7 @@ export default class User extends Component {
         url: "http://localhost:8080",
         loggedInUser:'',
         currentCustomer:null,
-        // userCart:[]
+        /* userCart:[] */
     }
 
 //     setUserCart=(val)=>{

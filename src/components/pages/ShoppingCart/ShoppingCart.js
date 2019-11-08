@@ -7,7 +7,7 @@ import ShoppingCartItem from '../../ShoppingCartItem/ShoppingCartItem';
 import Row from '../../Row/Row';
 import OrderItemModal from '../../OrderItemModal/OrderItemModal';
 
-export default class User extends Component {
+export default class ShoppingCart extends Component {
 
     state = {
         url: "http://localhost:8080",

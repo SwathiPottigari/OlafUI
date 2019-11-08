@@ -18,14 +18,21 @@ export default class App extends Component {
   }
 
 
-  setStoreCart = (val) => {
-    console.log("This is the Apps store");
-    console.log(val);
-    this.setState({
-      storeCart: val
-    })
-
+  setStoreCart = async (val) => {
+    /* return new Promise (function(resolve,reject){ */
+      /* console.log("This is the Apps store");
+      console.log(val); */
+      await this.setState({
+        storeCart: val
+      })
+      /* resolve(this.state.storeCart) */
+    //}
+    //)
   }
+
+  setLocalStorage=(val)=>{
+    this.setStoreCart
+  } 
 
   render() {
     // console.log("In APP store", this.state.storeCart)
