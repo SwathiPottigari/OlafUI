@@ -14,18 +14,22 @@ import NoMatch from "./components/pages/NoMatch";
 export default class App extends Component {
 
   state = {
-    storeCart:null
+    storeCart: null,
+    tempCart: []
   }
 
 
   setStoreCart = (val) => {
     console.log("This is the Apps store");
     console.log(val);
+    this.state.tempCart.push(val)
+    localStorage.setItem("Cart", JSON.stringify(this.state.tempCart));    
     this.setState({
       storeCart: val
     })
 
   }
+
 
   render() {
     // console.log("In APP store", this.state.storeCart)
@@ -43,9 +47,9 @@ export default class App extends Component {
             <Route exact path="/signup/user" component={UserForm} />
             <Route exact path="/signup/chef" component={ChefForm} />
             <Route exact path="/cart">
-              <ShoppingCart cartItems = {this.state.storeCart}/>
+              <ShoppingCart  />
             </Route>
-      
+
             <Route component={NoMatch} />
           </Switch>
         </Router>
@@ -53,11 +57,11 @@ export default class App extends Component {
     )
   }
 }
-/* 
+/*
 function App() {
   return (
     <div className="App">
-    
+
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
