@@ -52,9 +52,10 @@ export default class ItemCard extends Component {
         objOrder.CustomerId = this.props.currentCustomer.id
         objOrder.MenuId = this.props.currentMenu.id
         objOrder.ChefId = this.props.currentChef.id
-        console.log("object order is ", objOrder)
+        objOrder.img=this.props.currentMenu.imageURL
+        objOrder.dish=this.props.currentMenu.dish
+        objOrder.price=this.props.currentMenu.price
         this.setChildOrderItems(objOrder)
-        console.log(this.state.childOrderItems)
         this.props.setCurrentOrder(this.state.childOrderItems)
     }
 
@@ -107,11 +108,6 @@ export default class ItemCard extends Component {
 
                     </div>
                 </div>
-                {/*  <OrderItemModal 
-               serving={this.state.servingAmount} 
-               item={this.state.item} 
-               total={this.state.price * this.state.servingAmount} 
-               /> */}
             </div>
 
         )
