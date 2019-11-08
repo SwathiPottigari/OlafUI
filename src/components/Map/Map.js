@@ -87,11 +87,7 @@ class Map extends Component {
   }
 
   render() {
-    console.log("I am master ", this.state.currentChef)
-    console.log("I am master ", this.state.currentMenu)
-    console.log("I am current Customer ",this.props.currentCustomer)
-    console.log("i am each order", this.state.temp)
-    console.log("I am current order from User ", this.state.currentOrder)
+    localStorage.setItem("Test","Hello");  
     return (
       <Row>
         <div className="col-xs-12 col-md-6 col-xl-6">
