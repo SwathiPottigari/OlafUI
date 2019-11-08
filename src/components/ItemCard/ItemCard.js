@@ -34,7 +34,7 @@ export default class ItemCard extends Component {
 
    /*  orderItem = () => {
         try {
-          return axios.post(`http://localhost:8080/api/order`,{
+          return axios.post(`https://olafapi.herokuapp.com/api/order`,{
               orderedQuantity:this.state.customerQty,
               CustomerId:this.props.currentCustomer.id,
               MenuId:this.props.currentMenu.id,
