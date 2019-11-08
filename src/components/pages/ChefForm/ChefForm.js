@@ -32,6 +32,10 @@ class ChefForm extends React.Component {
       isPhoneNumberError: false,
       isEmailError: false,
       isPasswordError: false,
+      isStreetAddressError: false,
+      isCityError: false,
+      isZipCodeError: false,
+      isStateError: false,
     }
   }
 
@@ -46,11 +50,17 @@ class ChefForm extends React.Component {
     const { firstName, lastName, kitchenName, license, specialities, password, contact, email, streetAddress, apartment, city, state, zipCode } = this.state
     event.preventDefault()
     const address = `${streetAddress} ${apartment} ${city} ${state} ${zipCode}`;
-    
-   if (this.state.streetAddress.length === 0 || this.state.city.length === 0 || this.state.state.length === 0 || this.state.zipCode.length === 0) {
-      alert("Please enter a valid address")
-    } else {
-
+    this.setState({ isStreetAddressError: false, isCityError: false, isStateError: false, isZipCodeError: false })
+    if (this.state.streetAddress.length === 0)
+    {console.log("this is working for address")
+    this.setState ({isStreetAddressError: true})
+  } else if (this.state.city.length === 0) {
+    this.setState ({isCityError: true})
+  } else if (this.state.state.length === 0) {
+    this.setState ({isStateError: true})
+  } else if (this.state.zipCode.length === 0) {
+    this.setState ({isZipCodeError: true})
+  } else {
       axios.post(`${this.state.url}/api/signup`,
         {
           firstName: firstName,
@@ -68,30 +78,24 @@ class ChefForm extends React.Component {
           withCredentials: true
         }
       ).then(res => {
-        if(res.data.isSuccess===false){
-          alert("You already have an account. Please login.");
-        }
-        else{
-          this.setState({
-            firstName: '',
-            lastName: '',
-            kitchenName: '',
-            license: '',
-            specialities: '',
-            password: '',
-            contact: '',
-            email: '',
-            streetAddress: '',
-            apartment: '',
-            city: '',
-            state: '',
-            zipCode: '',
-            loggedInChef: res.data.chef,
-            redirect: true
-          });
-        }
-        
-      }).catch(function(error){console.log(error)})
+        this.setState({
+          firstName: '',
+          lastName: '',
+          kitchenName: '',
+          license: '',
+          specialities: '',
+          password: '',
+          contact: '',
+          email: '',
+          streetAddress: '',
+          apartment: '',
+          city: '',
+          state: '',
+          zipCode: '',
+          loggedInChef: res.data.chef,
+          redirect: true
+        });
+      })
     }
   }
 
@@ -105,33 +109,34 @@ class ChefForm extends React.Component {
   _next = () => {
     const emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var phoneNumberRegEx = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/;
-    this.setState({isFirstNameError: false, isLastNameError: false, isPhoneNumberError: false, isEmailError: false, isPasswordError: false}) 
+    this.setState({ isFirstNameError: false, isLastNameError: false, isPhoneNumberError: false, isEmailError: false, isPasswordError: false })
     if (this.state.firstName === '') {
       console.log("name has an error")
-      this.setState({isFirstNameError: true});
+      this.setState({ isFirstNameError: true });
     } else if (this.state.lastName === '') {
       console.log("last name has an error")
-      this.setState({isLastNameError: true});
+      this.setState({ isLastNameError: true });
     } else if (phoneNumberRegEx.test(this.state.contact) === false) {
       console.log("last name has an error")
-      this.setState({isPhoneNumberError: true});
+      this.setState({ isPhoneNumberError: true });
     } else if (emailRegEx.test(this.state.email) === false) {
       console.log("last name has an error")
-      this.setState({isEmailError: true});
+      this.setState({ isEmailError: true });
     } else if (this.state.password.length < 8) {
       console.log("last name has an error")
-      this.setState({isPasswordError: true});
+      this.setState({ isPasswordError: true });
     } else {
       console.log("There are no errors")
       this.goNextPage();
+    }
   }
-}
- goNextPage = () => {
-  let currentStep = this.state.currentStep
-  currentStep = currentStep + 1
-  this.setState({
-    currentStep: currentStep
-  })}
+  goNextPage = () => {
+    let currentStep = this.state.currentStep
+    currentStep = currentStep + 1
+    this.setState({
+      currentStep: currentStep
+    })
+  }
 
   _prev = () => {
     let currentStep = this.state.currentStep
@@ -178,6 +183,10 @@ class ChefForm extends React.Component {
           address={`${this.state.streetAddress} ${this.state.apartment} ${this.state.city} ${this.state.state} ${this.state.zipCode}`}
           _prev={this._prev}
           handleSubmit={this.handleSubmit}
+          isStreetAddressError={this.state.isStreetAddressError}
+          isCityError={this.state.isCityError}
+          isStateError={this.state.isStateError}
+          isZipCodeError={this.state.isZipCodeError}
         />
         {this.renderRedirect()}
       </React.Fragment>
@@ -202,20 +211,20 @@ function Step1(props) {
 
           <div className="form-row mb-4">
             <div className="col">
-              <input type="text" required value={props.firstName} name="firstName" onChange={props.handleChange} placeholder="First name" className={props.isFirstNameError ? "form-control error": "form-control"}/>
+              <input type="text" required value={props.firstName} name="firstName" onChange={props.handleChange} placeholder="First name" className={props.isFirstNameError ? "form-control error" : "form-control"} />
             </div>
             <div className="col">
-              <input type="text" name="lastName" required value={props.lastName} onChange={props.handleChange} placeholder="Last name" className={props.isLastNameError ? "form-control error": "form-control"} />
+              <input type="text" name="lastName" required value={props.lastName} onChange={props.handleChange} placeholder="Last name" className={props.isLastNameError ? "form-control error" : "form-control"} />
             </div>
           </div>
 
-          <input type="tel" name="contact" required value={props.contact} onChange={props.handleChange} className={props.isPhoneNumberError ? "form-control error": "form-control"} placeholder="Mobile Number" />
+          <input type="tel" name="contact" required value={props.contact} onChange={props.handleChange} className={props.isPhoneNumberError ? "form-control error" : "form-control"} placeholder="Mobile Number" />
           <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
             Format: 555-555-5555</small>
 
-          <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className={props.isEmailError ? "form-control error": "form-control"} placeholder="E-mail" />
+          <input className="mb-4" type="email" pattern=".+@tutsplus\.com|.+@envato\.com" required name="email" value={props.email} onChange={props.handleChange} className={props.isEmailError ? "form-control error" : "form-control"} placeholder="E-mail" />
           <br />
-          <input minLength="8" required type="password" className={props.isPasswordError ? "form-control error": "form-control"} placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
+          <input minLength="8" required type="password" className={props.isPasswordError ? "form-control error" : "form-control"} placeholder="Password" name="password" value={props.password} onChange={props.handleChange} />
           <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
             At least 8 characters</small>
 
@@ -258,16 +267,16 @@ function Step2(props) {
           </div>
           <input type="text" required name="specialities" value={props.specialities} onChange={props.handleChange} className="form-control" placeholder="Your dish specialities" />
           <label className="form-text">Home Address</label>
-          <input type="text" name="streetAddress" required defaultValue={props.streetAddress} onChange={props.handleChange} className="form-control" placeholder="Street Address" />
+          <input type="text" name="streetAddress" required defaultValue={props.streetAddress} onChange={props.handleChange} className={props.isStreetAddressError ? "form-control error" : "form-control"} placeholder="Street Address" />
           <br />
           <input type="text" name="apartment" required defaultValue={props.apartment} onChange={props.handleChange} className="form-control" placeholder="Street Address line 2" />
           <br />
           <div className="form-row mb-4">
             <div className="col">
-              <input name="city" type="text" className="form-control" placeholder="City" onChange={props.handleChange} value={props.city} />
+              <input name="city" type="text" className={props.isCityError ? "form-control error" : "form-control"} placeholder="City" onChange={props.handleChange} value={props.city} />
             </div>
             <div className="col">
-              <select name="state" onChange={props.handleChange} value={props.state} className="form-control browser-default custom-select">
+              <select name="state" onChange={props.handleChange} value={props.state} className={props.isStateError ? "form-control browser-default custom-select error" : "form-control browser-default custom-select"}>
                 <option defaultValue>State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -323,7 +332,7 @@ function Step2(props) {
               </select>
             </div>
             <div className="col">
-              <input name="zipCode" type="text" className="form-control" placeholder="Postal / Zip Code" onChange={props.handleChange} value={props.zipCode} />
+              <input name="zipCode" type="text" className={props.isZipCodeError ? "form-control error" : "form-control"} placeholder="Postal / Zip Code" onChange={props.handleChange} value={props.zipCode} />
             </div>
           </div>
 
@@ -348,3 +357,5 @@ function Step2(props) {
 
 
 export default ChefForm;
+
+
