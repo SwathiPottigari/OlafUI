@@ -129,11 +129,7 @@ class Map extends Component {
           {this.state.currentChef ? (this.state.currentMenu ? (
             this.state.currentMenu.map((item) => {
               return (
-<<<<<<< HEAD
                 <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer = {this.props.currentCustomer} key={item.id} setCurrentOrder={this.setCurrentOrder}/>)
-=======
-                <ItemCard currentChef={this.state.currentChef} currentMenu={item} currentCustomer={this.props.currentCustomer} setCurrentOrder={this.setCurrentOrder} />)
->>>>>>> 3d011d1991a188bec5f0c4a8cc438b6cb1255691
             })
           ) : ("no food to display")
           )
