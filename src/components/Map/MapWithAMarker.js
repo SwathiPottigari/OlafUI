@@ -33,8 +33,8 @@ class MapWithAMarker extends Component {
 
     getMenu = () => {
         try {
-            console.log(`http://localhost:8080/api/menuList/${this.state.masterCurrentChef.id}`)
-            return axios.get(this.state.url+`/api/menuList/${this.state.masterCurrentChef.id}`)
+            console.log(`http://localhost:8080/api/menuList/${this.state.masterCurrentChef.ChefId}`)
+            return axios.get(this.state.url+`/api/menuList/${this.state.masterCurrentChef.ChefId}`)
         } catch (error) {
             console.error(error)
         }

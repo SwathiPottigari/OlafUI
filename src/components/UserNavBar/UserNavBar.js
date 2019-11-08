@@ -24,12 +24,9 @@ export default class NavBar extends Component {
     // Adds an event listener when the component is mount.
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-        console.log("navbar", this.props)
         let setVariable = this;
         axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
             function(results){
-                console.log("user details")
-                console.log(results.data[0].firstName)
                 setVariable.setState({
                     userName: results.data[0].firstName
                 })
@@ -37,7 +34,8 @@ export default class NavBar extends Component {
             }
         ).catch(function(error){
             console.log(error);
-        })
+        });
+       
     }
 
     // Remove the event listener when the component is unmount.
@@ -78,7 +76,7 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"></i></a>
+                                <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"> {this.props.items}</i></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
