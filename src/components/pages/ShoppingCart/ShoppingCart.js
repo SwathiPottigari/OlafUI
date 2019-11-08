@@ -68,7 +68,7 @@ export default class User extends Component {
                                     <div className='order-info-content'>
                                         <h2>Order Summary</h2>
                                         <div class='line'></div>
-                                        {this.state.cartItems.map(element => <ShoppingCartItem price={element.price} img={element.img} dish={element.dish} orderQuantity={element.orderQuantity}/>)}
+                                        {this.state.cartItems.map(element => <ShoppingCartItem price={element.price} img={element.img} dish={element.dish} orderedQuantity={element.orderedQuantity}/>)}
                                         <div class='total'>
                                             <p class="mr-4">TOTAL</p>
                                             <p>$435.55</p>
