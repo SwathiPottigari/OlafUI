@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../NavBar/NavBar.css"
+// import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
@@ -27,14 +27,21 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         let setVariable = this;
+<<<<<<< HEAD
         axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
             function(results){
+=======
+        axios.get(this.state.url + "/api/user/" + this.props.userId + "/" + this.props.user).then(
+            function (results) {
+                console.log("user details")
+                console.log(results.data[0].firstName)
+>>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
                 setVariable.setState({
                     userName: results.data[0].firstName
                 })
 
             }
-        ).catch(function(error){
+        ).catch(function (error) {
             console.log(error);
         })
     }
@@ -56,10 +63,11 @@ export default class NavBar extends Component {
         });
     };
 
-    setcurrentUser = ()=>{
-        this.setState({currentUser:this.props.currentCustomer})
+    setcurrentUser = () => {
+        this.setState({ currentUser: this.props.currentCustomer })
     }
 
+<<<<<<< HEAD
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to='/user' />
@@ -78,6 +86,8 @@ export default class NavBar extends Component {
         });
     }
     
+=======
+>>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
     render() {
         return (
             <div>
@@ -86,17 +96,21 @@ export default class NavBar extends Component {
                         "navbar--hidden": !this.state.visible
                     })}
                 >
-                    <a className="navbar-brand" href="/"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
+                    <a className="navbar-brand" href=""><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
+<<<<<<< HEAD
                                 <h4 onClick={this.logout}>Logout {this.state.userName}</h4>
                                 {this.renderRedirect()}
+=======
+                                <a className="nav-link" href="/">Logout<div className="current-user">{this.state.userName}</div></a>
+>>>>>>> b5382d8af7e99ae7d2e14743bd18be87e23ff202
                             </li>
-                        </ul>     
+                        </ul>
                     </div>
                 </nav>
             </div>
