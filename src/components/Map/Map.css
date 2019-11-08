@@ -3,7 +3,6 @@
     top: 4.2rem;
     width: 48%;
     height: 85vh;
-       
 }
 
 .source, .source a {
@@ -12,6 +11,25 @@
     font-size: 12px;
     margin-top: 5px;
 }
+
+.loading {
+    background-color: #f3f5f6;
+    ;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+}
+
+.map-loading {
+    background-color: #f3f5f6;
+    ;
+    border-radius: 2px;
+    padding-top: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+}
+
+/* .spinner-boarder {
+    color: orange!important
+} */
 
 @media only screen and (max-width: 768px) {
     .map-container {

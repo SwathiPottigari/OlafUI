@@ -33,12 +33,16 @@ export default class ChefLogIn extends Component {
                 withCredentials: true
             }
         ).then(res => {
-            this.setState({
-                email: "",
-                password: "",
-                loggedInUser: res.data.user,
-                redirect: true
-            });
+            if (res.data.isSuccess === false) {
+                alert("Please sign up for an Olaf account.");
+            } else {
+                this.setState({
+                    email: "",
+                    password: "",
+                    loggedInUser: res.data.user,
+                    redirect: true
+                })
+            }
         })
     };
 
@@ -61,7 +65,7 @@ export default class ChefLogIn extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                            <h4 className="modal-title w-100 font-weight-bold">Welcome back to <h2 className="modal-icon-title">Olaf<i class="fas fa-carrot"></i></h2></h4>
+                                <h4 className="modal-title w-100 font-weight-bold">Welcome back to <h2 className="modal-icon-title">Olaf<i class="fas fa-carrot"></i></h2></h4>
                                 <button onClick={this.returnHome} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

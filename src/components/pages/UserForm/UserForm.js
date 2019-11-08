@@ -62,15 +62,20 @@ export default class UserForm extends Component {
                     withCredentials: true
                 }
             ).then(res => {
-                this.setState({
-                    firstName: "",
-                    lastName: "",
-                    phoneNumber: "",
-                    email: "",
-                    password: "",
-                    loggedInUser: res.data.user,
-                    redirect: true
-                });
+                if (res.data.isSuccess === false) {
+                    alert("You already have an account. Please login.");
+                }
+                else {
+                    this.setState({
+                        firstName: "",
+                        lastName: "",
+                        phoneNumber: "",
+                        email: "",
+                        password: "",
+                        loggedInUser: res.data.user,
+                        redirect: true
+                    })
+                }
             })
         }
 

@@ -30,6 +30,7 @@ export default class ChefItemCard extends Component {
     }
 
     remove=()=>{
+        console.log("Delete card");
         let obj = this.refs.DeleteButton;
         this.props.removeDish(obj.id);
     }
