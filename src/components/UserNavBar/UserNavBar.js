@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../NavBar/NavBar.css"
+// import "../NavBar/NavBar.css"
 import classnames from "classnames";
 import axios from "axios";
 
@@ -71,7 +71,7 @@ export default class NavBar extends Component {
                         "navbar--hidden": !this.state.visible
                     })}
                 >
-                    <a className="navbar-brand" href="#"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
+                    <a className="navbar-brand" href=""><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -81,7 +81,7 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"></i></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout {this.state.userName}</a>
+                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
                             </li>
                         </ul>
                     </div>
