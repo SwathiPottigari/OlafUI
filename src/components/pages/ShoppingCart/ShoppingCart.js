@@ -19,10 +19,7 @@ export default class ShoppingCart extends Component {
     submitOrder = () => {
         try {
             return axios.post(`http://localhost:8080/api/order`, {
-                orderedQuantity: this.state.customerQty,
-                CustomerId: this.props.currentCustomer.id,
-                MenuId: this.props.currentMenu.id,
-                ChefId: this.props.currentChef.id
+               data:this.state.cartItems
             })
         } catch (error) {
             console.error(error)
