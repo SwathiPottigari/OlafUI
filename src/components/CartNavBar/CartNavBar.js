@@ -16,7 +16,7 @@ export default class NavBar extends Component {
             isUser: false,
             isHidden: false,
             logoutHidden: true,
-            url: "https://olafapi.herokuapp.com",
+            url: "http://localhost:8080",
             userName: "",
             redirect:false
         };
@@ -97,9 +97,6 @@ export default class NavBar extends Component {
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <a className="nav-link" href="/user">Keep Shopping</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
                             </li>
                             <li className="nav-item">
                                 <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>

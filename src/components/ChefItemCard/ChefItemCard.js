@@ -12,7 +12,7 @@ export default class ChefItemCard extends Component {
             price: "",
             item: "",
             isModalShown: false,
-            url: "https://olafapi.herokuapp.com",
+            url: "http://localhost:8080",
             redirect: false
         }
     }
