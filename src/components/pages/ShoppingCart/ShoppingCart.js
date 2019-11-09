@@ -20,6 +20,7 @@ export default class ShoppingCart extends Component {
         let setVariable=this;
         try {
             return axios.post(`http://localhost:8080/api/order`, {
+
                data:{
                    cartItems:this.state.cartItems,
                    totalCost:this.state.totalCost
@@ -30,6 +31,7 @@ export default class ShoppingCart extends Component {
                 })
                 localStorage.clear();
             }).catch();
+
         } catch (error) {
             console.error(error)
         }

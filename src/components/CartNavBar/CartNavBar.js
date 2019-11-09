@@ -99,9 +99,6 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/user">Keep Shopping</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >Logout <div className="current-user">{this.state.userName}</div></a>
-                            </li>
-                            <li className="nav-item">
                                 <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>
                                 {this.renderRedirect()}
                             </li>

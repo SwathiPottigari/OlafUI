@@ -281,6 +281,8 @@ hr.socket {
   .btn-lg {
     padding: .5rem 1rem;
     font-size: 1rem;
+    border-radius: 0.25rem;
+    margin: 0 2.5%;
   }
 
   .about-info {
