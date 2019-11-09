@@ -266,7 +266,7 @@ hr.socket {
     display: contents;
     font-family: 'Pacifico', cursive;
     text-transform: capitalize;
-    font-size: 4.4rem;
+    font-size: 4.2rem;
     letter-spacing: .15rem;
     padding-bottom: .5rem;
   }
@@ -281,8 +281,8 @@ hr.socket {
   .btn-lg {
     padding: .6rem 1.2rem;
     font-size: 1.2rem;
-    border-radius: 0.3rem;
-    margin: 0 3%;
+    border-radius: 0.2rem;
+    margin: 0 2%;
   }
 
   .about-info {
