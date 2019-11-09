@@ -10,7 +10,7 @@ class ButtonJumbotron extends Component {
         this.state = {
             isOnline: false,
             message: ["Offline", "Online"],
-            url: "https://olafapi.herokuapp.com",
+            url: "http://localhost:8080",
         }
     }
     // state = {
