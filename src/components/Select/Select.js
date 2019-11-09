@@ -14,7 +14,7 @@ export default class Select extends Component {
                     <h2 className="welcome-page-title">Olaf<i class="fas fa-carrot"></i></h2>
                     <div className="welcome-page-container">
                         <h3>Welcome to Olaf</h3>
-                        <h3 className="subheading">Click a carrot on the map to discover nearby food options</h3>
+                        <h3 className="subheading">Click a carrot on the map to see whats cooking near you</h3>
                     </div>
                 </div>
             </div>
