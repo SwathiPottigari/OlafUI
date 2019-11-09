@@ -55,6 +55,10 @@ h6 {
   letter-spacing: .1rem;
 }
 
+h6:hover {
+  color: #FFA92C!important;
+}
+
 @media (max-width: 767px) {
   .navbar-brand {
     color: #ffffff!important;
