@@ -17,10 +17,19 @@ export default class ShoppingCart extends Component {
     }
 
     submitOrder = () => {
+        let setVariable=this;
         try {
             return axios.post(`http://localhost:8080/api/order`, {
-               data:this.state.cartItems
-            })
+               data:{
+                   cartItems:this.state.cartItems,
+                   totalCost:this.state.totalCost
+                }
+            }).then(function(results){
+                setVariable.setState({
+                    cartItems:[]
+                })
+                localStorage.clear();
+            }).catch();
         } catch (error) {
             console.error(error)
         }
