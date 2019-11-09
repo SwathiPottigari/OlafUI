@@ -18,7 +18,7 @@ export default class NavBar extends Component {
             logoutHidden: true,
             url: "http://localhost:8080",
             userName: "",
-            redirect:false
+            redirect: false
         };
     }
 
@@ -26,17 +26,17 @@ export default class NavBar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         let setVariable = this;
-        axios.get(this.state.url + "/api/user/" + this.props.userId +"/"+this.props.user).then(
-            function(results){
+        axios.get(this.state.url + "/api/user/" + this.props.userId + "/" + this.props.user).then(
+            function (results) {
                 setVariable.setState({
                     userName: results.data[0].firstName
                 })
 
             }
-        ).catch(function(error){
+        ).catch(function (error) {
             console.log(error);
         });
-       
+
     }
 
     // Remove the event listener when the component is unmount.
@@ -57,9 +57,9 @@ export default class NavBar extends Component {
         });
     };
 
-    setCurrentUser = ()=>{
-        this.setState({currentUser:this.props.currentCustomer})
-        console.log({currentUser:this.props.currentCustomer})
+    setCurrentUser = () => {
+        this.setState({ currentUser: this.props.currentCustomer })
+        console.log({ currentUser: this.props.currentCustomer })
     }
 
     renderRedirect = () => {
@@ -68,14 +68,14 @@ export default class NavBar extends Component {
         }
     }
 
-    logout=()=>{
+    logout = () => {
         this.setState({
             redirect: true
         })
         localStorage.clear();
-        axios.get(this.state.url+"/api/logout").then(function(results){
+        axios.get(this.state.url + "/api/logout").then(function (results) {
             console.log("successfully logged out");
-        }).catch(function(error){
+        }).catch(function (error) {
             console.log(error);
         });
     }
@@ -94,10 +94,18 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/cart">Shopping Cart<i class="fas ml-2 fa-shopping-cart"> {this.props.items}</i></a>
+                                <a className="nav-link" href="/cart">
+                                    <div className="cart">
+                                        Shopping Cart
+                                        <i class="fas ml-2 fa-shopping-cart"></i>
+                                        <div className="cart-qty">
+                                            {this.props.items}
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
                             <li className="nav-item">
-                            <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>
+                                <h6 onClick={this.logout}>Logout <div className="current-user">{this.state.userName}</div></h6>
                                 {this.renderRedirect()}
                             </li>
                         </ul>
