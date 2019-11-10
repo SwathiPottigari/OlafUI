@@ -30,21 +30,30 @@ export default class ItemCard extends Component {
         console.log("Value of obj-", this.state.childOrderItems)
 
     }
-    
 
-   /*  orderItem = () => {
-        try {
-          return axios.post(`http://localhost:8080/api/order`,{
-              orderedQuantity:this.state.customerQty,
-              CustomerId:this.props.currentCustomer.id,
-              MenuId:this.props.currentMenu.id,
-              ChefId:this.props.currentChef.id
-          })
-        } catch (error) {
-          console.error(error)
+
+    /*  orderItem = () => {
+         try {
+           return axios.post(`http://localhost:8080/api/order`,{
+               orderedQuantity:this.state.customerQty,
+               CustomerId:this.props.currentCustomer.id,
+               MenuId:this.props.currentMenu.id,
+               ChefId:this.props.currentChef.id
+           })
+         } catch (error) {
+           console.error(error)
+         }
+       }  */
+    createOptions = () => {
+        let optionsArray = [];
+        optionsArray.push(<option default>1</option>)
+
+        for (let j = 2; j <= this.props.currentMenu.quantity; j++) {
+            optionsArray.push(<option>{j}</option>)
         }
-      }  */
 
+        return optionsArray;
+    }
     orderItem = (event) => {
         event.preventDefault();
         let objOrder = {}
@@ -52,12 +61,12 @@ export default class ItemCard extends Component {
         objOrder.CustomerId = this.props.currentCustomer.id
         objOrder.MenuId = this.props.currentMenu.id
         objOrder.ChefId = this.props.currentChef.id
-        objOrder.img=this.props.currentMenu.imageURL
-        objOrder.dish=this.props.currentMenu.dish
-        objOrder.price=this.props.currentMenu.price
-        objOrder.updateOrder=(this.props.currentMenu.quantity-this.state.customerQty)
+        objOrder.img = this.props.currentMenu.imageURL
+        objOrder.dish = this.props.currentMenu.dish
+        objOrder.price = this.props.currentMenu.price
+        objOrder.updateOrder = (this.props.currentMenu.quantity - this.state.customerQty)
         this.setChildOrderItems(objOrder)
-        this.props.setCurrentOrder(this.state.childOrderItems)
+        this.props.setCurrentOrder(this.state.childOrderItems);
     }
 
     render() {
@@ -68,7 +77,7 @@ export default class ItemCard extends Component {
                         <h5 class="card-header white-text text-left">
                             <span className="cuisine"><strong>{this.props.currentMenu.cuisine}</strong></span>
                         </h5>
-                        <img className="itemCardImage" src={this.props.currentMenu.imageURL ? this.props.currentMenu.imageURL: "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.currentMenu.dish} />
+                        <img className="itemCardImage" src={this.props.currentMenu.imageURL ? this.props.currentMenu.imageURL : "https://www.themississaugafoodbank.org/wp-content/uploads/2017/06/hero-image@2x.png"} alt={this.props.currentMenu.dish} />
                     </div>
                     <div className="list-content">
                         <h2 className="dish-name">{this.props.currentMenu.dish}</h2>
@@ -92,16 +101,7 @@ export default class ItemCard extends Component {
                         <div className="card-details-form">
                             <label className="card-details">{this.props.currentMenu.servingUnit}</label>
                             <select name="customerQty" value={this.state.customerQty} onChange={this.handleChange} className="card-details">
-                                <option default>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                                {this.createOptions()}
                             </select>
 
                         </div>
