@@ -88,7 +88,8 @@ ul li:hover {
 }
 
 .order-info {
-    height: auto;
+    height: 90vh;
+    overflow: auto;
     width: 50%;
     padding-left: 25px;
     padding-right: 25px;

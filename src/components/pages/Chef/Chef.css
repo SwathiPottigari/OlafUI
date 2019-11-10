@@ -25,8 +25,24 @@
 }
 
 .create-form {
-    padding: 1.5rem 1rem 3rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     background-color: #f3f5f6;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24); */
     border-radius: 2px;
+}
+
+#chef-form {
+    position: fixed;
+    overflow: auto;
+    top: 4.2rem;
+    width: 48%;
+    height: 85vh;
+}
+@media only screen and (max-width: 768px) {
+    #chef-form {
+        width: 100%;
+        position: static;
+        display: block;
+        margin-bottom: 2rem;
+    }
 }

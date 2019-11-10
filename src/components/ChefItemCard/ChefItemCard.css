@@ -162,3 +162,7 @@ a.text-black:focus, a.text-black:hover {
         clear: both;
     }
 } */
+
+.remove {
+    display: none;
+}
