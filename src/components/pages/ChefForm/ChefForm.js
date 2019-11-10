@@ -9,7 +9,7 @@ class ChefForm extends React.Component {
     super(props)
     this.state = {
       currentStep: 1,
-      url: "http://localhost:8080",
+      url: "https://olafapi.herokuapp.com",
       redirect: false,
       firstName: '',
       lastName: '',

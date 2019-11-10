@@ -10,7 +10,7 @@ import OrderItemModal from '../../OrderItemModal/OrderItemModal';
 export default class ShoppingCart extends Component {
 
     state = {
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser: '',
         cartItems: [],
         totalCost:null
@@ -19,7 +19,7 @@ export default class ShoppingCart extends Component {
     submitOrder = () => {
         let setVariable=this;
         try {
-            return axios.post(`http://localhost:8080/api/order`, {
+            return axios.post(`https://olafapi.herokuapp.com/api/order`, {
 
                data:{
                    cartItems:this.state.cartItems,

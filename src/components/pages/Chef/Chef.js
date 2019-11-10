@@ -22,7 +22,7 @@ export default class Chef extends Component {
         price: "",
         ingredients: "",
         cuisine: "",
-        url: "http://localhost:8080",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser: '',
         description: '',
         uploadImage: false,
