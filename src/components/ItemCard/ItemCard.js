@@ -55,6 +55,7 @@ export default class ItemCard extends Component {
         objOrder.img=this.props.currentMenu.imageURL
         objOrder.dish=this.props.currentMenu.dish
         objOrder.price=this.props.currentMenu.price
+        objOrder.updateOrder=(this.props.currentMenu.quantity-this.state.customerQty)
         this.setChildOrderItems(objOrder)
         this.props.setCurrentOrder(this.state.childOrderItems)
     }
