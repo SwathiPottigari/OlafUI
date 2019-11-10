@@ -53,7 +53,7 @@ export default class ChefItemCard extends Component {
                         
                         <div className="list-content">                           
                             <h1></h1>
-                            <span ref="DeleteButton" onClick={this.remove} id={this.props.id} className="delete-item"><i className="fas fa-2x fa-times-circle"></i></span>
+                            <span   className="delete-item"><i ref="DeleteButton" onClick={this.remove} id={this.props.id} className="fas fa-2x fa-times-circle"></i></span>        
                             <h2 className="dish-name">{this.props.dish}</h2>
                             <div className="container-fluid cont">
                                 <div className="row">
