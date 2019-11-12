@@ -16,7 +16,7 @@ export default class NavBar extends Component {
             isUser: false,
             isHidden: false,
             logoutHidden: true,
-            url: "http://localhost:8080",
+            url: "https://olafapi.herokuapp.com",
             userName: "",
             redirect: false,
             number:0            
