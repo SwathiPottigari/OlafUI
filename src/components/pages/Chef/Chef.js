@@ -184,7 +184,7 @@ export default class Chef extends Component {
                                             <option value="Pakistani">Pakistani</option>
                                             <option value="Persian">Persian</option>
                                             <option value="Peruvian">Peruvian</option>
-                                            <option value="Portugese">Portugese</option>
+                                            <option value="Portuguese">Portuguese</option>
                                             <option value="Punjabi">Punjabi</option>
                                             <option value="Rajasthani">Rajasthani</option>
                                             <option value="Russian">Russian</option>
