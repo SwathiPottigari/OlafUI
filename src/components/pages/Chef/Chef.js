@@ -67,8 +67,6 @@ export default class Chef extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let sessionVariable = this;
-        this.setState({ uploadImage: false })
-        this.setState({ dish: '', quantity: '', servingUnit: '', price: '', ingredients: '', cuisine: '', description: '' })
         axios.post(this.state.url + "/api/createMenu", {
             dish: this.state.dish,
             quantity: this.state.quantity,
@@ -76,12 +74,14 @@ export default class Chef extends Component {
             price: this.state.price,
             ingredients: this.state.ingredients,
             cuisine: this.state.cuisine,
-            ChefId: this.state.loggedInUser.id,
+            UserId: this.state.loggedInUser.id,
             description: this.state.description,
             imageURL: this.state.imageURL
         })
             .then(function (results) {
                 sessionVariable.readSessions();
+                sessionVariable.setState({ uploadImage: false })
+                sessionVariable.setState({ dish: '', quantity: '', servingUnit: '', price: '', ingredients: '', cuisine: '', description: '' })
             }).catch(function (error) {
                 console.log(error);
             });

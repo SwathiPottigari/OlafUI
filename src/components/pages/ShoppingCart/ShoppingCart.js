@@ -17,6 +17,7 @@ export default class ShoppingCart extends Component {
     }
 
     submitOrder = () => {
+        console.log("Entered order")
         let setVariable=this;
         try {
             return axios.post(`http://localhost:8080/api/order`, {

@@ -18,8 +18,23 @@ export default class NavBar extends Component {
             logoutHidden: true,
             url: "http://localhost:8080",
             userName: "",
-            redirect: false
+            redirect: false,
+            cartItems:[]
         };
+    }
+
+    shoppingCartItems=()=>{
+        if (localStorage.getItem("Cart") === null) {
+            this.setState({
+                cartItems: []
+            })
+        } else {
+            this.setState({
+                cartItems: JSON.parse(localStorage.getItem("Cart"))
+            })
+
+        }
+        return this.state.cartItems.length;
     }
 
     // Adds an event listener when the component is mount.
@@ -99,7 +114,7 @@ export default class NavBar extends Component {
                                         Shopping Cart
                                         <i class="fas ml-2 fa-shopping-cart"></i>
                                         <div className="cart-qty">
-                                            {this.props.items}
+                                            {this.shoppingCartItems}
                                         </div>
                                     </div>
                                 </a>

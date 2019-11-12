@@ -57,10 +57,12 @@ export default class ItemCard extends Component {
     orderItem = (event) => {
         event.preventDefault();
         let objOrder = {}
+        console.log("Props values");
+        console.log(this.props)
         objOrder.orderedQuantity = this.state.customerQty
         objOrder.CustomerId = this.props.currentCustomer.id
         objOrder.MenuId = this.props.currentMenu.id
-        objOrder.ChefId = this.props.currentChef.id
+        objOrder.ChefId = this.props.currentChef.ChefId
         objOrder.img = this.props.currentMenu.imageURL
         objOrder.dish = this.props.currentMenu.dish
         objOrder.price = this.props.currentMenu.price
