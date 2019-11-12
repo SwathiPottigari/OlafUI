@@ -27,7 +27,7 @@ class Map extends Component {
 
   getOnlineChef = () => {
     try {
-      return axios.get(`https://olafapi.herokuapp.com/api/onlineChefs`)
+      return axios.get(`http://localhost:8080/api/onlineChefs`)
     } catch (error) {
       console.error(error)
     }
@@ -76,6 +76,8 @@ class Map extends Component {
 
   updateArray = (value) => {
     this.state.temp.push(value);
+    console.log(this.props);
+    this.props.setCartNumber(this.state.temp.length);
   }
 
   setCurrentOrder = (value) => {

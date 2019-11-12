@@ -10,7 +10,7 @@ export default class ToggleSwitch extends Component {
     this.state = {
       checked: false,
       message: ["Offline", "Online"],
-      url: "https://olafapi.herokuapp.com",
+      url: "http://localhost:8080",
     };
     this.handleChange = this.handleChange.bind(this);
   }

@@ -16,26 +16,14 @@ export default class NavBar extends Component {
             isUser: false,
             isHidden: false,
             logoutHidden: true,
-            url: "https://olafapi.herokuapp.com",
+            url: "http://localhost:8080",
             userName: "",
             redirect: false,
-            cartItems:[]
+            number:0            
         };
     }
 
-    shoppingCartItems=()=>{
-        if (localStorage.getItem("Cart") === null) {
-            this.setState({
-                cartItems: []
-            })
-        } else {
-            this.setState({
-                cartItems: JSON.parse(localStorage.getItem("Cart"))
-            })
-
-        }
-        return this.state.cartItems.length;
-    }
+    
 
     // Adds an event listener when the component is mount.
     componentDidMount() {
@@ -114,7 +102,7 @@ export default class NavBar extends Component {
                                         Shopping Cart
                                         <i class="fas ml-2 fa-shopping-cart"></i>
                                         <div className="cart-qty">
-                                            {this.shoppingCartItems}
+                                            {this.props.items}
                                         </div>
                                     </div>
                                 </a>
