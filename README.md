@@ -2,11 +2,13 @@
 
 ## Overview
 
-Olaf is a community-driven, food service application which offers  both customer-side and seller-side interactivity. Once the user navigates to the home page, they can create an account as either a user/customer to purchase food items, or a chef/seller to sell their homemade goods. 
+Olaf is a community-driven food service web application, which offers seller and customer
+interactivity. Using our interactive and intuitive interface, anyone can create an account as a
+chef (seller), user (customer), or both! 
 
 ## Chef Experience
 
-Once the chef has registered for an account, or logged in to their existing account they can create new food items by filling out the form to include relevant data such as dish name, quantity, ingredients, cuisine type, item description, or even a photo of their dish (uploaded via cloudinary widget). Data for the diah is displayed as a card in the chef dashboard where the chef can then go online. Once a chef's item is ordered they will recieve a text message (through the use of Twilio) notifying them of their order. 
+As an Olaf Chef, you are able to create a personalized menu using the “Create Menu Item” form. Using this tool, you can add new food items to “Your Current Menu”, by providing relevant information, such as the name, cuisine, price, quantity, ingredients, item description, and even a photo (Cloudinary) of your dish! You can toggle between your kitchen being “OPEN” or “CLOSED” (react-switch-toggle) which will display to potential customers if you are available to sell. A notification will be sent to you via SMS (Twilio) once a customer has successfully placed an order. 
 
 Here is an example of a chef creating an item then posting it online.
 
@@ -14,7 +16,7 @@ Here is an example of a chef creating an item then posting it online.
 
 ## Customer Experience
 
-Once the customer has created an account or logged in, they are shown a Google map with carrot placeholders indicating all the locations of chef's in their area. The customer can click on any of these locations and all of the items listed under that chef will appear on the customer's dashboard. The customer can then add items to their cart and navigate to their shopping cart where they can confirm their final order. Once an order is placed, the customer will recieve a SMS message (via Twilio) providing them with the total cost and an address to pick up their purchased items. 
+As an Olaf User, you will enjoy a wide variety of home cooked cuisines. Olaf Chefs are marked on the map (Google Maps/Google Geocoding) by a carrot icon. Once a carrot is clicked, you will be able to view the items a chef has available for sale, add them to your shopping cart, and confirm your final order. A notification will be sent to you via SMS (Twilio), providing a total cost and pickup address, once you have successfully placed an order. 
 
 Here is an example of the customer shopping experience.
 
@@ -30,16 +32,18 @@ Yes, our application is mobile responsive. It looks nice and functions well at a
 
 ## Technologies Used
 
-* React
-* MDBootstrap
-* MySQL
+* React.js (web framework)
+* MDBootstrap (style/grid system)
+* MySQL (database)
 * Sequelize
-* Axios (to connect with our backend API)
-* React-Switch-Toggle (for toggle button)
-* Google Geocoding (to convert the chef's address to latitude and longitude coordinates)
-* Google Map API (to place chef's locations on the map)
-* Cloudinary Widget (for photo upload and storage)
-* Twilio (to send SMS text messages once orders are placed)
+* Axios (backend API connection)
+* react-switch-toggle (toggle feature)
+* Google Map API (map feature)
+* Google Geocoding (location service)
+* Cloudinary Widget (photo upload/storage)
+* Twilio (Short Message Service)
+* Font Awesome (logo and icons)
+* Visual Studio Code (code editor)
 * Our backend server and database API can be seen [here](https://github.com/SwathiPottigari/OlafAPI)
 
 ## Contributors
@@ -50,6 +54,4 @@ Made in collaboration with:
 * [Willie Edwards](https://github.com/WillieEdwards)
 * [Andrew Weiss](https://github.com/wandrew8)
 
-Visit our github accounts to see more of our work. Thanks for visiting and finally a huge shoutout to all the support and assistance from our teacher, TAs, and fellow classmates!
-
-
+Visit our github accounts to see more of our work. Thanks for visiting and finally a huge shout-out to all the support and assistance from our teacher, TAs, and fellow classmates!
