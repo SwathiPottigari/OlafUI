@@ -197,6 +197,7 @@ a.text-black:focus, a.text-black:hover {
         width: 100%;
         height: auto;
         object-fit: cover;
+        max-height: 225px;
     }
     .list-content {
         display: block;
@@ -204,5 +205,9 @@ a.text-black:focus, a.text-black:hover {
         margin-left: 0;
         padding: 15px;
         clear: both;
+    }
+    .dish-item{
+        height: 35px;
+        overflow: auto;
     }
 }
