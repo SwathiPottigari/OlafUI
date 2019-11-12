@@ -12,7 +12,7 @@ class MapWithAMarker extends Component {
     state = {
         masterCurrentChef: null,
         masterCurrentMenu: null,
-        url: "https://olafapi.herokuapp.com"
+        url: "http://localhost:8080"
     }
 
     componentDidMount() {
@@ -33,8 +33,8 @@ class MapWithAMarker extends Component {
 
     getMenu = () => {
         try {
-            console.log(`https://olafapi.herokuapp.com/api/menuList/${this.state.masterCurrentChef.ChefId}`)
-            return axios.get(this.state.url+`/api/menuList/${this.state.masterCurrentChef.ChefId}`)
+            console.log(`http://localhost:8080/api/menuListMap/${this.state.masterCurrentChef.ChefId}`)
+            return axios.get(this.state.url+`/api/menuListMap/${this.state.masterCurrentChef.ChefId}`)
         } catch (error) {
             console.error(error)
         }
