@@ -10,7 +10,7 @@ export default class ChefLogIn extends Component {
         email: '',
         password: '',
         user: "",
-        url: "https://olafapi.herokuapp.com",
+        url: "http://localhost:8080",
         loggedInUser: '',
         redirect: false
     };
