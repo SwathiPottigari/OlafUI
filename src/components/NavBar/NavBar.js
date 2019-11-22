@@ -2,39 +2,75 @@ import React, { Component } from 'react';
 import "./NavBar.css"
 import ChefLogIn from "../ChefLogIn/ChefLogIn";
 import UserLogIn from "../UserLogIn/UserLogIn";
+import classnames from "classnames";
 
-
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function () {
-//     var currentScrollPos = window.pageYOffset;
-//     if (prevScrollpos > currentScrollPos) {
-//         document.getElementById("navbar").style.top = "0";
-//     } else {
-//         document.getElementById("navbar").style.top = "-100px";
-//     }
-//     prevScrollpos = currentScrollPos;
-// }
 
 export default class NavBar extends Component {
-    state = {
-        isChef: false,
-        isUser: false
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            prevScrollpos: window.pageYOffset,
+            visible: true,
+            isChef: false,
+            isUser: false,
+            isHidden: false,
+            logoutHidden: true
+        };
     }
 
+    // Adds an event listener when the component is mount.
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll);
+        console.log("navbar", this.props)
+
+    }
+
+    // Remove the event listener when the component is unmount.
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    // Hide or show the menu.
+    handleScroll = () => {
+        const { prevScrollpos } = this.state;
+
+        const currentScrollPos = window.pageYOffset;
+        const visible = prevScrollpos > currentScrollPos;
+
+        this.setState({
+            prevScrollpos: currentScrollPos,
+            visible
+        });
+    };
+
+    // state = {
+    //     isChef: false,
+    //     isUser: false,
+    //     isHidden: false,
+    //     logoutHidden: true
+    // }
+
     getUserLoginForm = (e) => {
-        console.log("this is user working!")
         this.setState({ isUser: true })
     }
 
     getChefLoginForm = (e) => {
-        console.log("this is chef working!")
         this.setState({ isChef: true })
     }
 
+    setcurrentUser = () => {
+        this.setState({ currentUser: this.props.currentCustomer })
+    }
     render() {
         return (
             <div>
-                <nav id="navbar" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <nav
+                    id="navbar" className={classnames("navbar navbar navbar-expand-md navbar-dark bg-dark fixed-top", {
+                        "navbar--hidden": !this.state.visible
+                    })}
+                >
                     <a className="navbar-brand" href="/"><strong>Olaf</strong><i class="fas fa-carrot"></i></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
@@ -45,10 +81,10 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/chef">Chef Dashboard</a>
+                                <a className="nav-link" href="#about">About<span className="sr-only"></span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/user">User Dashboard</a>
+                                <a className="nav-link" href="#contact">Contact<span className="sr-only"></span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#" onClick={this.getChefLoginForm} data-toggle="modal" data-target="#modalChefLogInForm">Chef Login</a>
@@ -57,10 +93,11 @@ export default class NavBar extends Component {
                                 <a className="nav-link" href="#" ref={btn => { this.btn = btn; }} onClick={this.getUserLoginForm} data-toggle="modal" data-target="#userLogInForm">User Login</a>
                             </li>
                         </ul>
+
                     </div>
                 </nav>
-                {this.state.isChef && <ChefLogIn />}
-                {this.state.isUser && <UserLogIn />}
+                <ChefLogIn />
+                <UserLogIn />
             </div>
         )
     }

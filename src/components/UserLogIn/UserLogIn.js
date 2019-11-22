@@ -9,8 +9,7 @@ export default class UserLogIn extends Component {
         email: '',
         password: '',
         user: "customer",
-        // url: "http://localhost:8080",
-        url:"https://olafapi.herokuapp.com",
+        url: "https://olafapi.herokuapp.com",
         loggedInUser: '',
         redirect: false
     };
@@ -33,12 +32,15 @@ export default class UserLogIn extends Component {
                 withCredentials: true
             }
         ).then(res => {
+            if (res.data.isSuccess === false) {
+                alert("Please sign up for an Olaf account.");
+            } else {
             this.setState({
                 email: "",
                 password: "",
                 loggedInUser: res.data.user,
                 redirect: true
-            });
+            })};
         })
     };
 
@@ -49,6 +51,11 @@ export default class UserLogIn extends Component {
         }
     }
 
+    returnHome = () => {
+        return window.location.reload();
+
+    }
+
     render() {
         return (
             <div>
@@ -56,13 +63,13 @@ export default class UserLogIn extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                                <h4 className="modal-title w-100 font-weight-bold">Welcome back to Olaf!</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <h4 className="modal-title w-100 font-weight-bold">Welcome back to <h2 className="modal-icon-title">Olaf<i class="fas fa-carrot"></i></h2></h4>
+                                <button onClick={this.returnHome} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
-                                <h5>Login to your User account</h5>
+                                <h5 className="text-center">Login to your User account</h5>
                                 <div className="md-form mb-5">
                                     {/* <i className="fas fa-user prefix grey-text"></i> */}
                                     <label data-error="wrong" data-success="right" htmlFor="form34">Email</label>
@@ -75,7 +82,10 @@ export default class UserLogIn extends Component {
 
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
-                                <button onClick={this.handleFormSubmit} className="login-btn btn btn-info my-4 btn-block" data-dismiss="modal" type="submit">Log In</button>
+                                <button onClick={this.handleFormSubmit} className="btn draw-border" data-dismiss="modal" type="submit">Log In</button>
+                            </div>
+                            <div className="modal-footer d-flex justify-content-center">
+                                <p>Not a member? Create a <a href="/signup/user">USER</a> or <a href="/signup/chef">CHEF</a> account</p>
                             </div>
                         </div>
                     </div>

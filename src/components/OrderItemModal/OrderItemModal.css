@@ -1,0 +1,26 @@
+.order {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.order-details {
+    font-size: 1rem;
+    color: #9A9A9A; 
+    text-align: center;
+}
+
+.modal-item-title {
+font-size: 3rem;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: .15rem;
+    padding-bottom: .5rem;
+    font-size: 5rem;
+    color: #ff9e2e;
+    margin-top: 0px;
+    margin-bottom: 2rem;
+
+}
+
+.modal-container {
+    margin-bottom: 2rem;
+}

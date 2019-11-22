@@ -1,70 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Olaf
 
-other stuff 
+## Overview
 
-## Available Scripts
+Olaf is a community-driven food service web application, which offers seller and customer
+interactivity. Using our interactive and intuitive interface, anyone can create an account as a
+chef (seller), user (customer), or both! 
 
-In the project directory, you can run:
+## Chef Experience
 
-### `npm start`
+As an Olaf Chef, you are able to create a personalized menu using the “Create Menu Item” form. Using this tool, you can add new food items to “Your Current Menu”, by providing relevant information, such as the name, cuisine, price, quantity, ingredients, item description, and even a photo (Cloudinary) of your dish! You can toggle between your kitchen being “OPEN” or “CLOSED” (react-switch-toggle) which will display to potential customers if you are available to sell. A notification will be sent to you via SMS (Twilio) once a customer has successfully placed an order. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Here is an example of a chef creating an item then posting it online.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![image of chef creating item](./public/image/chef.gif)
 
-### `npm test`
+## Customer Experience
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As an Olaf User, you will enjoy a wide variety of home cooked cuisines. Olaf Chefs are marked on the map (Google Maps/Google Geocoding) by a carrot icon. Once a carrot is clicked, you will be able to view the items a chef has available for sale, add them to your shopping cart, and confirm your final order. A notification will be sent to you via SMS (Twilio), providing a total cost and pickup address, once you have successfully placed an order. 
 
-### `npm run build`
+Here is an example of the customer shopping experience.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image of customer dashboard](./public/image/user.gif)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+[Here](https://olafui.herokuapp.com/) is a link to the deployed application. And below are some images showcasing some of the features of our application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Mobile Responsivness
 
-### `npm run eject`
+Yes, our application is mobile responsive. It looks nice and functions well at all screen sizes. Here, have a look!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![desktop view](./public/image/desktop.gif) ![mobile view](./public/image/mobile.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* React.js (web framework)
+* MDBootstrap (style/grid system)
+* MySQL (database)
+* Sequelize
+* Axios (backend API connection)
+* react-switch-toggle (toggle feature)
+* Google Map API (map feature)
+* Google Geocoding (location service)
+* Cloudinary Widget (photo upload/storage)
+* Twilio (Short Message Service)
+* Font Awesome (logo and icons)
+* Visual Studio Code (code editor)
+* Our backend server and database API can be seen [here](https://github.com/SwathiPottigari/OlafAPI)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributors
 
-## Learn More
+Made in collaboration with:
+* [Shivali Bhalla](https://github.com/sbc1133)
+* [Swathi Pottigari](https://github.com/SwathiPottigari)
+* [Willie Edwards](https://github.com/WillieEdwards)
+* [Andrew Weiss](https://github.com/wandrew8)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Visit our github accounts to see more of our work. Thanks for visiting and finally a huge shout-out to all the support and assistance from our teacher, TAs, and fellow classmates!
